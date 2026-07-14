@@ -70,21 +70,6 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       align-items: flex-start;
       flex-wrap: wrap;
     }}
-    .brand {{
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }}
-    .brand-logo {{
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
-      object-fit: cover;
-      flex-shrink: 0;
-      border: 1px solid var(--line);
-      background: #000;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    }}
     header h1 {{
       font-size: clamp(2rem, 4vw, 3rem);
       margin: 0 0 8px;
@@ -94,13 +79,6 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
-    }}
-    @media (max-width: 600px) {{
-      .brand-logo {{
-        width: 52px;
-        height: 52px;
-        border-radius: 12px;
-      }}
     }}
     header p {{
       margin: 0;
@@ -381,13 +359,8 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
   <div class="wrap">
     <div class="topbar">
       <header>
-        <div class="brand">
-          <img class="brand-logo" src="logo.png" alt="Hack-Search logo" width="64" height="64" />
-          <div>
-            <h1>Hack-Search</h1>
-            <p>AI, product, and Web2-focused listings from Devpost, Unstop, Hack2Skill, Devfolio, DoraHacks, and more. Click any row to open the official page.</p>
-          </div>
-        </div>
+        <h1>Hack-Search</h1>
+        <p>AI, product, and Web2-focused listings from Devpost, Unstop, Hack2Skill, Devfolio, DoraHacks, and more. Click any row to open the official page.</p>
       </header>
       <div class="refresh-wrap">
         <button id="refreshBtn" type="button">Refresh list</button>
