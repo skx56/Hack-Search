@@ -338,6 +338,9 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       font-family: "JetBrains Mono", monospace;
       color: var(--accent);
     }}
+    .server-hint a {{
+      color: var(--accent);
+    }}
     @media (max-width: 700px) {{
       .card {{ grid-template-columns: 56px 1fr; }}
       .side {{
@@ -369,8 +372,10 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       <span class="meta-filter">Deadlines in IST · next 30 days only · earliest first</span>
     </div>
     <div id="serverHint" class="server-hint">
-      Refresh needs the local server. In a terminal run <code>python server.py</code> then open
-      <code>http://127.0.0.1:8765</code>
+      Free hosted mode: this site auto-updates daily via GitHub Actions.
+      For an on-demand refresh, open
+      <a href="https://github.com/skx56/Hack-Search/actions/workflows/deploy.yml" target="_blank" rel="noopener">Actions → Deploy Hack-Search</a>
+      and click <strong>Run workflow</strong>. Or locally run <code>python server.py</code>.
     </div>
 
     <div class="controls">
@@ -447,9 +452,15 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
         refreshStatus.textContent = `Done — ${{data.total_filtered}} events. Reloading…`;
         setTimeout(() => window.location.reload(), 600);
       }} catch (err) {{
-        refreshStatus.className = 'error';
-        refreshStatus.textContent = 'Could not refresh. Start the local server first.';
+        // Static / GitHub Pages mode — open Actions for a free manual refresh
+        refreshStatus.className = '';
+        refreshStatus.textContent = 'Opening GitHub Actions for a free refresh…';
         serverHint.style.display = 'block';
+        window.open(
+          'https://github.com/skx56/Hack-Search/actions/workflows/deploy.yml',
+          '_blank',
+          'noopener'
+        );
       }} finally {{
         refreshBtn.disabled = false;
       }}
@@ -462,6 +473,7 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       refreshStatus.textContent = 'Server connected — click Refresh anytime';
       refreshStatus.className = 'ok';
     }}).catch(() => {{
+      refreshStatus.textContent = 'Live site · auto-updates daily · Refresh opens Actions';
       serverHint.style.display = 'block';
     }});
   </script>
