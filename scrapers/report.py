@@ -325,24 +325,6 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       border: 1px dashed var(--line);
       border-radius: 14px;
     }}
-    .server-hint {{
-      display: none;
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      background: #18212b;
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.45;
-    }}
-    .server-hint code {{
-      font-family: "JetBrains Mono", monospace;
-      color: var(--accent);
-    }}
-    .server-hint a {{
-      color: var(--accent);
-    }}
     @media (max-width: 700px) {{
       .card {{ grid-template-columns: 56px 1fr; }}
       .side {{
@@ -372,12 +354,6 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       <span id="countMeta" class="meta-count">{len(ordered)} matching events</span>
       <span id="scrapedMeta" class="meta-scraped">Scraped {_fmt_scraped(scraped_at)}</span>
       <span class="meta-filter">Deadlines in IST · next 30 days only · earliest first</span>
-    </div>
-    <div id="serverHint" class="server-hint">
-      Free hosted mode: this site auto-updates daily via GitHub Actions.
-      For an on-demand refresh, open
-      <a href="https://github.com/skx56/Hack-Search/actions/workflows/deploy.yml" target="_blank" rel="noopener">Actions → Deploy Hack-Search</a>
-      and click <strong>Run workflow</strong>. Or locally run <code>python server.py</code>.
     </div>
 
     <div class="controls">
@@ -413,7 +389,6 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     const list = document.getElementById('list');
     const refreshBtn = document.getElementById('refreshBtn');
     const refreshStatus = document.getElementById('refreshStatus');
-    const serverHint = document.getElementById('serverHint');
 
     function apply() {{
       const query = q.value.trim().toLowerCase();
@@ -444,8 +419,7 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     async function refresh() {{
       refreshBtn.disabled = true;
       refreshStatus.className = '';
-      refreshStatus.textContent = 'Refreshing from live sources… this can take up to a minute';
-      serverHint.style.display = 'none';
+      refreshStatus.textContent = 'Refreshing…';
       try {{
         const res = await fetch('/api/refresh', {{ method: 'POST' }});
         if (!res.ok) throw new Error('Refresh failed (' + res.status + ')');
@@ -454,10 +428,7 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
         refreshStatus.textContent = `Done — ${{data.total_filtered}} events. Reloading…`;
         setTimeout(() => window.location.reload(), 600);
       }} catch (err) {{
-        // Static / GitHub Pages mode — open Actions for a free manual refresh
-        refreshStatus.className = '';
-        refreshStatus.textContent = 'Opening GitHub Actions for a free refresh…';
-        serverHint.style.display = 'block';
+        refreshStatus.textContent = 'Opening refresh…';
         window.open(
           'https://github.com/skx56/Hack-Search/actions/workflows/deploy.yml',
           '_blank',
@@ -472,11 +443,10 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
 
     fetch('/api/health').then(r => {{
       if (!r.ok) throw new Error('no');
-      refreshStatus.textContent = 'Server connected — click Refresh anytime';
+      refreshStatus.textContent = 'Click Refresh anytime';
       refreshStatus.className = 'ok';
     }}).catch(() => {{
-      refreshStatus.textContent = 'Live site · auto-updates daily · Refresh opens Actions';
-      serverHint.style.display = 'block';
+      refreshStatus.textContent = 'Updates daily';
     }});
   </script>
 </body>
