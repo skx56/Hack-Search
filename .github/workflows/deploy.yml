@@ -44,8 +44,9 @@ jobs:
           mkdir -p site
           cp output/hackathons.html site/index.html
           cp output/hackathons.json site/hackathons.json
-          # Keep a named copy too
           cp output/hackathons.html site/hackathons.html
+          cp assets/logo.png site/logo.png
+          cp assets/logo.png output/logo.png
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
