@@ -4,6 +4,14 @@ Scrapes **online / hybrid hackathons with cash prizes**, biased toward **AI, pro
 
 On each refresh, only events whose **submission/registration deadline is within the next 30 days (IST)** are listed — closed and far-future events are hidden.
 
+## Free website (no local code)
+
+**https://skx56.github.io/Hack-Search/**
+
+- Open anytime in a browser — no install, no cost
+- Auto-scrapes **once a day** via GitHub Actions
+- On-demand update: [Actions → Deploy Hack-Search](https://github.com/skx56/Hack-Search/actions/workflows/deploy.yml) → **Run workflow**
+
 ## Sources
 
 | Source | Focus |
