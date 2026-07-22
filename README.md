@@ -1,69 +1,57 @@
-# Hack-Search
+# Hack Search
 
-Scrapes **online / hybrid hackathons with cash prizes**, biased toward **AI, product, and Web2** (Web3 de-emphasized).
+<p align="center">
+<img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge" />
+  <img alt="Web Scraping" src="https://img.shields.io/badge/Web%20Scraping-374151?style=for-the-badge" />
+  <img alt="BeautifulSoup" src="https://img.shields.io/badge/BeautifulSoup-374151?style=for-the-badge" />
+  <img alt="Data Science" src="https://img.shields.io/badge/Data%20Science-1F77B4?style=for-the-badge" />
+</p>
 
-On each refresh, only events whose **submission/registration deadline is within the next 30 days (IST)** are listed — closed and far-future events are hidden.
+<p align="center">
+  <strong>A focused hackathon discovery engine for online and hybrid competitions with cash prizes and strong product or AI relevance.</strong>
+</p>
 
-## Free website (no local code)
+Hack Search collects hackathon listings from several platforms, filters for high-value opportunities, and produces a consolidated report. The project is built for fast discovery where eligibility, format, prize quality, and domain fit matter.
 
-**https://skx56.github.io/Hack-Search/**
+## Core Capabilities
 
-- Open anytime in a browser — no install, no cost
-- Auto-scrapes **once a day** via GitHub Actions
-- On-demand update: [Actions → Deploy Hack-Search](https://github.com/skx56/Hack-Search/actions/workflows/deploy.yml) → **Run workflow**
+- Scrapes major hackathon platforms through dedicated source adapters.
+- Filters events by prize, format, geography, and technology focus.
+- Generates structured reports for review and prioritization.
+- Includes a lightweight server for local exploration.
 
-## Sources
+## Technical Architecture
 
-| Source | Focus |
-|---|---|
-| [Devpost](https://devpost.com/hackathons) | Global online challenges |
-| [Unstop](https://unstop.com/hackathons) | India online cash hackathons |
-| [Hack2Skill](https://hack2skill.com) | AI / corporate / product events |
-| [Devfolio](https://devfolio.co/hackathons) | Online events with prizes |
-| [DoraHacks](https://dorahacks.io/hackathon) | AI / product virtual events (crypto-heavy ones filtered out) |
-| [HackerEarth](https://www.hackerearth.com/challenges/) | Online company challenges |
-| [Hack Club](https://hackathons.hackclub.com) / [MLH](https://mlh.io) / [Luma](https://lu.ma) | Extra online coverage |
+Each platform scraper lives behind a dedicated module, with shared models, focus scoring, utility functions, and report generation. This keeps new source integration isolated from filtering and output logic.
 
-## Setup
+## Technology Stack
+
+- Python scraper pipeline with Requests, BeautifulSoup, and lxml.
+- Source adapters for Devfolio, Devpost, DoraHacks, ETHGlobal, MLH, Unstop, and related platforms.
+- Report generation layer for consolidated opportunity output.
+- Optional server entry point for local browsing.
+
+## Repository Structure
+
+- `scrape.py` - Batch scraping entry point.
+- `server.py` - Local server entry point.
+- `scrapers/models.py` - Shared event models.
+- `scrapers/focus.py` - Relevance and domain-fit logic.
+- `scrapers/report.py` - Report generation.
+- `requirements.txt` - Python dependencies.
+
+## Getting Started
 
 ```bash
-cd "hackathon scrapper"
-python3 -m venv .venv
+python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Use day-to-day (with Refresh button)
-
 ```bash
-python server.py
+python scrape.py
 ```
 
-Then open **http://127.0.0.1:8765**
+## Professional Context
 
-- Browse the list
-- Click **Refresh list** anytime (days later is fine) to re-scrape live sources and reload
-
-## One-shot scrape
-
-```bash
-python scrape.py --open
-```
-
-Outputs:
-
-- `output/hackathons.html`
-- `output/hackathons.json`
-
-### Useful flags
-
-```bash
-# Also keep events where cash prize wasn't detected
-python scrape.py --include-no-cash
-
-# Include crypto / Web3-heavy listings
-python scrape.py --include-web3
-
-# Specific sources only
-python scrape.py --sources Devpost Hack2Skill DoraHacks Unstop
-```
+This project demonstrates source-specific data engineering, filtering strategy, and practical automation for competitive opportunity discovery.
