@@ -24,6 +24,19 @@ Hack Search collects hackathon listings from several platforms, filters for high
 
 Each platform scraper lives behind a dedicated module, with shared models, focus scoring, utility functions, and report generation. This keeps new source integration isolated from filtering and output logic.
 
+## Architecture Diagram
+
+```mermaid
+flowchart LR
+  Platforms["Hackathon Platforms"] --> Adapters["Source-Specific Scrapers"]
+  Adapters --> Models["Shared Event Models"]
+  Models --> Focus["Prize, Format, and Domain Filters"]
+  Focus --> Report["Consolidated Report"]
+  Focus --> Server["Local Review Server"]
+  Report --> Review["Opportunity Review"]
+  Server --> Review
+```
+
 ## Technology Stack
 
 - Python scraper pipeline with Requests, BeautifulSoup, and lxml.
