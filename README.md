@@ -27,24 +27,25 @@ Each platform scraper lives behind a dedicated module, with shared models, focus
 ## Architecture Diagram
 
 ```mermaid
-flowchart LR
+%%{init: {"flowchart": {"nodeSpacing": 55, "rankSpacing": 70, "curve": "basis"}, "themeVariables": {"fontSize": "16px", "fontFamily": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"}}}%%
+flowchart TD
   Platforms["Hackathon Platforms"] --> Adapters["Source-Specific Scrapers"]
   Adapters --> Models["Shared Event Models"]
-  Models --> Focus["Prize, Format, and Domain Filters"]
+  Models --> Focus["Prize, Format, and<br/>Domain Filters"]
   Focus --> Report["Consolidated Report"]
   Focus --> Server["Local Review Server"]
   Report --> Review["Opportunity Review"]
   Server --> Review
 
-  classDef inputs fill:#FEE2E2,stroke:#DC2626,color:#7F1D1D,stroke-width:2px;
-  classDef process fill:#ECFCCB,stroke:#65A30D,color:#365314,stroke-width:2px;
-  classDef data fill:#DBEAFE,stroke:#2563EB,color:#1E3A8A,stroke-width:2px;
-  classDef agent fill:#FAE8FF,stroke:#C026D3,color:#701A75,stroke-width:2px;
-  classDef output fill:#DCFCE7,stroke:#16A34A,color:#14532D,stroke-width:2px;
+  classDef inputs fill:#FEE2E2,stroke:#DC2626,color:#7F1D1D,stroke-width:2.5px;
+  classDef process fill:#ECFCCB,stroke:#65A30D,color:#365314,stroke-width:2.5px;
+  classDef data fill:#DBEAFE,stroke:#2563EB,color:#1E3A8A,stroke-width:2.5px;
+  classDef agent fill:#FAE8FF,stroke:#C026D3,color:#701A75,stroke-width:2.5px;
+  classDef output fill:#DCFCE7,stroke:#16A34A,color:#14532D,stroke-width:2.5px;
   class Platforms,Adapters,Focus,Server process;
   class Models data;
   class Report,Review output;
-  linkStyle default stroke:#52525B,stroke-width:2px;
+  linkStyle default stroke:#52525B,stroke-width:2.5px;
 ```
 
 ## Technology Stack
