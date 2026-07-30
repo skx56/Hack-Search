@@ -24,6 +24,20 @@ Hack Search collects hackathon listings from several platforms, filters for high
 
 Each platform scraper lives behind a dedicated module, with shared models, focus scoring, utility functions, and report generation. This keeps new source integration isolated from filtering and output logic.
 
+## Sources
+
+| Source | Focus |
+|---|---|
+| [Devpost](https://devpost.com/hackathons) | Global online challenges |
+| [Unstop](https://unstop.com/hackathons) | India online cash + big-company campus hackathons |
+| [Internshala](https://internshala.com/competitions/hackathons/) | India corporate / campus challenges (Adobe, Flipkart, Cisco, etc.) |
+| [Hack2Skill](https://hack2skill.com) | AI / corporate / product events |
+| [TechGig](https://techgig.com/hackathons) | Times Internet / corporate India hackathons |
+| [Devfolio](https://devfolio.co/hackathons) | Online events with prizes |
+| [DoraHacks](https://dorahacks.io/hackathon) | AI / product virtual events (crypto-heavy ones filtered out) |
+| [HackerEarth](https://www.hackerearth.com/challenges/) | Online company challenges |
+| [Hack Club](https://hackathons.hackclub.com) / [MLH](https://mlh.io) / [Luma](https://lu.ma) | Extra online coverage |
+
 ## Architecture Diagram
 
 ```mermaid
@@ -51,7 +65,7 @@ flowchart TD
 ## Technology Stack
 
 - Python scraper pipeline with Requests, BeautifulSoup, and lxml.
-- Source adapters for Devfolio, Devpost, DoraHacks, ETHGlobal, MLH, Unstop, and related platforms.
+- Source adapters for Devpost, Unstop, Internshala, Hack2Skill, TechGig, Devfolio, DoraHacks, HackerEarth, and related platforms.
 - Report generation layer for consolidated opportunity output.
 - Optional server entry point for local browsing.
 
