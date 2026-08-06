@@ -15,7 +15,8 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # Don't cancel in-flight Pages deploys — that surfaces as "Deployment cancelled."
+  cancel-in-progress: false
 
 jobs:
   scrape-and-deploy:
