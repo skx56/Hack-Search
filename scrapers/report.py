@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -109,12 +110,22 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     }}
     #refreshStatus {{
       color: var(--muted);
-      font-size: 0.85rem;
-      max-width: 260px;
+      font-size: 0.8rem;
+      max-width: 280px;
       text-align: right;
+      line-height: 1.45;
+    }}
+    #refreshStatus .refreshed-at {{
+      display: block;
+      margin-top: 2px;
+      color: var(--text);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.01em;
     }}
     #refreshStatus.error {{ color: var(--danger); }}
     #refreshStatus.ok {{ color: var(--accent); }}
+    #refreshStatus.ok .refreshed-at {{ color: var(--accent); }}
     .meta {{
       margin-top: 18px;
       display: flex;
@@ -282,27 +293,38 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       gap: 8px;
     }}
     .deadline {{
-      color: var(--deadline);
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.86rem;
-      font-weight: 600;
-      line-height: 1.35;
-      background: var(--deadline-soft);
-      border: 1px solid #9a5a20;
-      border-radius: 10px;
-      padding: 8px 10px;
       text-align: right;
-      max-width: 210px;
+      min-width: 148px;
+      line-height: 1.25;
     }}
     .deadline .label {{
       display: block;
       font-size: 0.68rem;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      opacity: 0.95;
-      margin-bottom: 2px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }}
+    .deadline .date {{
+      display: block;
+      color: var(--text);
+      font-size: 0.98rem;
       font-weight: 700;
-      color: #ffc078;
+      letter-spacing: -0.01em;
+    }}
+    .deadline .time {{
+      display: block;
+      margin-top: 2px;
+      color: var(--deadline);
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }}
+    .deadline .tba {{
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
     }}
     .prize {{
       text-align: right;
@@ -346,13 +368,12 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       </header>
       <div class="refresh-wrap">
         <button id="refreshBtn" type="button">Refresh list</button>
-        <div id="refreshStatus">Updates prizes &amp; deadlines from live sources</div>
+        <div id="refreshStatus">Last refreshed<span class="refreshed-at">{html.escape(_fmt_scraped(scraped_at))}</span></div>
       </div>
     </div>
 
     <div class="meta">
       <span id="countMeta" class="meta-count">{len(ordered)} matching events</span>
-      <span id="scrapedMeta" class="meta-scraped">Scraped {_fmt_scraped(scraped_at)}</span>
       <span class="meta-filter">Deadlines in IST · next 30 days only · earliest first</span>
     </div>
 
@@ -389,6 +410,12 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     const list = document.getElementById('list');
     const refreshBtn = document.getElementById('refreshBtn');
     const refreshStatus = document.getElementById('refreshStatus');
+    const lastRefreshed = {json.dumps(_fmt_scraped(scraped_at))};
+
+    function showLastRefreshed() {{
+      refreshStatus.className = '';
+      refreshStatus.innerHTML = 'Last refreshed<span class="refreshed-at">' + lastRefreshed + '</span>';
+    }}
 
     function apply() {{
       const query = q.value.trim().toLowerCase();
@@ -428,26 +455,21 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
         refreshStatus.textContent = `Done — ${{data.total_filtered}} events. Reloading…`;
         setTimeout(() => window.location.reload(), 600);
       }} catch (err) {{
-        refreshStatus.textContent = 'Opening refresh…';
+        refreshStatus.className = '';
+        refreshStatus.textContent = 'Opening GitHub Actions…';
         window.open(
           'https://github.com/skx56/Hack-Search/actions/workflows/deploy.yml',
           '_blank',
           'noopener'
         );
+        setTimeout(showLastRefreshed, 1500);
       }} finally {{
         refreshBtn.disabled = false;
       }}
     }}
 
     refreshBtn.addEventListener('click', refresh);
-
-    fetch('/api/health').then(r => {{
-      if (!r.ok) throw new Error('no');
-      refreshStatus.textContent = 'Click Refresh anytime';
-      refreshStatus.className = 'ok';
-    }}).catch(() => {{
-      refreshStatus.textContent = 'Updates daily';
-    }});
+    showLastRefreshed();
   </script>
 </body>
 </html>
@@ -461,7 +483,8 @@ def _row(h: Hackathon, index: int) -> str:
     )
     raw_deadline = h.registration_deadline or h.submission_deadline or h.end_date
     deadline_dt = parse_deadline(raw_deadline)
-    deadline_label = format_deadline_ist(deadline_dt, fallback=raw_deadline)
+    deadline_html = format_deadline_markup(deadline_dt)
+    deadline_label = format_deadline_ist(deadline_dt)
     deadline_sort = deadline_dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") if deadline_dt else "9999-12-31T23:59:59Z"
 
     themes_list = [t for t in (h.themes or []) if t][:3]
@@ -513,8 +536,8 @@ def _row(h: Hackathon, index: int) -> str:
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          {html.escape(deadline_label)}
+          <span class="label">Deadline</span>
+          {deadline_html}
         </div>
         <div class="prize">
           <strong>{html.escape(prize)}</strong>
@@ -540,6 +563,12 @@ def parse_deadline(value: str | None) -> datetime | None:
     if not text or text == "—":
         return None
 
+    # DoraHacks-style: 2026/08/23 23:59
+    m = re.fullmatch(r"(\d{4})/(\d{2})/(\d{2})\s+(\d{2}):(\d{2})", text)
+    if m:
+        y, mo, d, hh, mm = map(int, m.groups())
+        return datetime(y, mo, d, hh, mm, tzinfo=timezone.utc)
+
     # ISO / offset timestamps
     try:
         return datetime.fromisoformat(text.replace("Z", "+00:00"))
@@ -559,7 +588,11 @@ def parse_deadline(value: str | None) -> datetime | None:
         try:
             dt = datetime.strptime(text, fmt)
             if dt.tzinfo is None:
-                dt = dt.replace(tzinfo=IST)
+                # Date-only → end of that day in IST
+                if fmt in {"%Y-%m-%d", "%b %d, %Y", "%B %d, %Y", "%d %b %Y", "%d %B %Y"}:
+                    dt = dt.replace(hour=23, minute=59, tzinfo=IST)
+                else:
+                    dt = dt.replace(tzinfo=IST)
             return dt
         except ValueError:
             continue
@@ -597,16 +630,35 @@ def parse_deadline(value: str | None) -> datetime | None:
     return None
 
 
-def format_deadline_ist(dt: datetime | None, *, fallback: str | None = None) -> str:
+def format_deadline_ist(dt: datetime | None) -> str:
     if not dt:
-        return "Deadline TBA" if not fallback else str(fallback)
+        return "TBA"
     local = dt.astimezone(IST)
-    return local.strftime("%d %b %Y, %I:%M %p IST")
+    return f"{_fmt_day(local)} · {_fmt_clock(local)} IST"
+
+
+def format_deadline_markup(dt: datetime | None) -> str:
+    if not dt:
+        return '<span class="tba">TBA</span>'
+    local = dt.astimezone(IST)
+    return (
+        f'<span class="date">{html.escape(_fmt_day(local))}</span>'
+        f'<span class="time">{html.escape(_fmt_clock(local))} IST</span>'
+    )
+
+
+def _fmt_day(local: datetime) -> str:
+    return f"{local.day} {local.strftime('%b %Y')}"
+
+
+def _fmt_clock(local: datetime) -> str:
+    hour = local.hour % 12 or 12
+    return f"{hour}:{local.strftime('%M %p')}"
 
 
 def _fmt_scraped(value: str) -> str:
     try:
         dt = datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(IST)
-        return dt.strftime("%d %b %Y, %I:%M %p IST")
+        return f"{_fmt_day(dt)}, {_fmt_clock(dt)} IST"
     except Exception:
         return value

@@ -45,9 +45,17 @@ AI_PRODUCT_HINTS = (
 
 def classify_focus(title: str, themes: list[str] | None = None, source: str | None = None) -> str:
     """Return 'ai_product', 'web3', or 'general'."""
-    blob = f"{title} {' '.join(themes or [])} {source or ''}".lower()
+    title_l = (title or "").lower()
+    blob = f"{title_l} {' '.join(themes or [])} {source or ''}".lower()
     web3 = sum(1 for k in WEB3_ONLY_HINTS if k in blob)
     ai = sum(1 for k in AI_PRODUCT_HINTS if k in blob)
+
+    # Title-level AI signal wins (common on DoraHacks / mixed platforms)
+    if any(k in title_l for k in ("ai ", " ai", "ai-", "ai:", "agent", "llm", "genai", "machine learning")):
+        return "ai_product"
+    if title_l.startswith("ai") or title_l.endswith(" ai") or " ai " in f" {title_l} ":
+        return "ai_product"
+
     if web3 >= 2 and web3 > ai:
         return "web3"
     if ai >= 1:

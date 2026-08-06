@@ -87,12 +87,22 @@
     }
     #refreshStatus {
       color: var(--muted);
-      font-size: 0.85rem;
-      max-width: 260px;
+      font-size: 0.8rem;
+      max-width: 280px;
       text-align: right;
+      line-height: 1.45;
+    }
+    #refreshStatus .refreshed-at {
+      display: block;
+      margin-top: 2px;
+      color: var(--text);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.01em;
     }
     #refreshStatus.error { color: var(--danger); }
     #refreshStatus.ok { color: var(--accent); }
+    #refreshStatus.ok .refreshed-at { color: var(--accent); }
     .meta {
       margin-top: 18px;
       display: flex;
@@ -260,27 +270,38 @@
       gap: 8px;
     }
     .deadline {
-      color: var(--deadline);
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.86rem;
-      font-weight: 600;
-      line-height: 1.35;
-      background: var(--deadline-soft);
-      border: 1px solid #9a5a20;
-      border-radius: 10px;
-      padding: 8px 10px;
       text-align: right;
-      max-width: 210px;
+      min-width: 148px;
+      line-height: 1.25;
     }
     .deadline .label {
       display: block;
       font-size: 0.68rem;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      opacity: 0.95;
-      margin-bottom: 2px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .deadline .date {
+      display: block;
+      color: var(--text);
+      font-size: 0.98rem;
       font-weight: 700;
-      color: #ffc078;
+      letter-spacing: -0.01em;
+    }
+    .deadline .time {
+      display: block;
+      margin-top: 2px;
+      color: var(--deadline);
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    .deadline .tba {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
     }
     .prize {
       text-align: right;
@@ -324,13 +345,12 @@
       </header>
       <div class="refresh-wrap">
         <button id="refreshBtn" type="button">Refresh list</button>
-        <div id="refreshStatus">Updates prizes &amp; deadlines from live sources</div>
+        <div id="refreshStatus">Last refreshed<span class="refreshed-at">6 Aug 2026, 9:07 AM IST</span></div>
       </div>
     </div>
 
     <div class="meta">
-      <span id="countMeta" class="meta-count">75 matching events</span>
-      <span id="scrapedMeta" class="meta-scraped">Scraped 30 Jul 2026, 09:45 PM IST</span>
+      <span id="countMeta" class="meta-count">89 matching events</span>
       <span class="meta-filter">Deadlines in IST · next 30 days only · earliest first</span>
     </div>
 
@@ -340,8 +360,7 @@
         <option value="">All sources</option>
         <option value="Devfolio">Devfolio</option>
 <option value="Devpost">Devpost</option>
-<option value="Hack2Skill">Hack2Skill</option>
-<option value="HackerEarth">HackerEarth</option>
+<option value="DoraHacks">DoraHacks</option>
 <option value="Internshala">Internshala</option>
 <option value="Unstop">Unstop</option>
       </select>
@@ -360,546 +379,26 @@
 
     <div class="list" id="list">
       
-    <a class="card" href="https://prometheus-july-ai-challenge.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="prometheus july ai challenge"
-       data-deadline="2026-07-30T18:29:00Z"
-       data-prize-sort="1500.0"
-       data-hay="prometheus july ai challenge prometheus devpost beginner friendly design machine learning/ai $1,500 ai / product 30 jul 2026, 11:59 pm ist">
+    <a class="card" href="https://unstop.com/hackathons/realworldiq-challenge-2026-bansal-institute-of-research-technology-science-1715032" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="realworldiq challenge 2026"
+       data-deadline="2026-08-06T17:29:32Z"
+       data-prize-sort="66.26506024096386"
+       data-hay="realworldiq challenge 2026 bansal institute of research, technology &amp; science unstop undergraduate engineering students inr 5,500 general 6 aug 2026 · 10:59 pm ist">
       <div class="rank">#1</div>
       <div>
-        <h2 class="title">Prometheus July AI Challenge</h2>
-        <div class="sub">Prometheus</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">about 12 hours left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Design</span><span class="chip chip-theme-2">Machine Learning/AI</span></div>
+        <h2 class="title">RealWorldIQ Challenge 2026</h2>
+        <div class="sub">Bansal Institute of Research, Technology &amp; Science</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          30 Jul 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">6 Aug 2026</span><span class="time">10:59 PM IST</span>
         </div>
         <div class="prize">
-          <strong>$1,500</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://unstop.com/hackathons/memoryverse-ai-26-wooble-1720010" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="ai_product"
-       data-title="memoryverse ai &#x27;26"
-       data-deadline="2026-07-30T18:30:00Z"
-       data-prize-sort="36.144578313253014"
-       data-hay="memoryverse ai &#x27;26 wooble unstop undergraduate postgraduate engineering students inr 3,000 ai / product 31 jul 2026, 12:00 am ist">
-      <div class="rank">#2</div>
-      <div>
-        <h2 class="title">MemoryVerse AI &#x27;26</h2>
-        <div class="sub">Wooble</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          31 Jul 2026, 12:00 AM IST
-        </div>
-        <div class="prize">
-          <strong>INR 3,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://unstop.com/hackathons/evil-corp-ctf-6-hour-intense-hacking-nexploit-1719174" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="general"
-       data-title="evil corp ctf 6 hour intense hacking"
-       data-deadline="2026-07-30T18:31:00Z"
-       data-prize-sort="20.481927710843372"
-       data-hay="evil corp ctf 6 hour intense hacking nexploit unstop undergraduate postgraduate engineering students inr 1,700 general 31 jul 2026, 12:01 am ist">
-      <div class="rank">#3</div>
-      <div>
-        <h2 class="title">Evil Corp CTF 6 Hour Intense Hacking</h2>
-        <div class="sub">Nexploit</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          31 Jul 2026, 12:01 AM IST
-        </div>
-        <div class="prize">
-          <strong>INR 1,700</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://unstop.com/hackathons/port-mortem-2026-code-resurrection-hackathon-hackathon-raptors-1704134" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="general"
-       data-title="port mortem 2026 | code resurrection hackathon"
-       data-deadline="2026-07-31T12:30:00Z"
-       data-prize-sort="1800.0"
-       data-hay="port mortem 2026 | code resurrection hackathon hackathon raptors unstop all usd 1,800 general 31 jul 2026, 06:00 pm ist">
-      <div class="rank">#4</div>
-      <div>
-        <h2 class="title">Port Mortem 2026 | Code Resurrection Hackathon</h2>
-        <div class="sub">Hackathon Raptors</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">All</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          31 Jul 2026, 06:00 PM IST
-        </div>
-        <div class="prize">
-          <strong>USD 1,800</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://baskchallenge.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="bask(business achievement spotlight for kids) monthly pitch competition"
-       data-deadline="2026-07-31T18:29:00Z"
-       data-prize-sort="600.0"
-       data-hay="bask(business achievement spotlight for kids) monthly pitch competition bask devpost communication open ended social good $600 ai / product 31 jul 2026, 11:59 pm ist">
-      <div class="rank">#5</div>
-      <div>
-        <h2 class="title">BASK(Business Achievement Spotlight for Kids) Monthly Pitch Competition</h2>
-        <div class="sub">BASK</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">1 day left</span><span class="chip chip-theme">Communication</span><span class="chip chip-theme-1">Open Ended</span><span class="chip chip-theme-2">Social Good</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          31 Jul 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>$600</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://hardwired-2026-mueec-x-cissa.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="hardwired 2026 mueec x cissa"
-       data-deadline="2026-07-31T18:29:00Z"
-       data-prize-sort="1500.0"
-       data-hay="hardwired 2026 mueec x cissa mueec, cissa devpost education iot serverless $1,500 ai / product 31 jul 2026, 11:59 pm ist">
-      <div class="rank">#6</div>
-      <div>
-        <h2 class="title">HARDWIRED 2026 MUEEC X CISSA</h2>
-        <div class="sub">MUEEC, CISSA</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">about 15 hours left</span><span class="chip chip-theme">Education</span><span class="chip chip-theme-1">IoT</span><span class="chip chip-theme-2">Serverless</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          31 Jul 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>$1,500</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://celesta-exoplanet-challenge.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="india high school exoplanet data challenge"
-       data-deadline="2026-07-31T18:29:00Z"
-       data-prize-sort="10300.0"
-       data-hay="india high school exoplanet data challenge celesta devpost beginner friendly low/no code machine learning/ai $10,300 ai / product 31 jul 2026, 11:59 pm ist">
-      <div class="rank">#7</div>
-      <div>
-        <h2 class="title">India High School Exoplanet Data Challenge</h2>
-        <div class="sub">Celesta</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">about 19 hours left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Low/No Code</span><span class="chip chip-theme-2">Machine Learning/AI</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          31 Jul 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>$10,300</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://the-blueprint-hackathon.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="the blueprint hackathon  (for all ages, july 17th-31st)"
-       data-deadline="2026-07-31T18:29:00Z"
-       data-prize-sort="8176.0"
-       data-hay="the blueprint hackathon  (for all ages, july 17th-31st) blueprint hackathon devpost beginner friendly education open ended $8,176 ai / product 31 jul 2026, 11:59 pm ist">
-      <div class="rank">#8</div>
-      <div>
-        <h2 class="title">The Blueprint Hackathon  (For All Ages, July 17th-31st)</h2>
-        <div class="sub">Blueprint Hackathon</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">1 day left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Education</span><span class="chip chip-theme-2">Open Ended</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          31 Jul 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>$8,176</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://www.hackerearth.com/challenges/hackathon/vibecode-arena-fifa-2026-showdown/" target="_blank" rel="noopener"
-       data-source="HackerEarth"
-       data-focus="general"
-       data-title="vibecode arena: fifa 2026 showdown"
-       data-deadline="2026-07-31T18:29:00Z"
-       data-prize-sort="2026.0"
-       data-hay="vibecode arena: fifa 2026 showdown hackerearth hackerearth monthly challenges vibecode arena: fifa 2026 showdown hacking is building things that you always wanted to have but no one has built it yet. it&#x27;s to come .. monthly challenges general 31 jul 2026, 11:59 pm ist">
-      <div class="rank">#9</div>
-      <div>
-        <h2 class="title">VibeCode Arena: FIFA 2026 Showdown</h2>
-        <div class="sub">HackerEarth</div>
-        <div class="chips"><span class="chip chip-source">HackerEarth</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Monthly Challenges</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          31 Jul 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>VibeCode Arena: FIFA 2026 Showdown Hacking is building things that you always wanted to have but no one has built it yet. It&#x27;s to come .. Monthly Challenges</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://unstop.com/hackathons/hacknexus26-droidecks-1695049" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="general"
-       data-title="hacknexus&#x27;26"
-       data-deadline="2026-07-31T18:29:09Z"
-       data-prize-sort="2409.6385542168673"
-       data-hay="hacknexus&#x27;26 droidecks unstop undergraduate postgraduate engineering students inr 200,000 general 31 jul 2026, 11:59 pm ist">
-      <div class="rank">#10</div>
-      <div>
-        <h2 class="title">HackNexus&#x27;26</h2>
-        <div class="sub">Droidecks</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          31 Jul 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>INR 200,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://unstop.com/hackathons/technova-igniting-brilliance-season-3-enterprise-system-solutions-private-limited-1709421" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="general"
-       data-title="technova: igniting brilliance (season 3)"
-       data-deadline="2026-08-01T04:30:00Z"
-       data-prize-sort="2421.6867469879517"
-       data-hay="technova: igniting brilliance (season 3) enterprise system solutions private limited unstop fresher management arts, commerce, sciences &amp; others inr 201,000 general 01 aug 2026, 10:00 am ist">
-      <div class="rank">#11</div>
-      <div>
-        <h2 class="title">TechNova: Igniting Brilliance (Season 3)</h2>
-        <div class="sub">Enterprise System Solutions Private Limited</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Fresher</span><span class="chip chip-theme-1">Management</span><span class="chip chip-theme-2">Arts, Commerce, Sciences &amp; Others</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          01 Aug 2026, 10:00 AM IST
-        </div>
-        <div class="prize">
-          <strong>INR 201,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://hackthearts.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="hack the arts"
-       data-deadline="2026-08-01T18:29:00Z"
-       data-prize-sort="1000.0"
-       data-hay="hack the arts hack the arts devpost beginner friendly design open ended $1,000 ai / product 01 aug 2026, 11:59 pm ist">
-      <div class="rank">#12</div>
-      <div>
-        <h2 class="title">Hack the Arts</h2>
-        <div class="sub">Hack the Arts</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">2 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Design</span><span class="chip chip-theme-2">Open Ended</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          01 Aug 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>$1,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://hack2skill.com/event/cococlihack/" target="_blank" rel="noopener"
-       data-source="Hack2Skill"
-       data-focus="general"
-       data-title="snowflake coco cli hackathon 2026"
-       data-deadline="2026-08-02T11:10:00Z"
-       data-prize-sort="10000.0"
-       data-hay="snowflake coco cli hackathon 2026 hack2skill hack2skill  $10,000 general 02 aug 2026, 04:40 pm ist">
-      <div class="rank">#13</div>
-      <div>
-        <h2 class="title">Snowflake CoCo CLI Hackathon 2026</h2>
-        <div class="sub">Hack2Skill</div>
-        <div class="chips"><span class="chip chip-source">Hack2Skill</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          02 Aug 2026, 04:40 PM IST
-        </div>
-        <div class="prize">
-          <strong>$10,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://stemist-hacks-iv.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="stemist hacks iv"
-       data-deadline="2026-08-02T18:29:00Z"
-       data-prize-sort="2550.0"
-       data-hay="stemist hacks iv stemist education devpost beginner friendly education open ended $2,550 ai / product 02 aug 2026, 11:59 pm ist">
-      <div class="rank">#14</div>
-      <div>
-        <h2 class="title">STEMist Hacks IV</h2>
-        <div class="sub">STEMist Education</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">Upcoming</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Education</span><span class="chip chip-theme-2">Open Ended</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          02 Aug 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>$2,550</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://unstop.com/hackathons/pixxelhack-20-a-web-development-hackathon-thakur-college-of-engineering-and-technology-tcet-mumbai-1719044" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="ai_product"
-       data-title="national level - pixxelhack 2.0 – a web development hackathon"
-       data-deadline="2026-08-03T04:29:00Z"
-       data-prize-sort="72.28915662650603"
-       data-hay="national level - pixxelhack 2.0 – a web development hackathon thakur college of engineering and technology (tcet), mumbai unstop all inr 6,000 ai / product 03 aug 2026, 09:59 am ist">
-      <div class="rank">#15</div>
-      <div>
-        <h2 class="title">National Level - PixxelHack 2.0 – A Web Development Hackathon</h2>
-        <div class="sub">Thakur College of Engineering and Technology (TCET), Mumbai</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-theme">All</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          03 Aug 2026, 09:59 AM IST
-        </div>
-        <div class="prize">
-          <strong>INR 6,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://devfolio.co/hackathons/portmortem" target="_blank" rel="noopener"
-       data-source="Devfolio"
-       data-focus="general"
-       data-title="port mortem 2026 - code resurrection hackathon"
-       data-deadline="2026-08-03T18:00:00Z"
-       data-prize-sort="1800.0"
-       data-hay="port mortem 2026 - code resurrection hackathon  devfolio  usd 1,800 general 03 aug 2026, 11:30 pm ist">
-      <div class="rank">#16</div>
-      <div>
-        <h2 class="title">Port Mortem 2026 - Code Resurrection Hackathon</h2>
-        <div class="sub">Organizer TBA</div>
-        <div class="chips"><span class="chip chip-source">Devfolio</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          03 Aug 2026, 11:30 PM IST
-        </div>
-        <div class="prize">
-          <strong>USD 1,800</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://backblaze-generative-media.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="backblaze generative media hackathon: build with genblaze on b2"
-       data-deadline="2026-08-03T18:29:00Z"
-       data-prize-sort="10000.0"
-       data-hay="backblaze generative media hackathon: build with genblaze on b2 backblaze devpost machine learning/ai music/art voice skills $10,000 ai / product 03 aug 2026, 11:59 pm ist">
-      <div class="rank">#17</div>
-      <div>
-        <h2 class="title">Backblaze Generative Media Hackathon: Build with Genblaze on B2</h2>
-        <div class="sub">Backblaze</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">4 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Music/Art</span><span class="chip chip-theme-2">Voice skills</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          03 Aug 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>$10,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://unstop.com/hackathons/hackmatrix-2026-24-hour-national-hackathon-ieee-computer-society-mits-gwalior-1701757" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="general"
-       data-title="hackmatrix 2026 -  national hackathon"
-       data-deadline="2026-08-03T18:30:00Z"
-       data-prize-sort="168.67469879518072"
-       data-hay="hackmatrix 2026 -  national hackathon ieee computer society mits, gwalior unstop undergraduate postgraduate engineering students inr 14,000 general 04 aug 2026, 12:00 am ist">
-      <div class="rank">#18</div>
-      <div>
-        <h2 class="title">HackMatriX 2026 -  National Hackathon</h2>
-        <div class="sub">IEEE Computer Society MITS, Gwalior</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          04 Aug 2026, 12:00 AM IST
-        </div>
-        <div class="prize">
-          <strong>INR 14,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://internshala.com/competitions/demux-3-0/" target="_blank" rel="noopener"
-       data-source="Internshala"
-       data-focus="general"
-       data-title="demux 3.0"
-       data-deadline="2026-08-04T18:30:00Z"
-       data-prize-sort="602.4096385542168"
-       data-hay="demux 3.0 year zero internshala india inr 50,000 general 05 aug 2026, 12:00 am ist">
-      <div class="rank">#19</div>
-      <div>
-        <h2 class="title">DEMUX 3.0</h2>
-        <div class="sub">Year Zero</div>
-        <div class="chips"><span class="chip chip-source">Internshala</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">India</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          05 Aug 2026, 12:00 AM IST
-        </div>
-        <div class="prize">
-          <strong>INR 50,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://build-with-paritok.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="build with paritok: the token-efficiency hackathon"
-       data-deadline="2026-08-05T18:29:00Z"
-       data-prize-sort="630.0"
-       data-hay="build with paritok: the token-efficiency hackathon paritok devpost machine learning/ai open ended productivity $630 ai / product 05 aug 2026, 11:59 pm ist">
-      <div class="rank">#20</div>
-      <div>
-        <h2 class="title">Build with Paritok: The Token-Efficiency Hackathon</h2>
-        <div class="sub">Paritok</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">6 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Open Ended</span><span class="chip chip-theme-2">Productivity</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          05 Aug 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>$630</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://unstop.com/hackathons/international-hackathon-competition-2026-sofzenix-it-solution-llp-1724168" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="general"
-       data-title="international hackathon competition 2026"
-       data-deadline="2026-08-05T18:30:00Z"
-       data-prize-sort="10120.481927710844"
-       data-hay="international hackathon competition 2026 sofzenix it solution llp unstop all inr 840,000 general 06 aug 2026, 12:00 am ist">
-      <div class="rank">#21</div>
-      <div>
-        <h2 class="title">International Hackathon Competition 2026</h2>
-        <div class="sub">Sofzenix IT Solution LLP</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">All</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          06 Aug 2026, 12:00 AM IST
-        </div>
-        <div class="prize">
-          <strong>INR 840,000</strong>
+          <strong>INR 5,500</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -912,8 +411,8 @@
        data-title="hackdevengers 1.0"
        data-deadline="2026-08-06T18:29:00Z"
        data-prize-sort="0.0"
-       data-hay="hackdevengers 1.0 devengers unstop all cash prize (tba), winner certificate, official devengers recognition, feature... general 06 aug 2026, 11:59 pm ist">
-      <div class="rank">#22</div>
+       data-hay="hackdevengers 1.0 devengers unstop all cash prize (tba), winner certificate, official devengers recognition, feature... general 6 aug 2026 · 11:59 pm ist">
+      <div class="rank">#2</div>
       <div>
         <h2 class="title">HackDevengers 1.0</h2>
         <div class="sub">Devengers</div>
@@ -921,8 +420,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          06 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">6 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>Cash Prize (TBA), Winner Certificate, Official Devengers Recognition, Feature...</strong>
@@ -932,26 +431,26 @@
     </a>
     
 
-    <a class="card" href="https://internshala.com/competitions/bharatiya-antariksh-hackathon-2026-isro/" target="_blank" rel="noopener"
-       data-source="Internshala"
+    <a class="card" href="https://unstop.com/hackathons/hacknexus26-droidecks-1695049" target="_blank" rel="noopener"
+       data-source="Unstop"
        data-focus="general"
-       data-title="bharatiya antariksh hackathon 2026 – isro"
-       data-deadline="2026-08-06T18:30:00Z"
-       data-prize-sort="0.0"
-       data-hay="bharatiya antariksh hackathon 2026 – isro hack2skill. the hackathon invites indian student i internshala india internships / ppi / hardware general 07 aug 2026, 12:00 am ist">
-      <div class="rank">#23</div>
+       data-title="hacknexus&#x27;26"
+       data-deadline="2026-08-06T18:29:09Z"
+       data-prize-sort="2409.6385542168673"
+       data-hay="hacknexus&#x27;26 droidecks unstop undergraduate postgraduate engineering students inr 200,000 general 6 aug 2026 · 11:59 pm ist">
+      <div class="rank">#3</div>
       <div>
-        <h2 class="title">Bharatiya Antariksh Hackathon 2026 – ISRO</h2>
-        <div class="sub">Hack2skill. The hackathon invites Indian student i</div>
-        <div class="chips"><span class="chip chip-source">Internshala</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">India</span></div>
+        <h2 class="title">HackNexus&#x27;26</h2>
+        <div class="sub">Droidecks</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          07 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">6 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
-          <strong>Internships / PPI / hardware</strong>
+          <strong>INR 200,000</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -964,8 +463,8 @@
        data-title="levelup game hackathon"
        data-deadline="2026-08-07T04:37:31Z"
        data-prize-sort="32.53012048192771"
-       data-hay="levelup game hackathon gamnexis unstop all inr 2,700 general 07 aug 2026, 10:07 am ist">
-      <div class="rank">#24</div>
+       data-hay="levelup game hackathon gamnexis unstop all inr 2,700 general 7 aug 2026 · 10:07 am ist">
+      <div class="rank">#4</div>
       <div>
         <h2 class="title">LevelUp Game Hackathon</h2>
         <div class="sub">Gamnexis</div>
@@ -973,11 +472,167 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          07 Aug 2026, 10:07 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">7 Aug 2026</span><span class="time">10:07 AM IST</span>
         </div>
         <div class="prize">
           <strong>INR 2,700</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/hackmatrix-2026-24-hour-national-hackathon-ieee-computer-society-mits-gwalior-1701757" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="hackmatrix 2026 -  national hackathon"
+       data-deadline="2026-08-07T16:30:00Z"
+       data-prize-sort="168.67469879518072"
+       data-hay="hackmatrix 2026 -  national hackathon ieee computer society mits, gwalior unstop undergraduate postgraduate engineering students inr 14,000 general 7 aug 2026 · 10:00 pm ist">
+      <div class="rank">#5</div>
+      <div>
+        <h2 class="title">HackMatriX 2026 -  National Hackathon</h2>
+        <div class="sub">IEEE Computer Society MITS, Gwalior</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">7 Aug 2026</span><span class="time">10:00 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 14,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/batman-robin-strata-2026-loyola-icam-college-of-engineering-and-technology-licet-chennai-1730252" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="batman &amp; robin"
+       data-deadline="2026-08-07T18:29:00Z"
+       data-prize-sort="0"
+       data-hay="batman &amp; robin loyola icam college of engineering and technology (licet), chennai unstop undergraduate engineering students internships / ppi / branded prizes general 7 aug 2026 · 11:59 pm ist">
+      <div class="rank">#6</div>
+      <div>
+        <h2 class="title">Batman &amp; Robin</h2>
+        <div class="sub">Loyola ICAM College of Engineering and Technology (LICET), Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">7 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Internships / PPI / branded prizes</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://internshala.com/competitions/bharatiya-antariksh-hackathon-2026-isro/" target="_blank" rel="noopener"
+       data-source="Internshala"
+       data-focus="general"
+       data-title="bharatiya antariksh hackathon 2026 – isro"
+       data-deadline="2026-08-07T18:29:00Z"
+       data-prize-sort="0.0"
+       data-hay="bharatiya antariksh hackathon 2026 – isro hack2skill. the hackathon invites indian student i internshala india internships / ppi / hardware general 7 aug 2026 · 11:59 pm ist">
+      <div class="rank">#7</div>
+      <div>
+        <h2 class="title">Bharatiya Antariksh Hackathon 2026 – ISRO</h2>
+        <div class="sub">Hack2skill. The hackathon invites Indian student i</div>
+        <div class="chips"><span class="chip chip-source">Internshala</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">India</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">7 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Internships / PPI / hardware</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/riddlers-escape-strata-2026-loyola-icam-college-of-engineering-and-technology-licet-chennai-1730261" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="riddler&#x27;s escape"
+       data-deadline="2026-08-07T18:29:00Z"
+       data-prize-sort="0"
+       data-hay="riddler&#x27;s escape loyola icam college of engineering and technology (licet), chennai unstop undergraduate engineering students internships / ppi / branded prizes general 7 aug 2026 · 11:59 pm ist">
+      <div class="rank">#8</div>
+      <div>
+        <h2 class="title">Riddler&#x27;s Escape</h2>
+        <div class="sub">Loyola ICAM College of Engineering and Technology (LICET), Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">7 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Internships / PPI / branded prizes</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/rogue-ai-strata-2026-loyola-icam-college-of-engineering-and-technology-licet-chennai-1729944" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="ai_product"
+       data-title="rogue ai"
+       data-deadline="2026-08-07T18:29:00Z"
+       data-prize-sort="0"
+       data-hay="rogue ai loyola icam college of engineering and technology (licet), chennai unstop undergraduate engineering students internships / ppi / branded prizes ai / product 7 aug 2026 · 11:59 pm ist">
+      <div class="rank">#9</div>
+      <div>
+        <h2 class="title">Rogue AI</h2>
+        <div class="sub">Loyola ICAM College of Engineering and Technology (LICET), Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">7 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Internships / PPI / branded prizes</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/the-gotham-times-strata-2026-loyola-icam-college-of-engineering-and-technology-licet-chennai-1730246" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="the gotham times"
+       data-deadline="2026-08-07T18:29:00Z"
+       data-prize-sort="0"
+       data-hay="the gotham times loyola icam college of engineering and technology (licet), chennai unstop undergraduate engineering students internships / ppi / branded prizes general 7 aug 2026 · 11:59 pm ist">
+      <div class="rank">#10</div>
+      <div>
+        <h2 class="title">The Gotham Times</h2>
+        <div class="sub">Loyola ICAM College of Engineering and Technology (LICET), Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">7 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Internships / PPI / branded prizes</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -990,8 +645,8 @@
        data-title="the indehub hackathon 2026"
        data-deadline="2026-08-07T18:29:00Z"
        data-prize-sort="1204.8192771084337"
-       data-hay="the indehub hackathon 2026 revenuecat internshala india inr 100,000 general 07 aug 2026, 11:59 pm ist">
-      <div class="rank">#25</div>
+       data-hay="the indehub hackathon 2026 revenuecat internshala india inr 100,000 general 7 aug 2026 · 11:59 pm ist">
+      <div class="rank">#11</div>
       <div>
         <h2 class="title">The IndeHub Hackathon 2026</h2>
         <div class="sub">RevenueCat</div>
@@ -999,11 +654,167 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          07 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">7 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>INR 100,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/why-so-serious-strata-2026-loyola-icam-college-of-engineering-and-technology-licet-chennai-1729939" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="why so serious?"
+       data-deadline="2026-08-07T18:29:00Z"
+       data-prize-sort="0"
+       data-hay="why so serious? loyola icam college of engineering and technology (licet), chennai unstop undergraduate engineering students internships / ppi / branded prizes general 7 aug 2026 · 11:59 pm ist">
+      <div class="rank">#12</div>
+      <div>
+        <h2 class="title">Why So Serious?</h2>
+        <div class="sub">Loyola ICAM College of Engineering and Technology (LICET), Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">7 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Internships / PPI / branded prizes</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/debuggers-assemble-loyola-icam-college-of-engineering-and-technology-licet-chennai-1729706" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="debuggers assemble"
+       data-deadline="2026-08-07T18:30:00Z"
+       data-prize-sort="18.072289156626507"
+       data-hay="debuggers assemble loyola icam college of engineering and technology (licet), chennai unstop undergraduate engineering students inr 1,500 general 8 aug 2026 · 12:00 am ist">
+      <div class="rank">#13</div>
+      <div>
+        <h2 class="title">Debuggers Assemble</h2>
+        <div class="sub">Loyola ICAM College of Engineering and Technology (LICET), Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">8 Aug 2026</span><span class="time">12:00 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 1,500</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/infinity-interface-loyola-icam-college-of-engineering-and-technology-licet-chennai-1729828" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="infinity interface"
+       data-deadline="2026-08-07T18:30:00Z"
+       data-prize-sort="18.072289156626507"
+       data-hay="infinity interface loyola icam college of engineering and technology (licet), chennai unstop undergraduate postgraduate engineering students inr 1,500 general 8 aug 2026 · 12:00 am ist">
+      <div class="rank">#14</div>
+      <div>
+        <h2 class="title">Infinity Interface</h2>
+        <div class="sub">Loyola ICAM College of Engineering and Technology (LICET), Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">8 Aug 2026</span><span class="time">12:00 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 1,500</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/prompt-with-jarvis-loyola-icam-college-of-engineering-and-technology-licet-chennai-1729813" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="prompt with jarvis"
+       data-deadline="2026-08-07T18:30:00Z"
+       data-prize-sort="18.072289156626507"
+       data-hay="prompt with jarvis loyola icam college of engineering and technology (licet), chennai unstop undergraduate engineering students inr 1,500 general 8 aug 2026 · 12:00 am ist">
+      <div class="rank">#15</div>
+      <div>
+        <h2 class="title">Prompt with Jarvis</h2>
+        <div class="sub">Loyola ICAM College of Engineering and Technology (LICET), Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">8 Aug 2026</span><span class="time">12:00 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 1,500</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/spider-sprint-loyola-icam-college-of-engineering-and-technology-licet-chennai-1729511" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="spider-sprint"
+       data-deadline="2026-08-07T18:30:00Z"
+       data-prize-sort="0"
+       data-hay="spider-sprint loyola icam college of engineering and technology (licet), chennai unstop undergraduate postgraduate engineering students internships / ppi / branded prizes general 8 aug 2026 · 12:00 am ist">
+      <div class="rank">#16</div>
+      <div>
+        <h2 class="title">Spider-Sprint</h2>
+        <div class="sub">Loyola ICAM College of Engineering and Technology (LICET), Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">8 Aug 2026</span><span class="time">12:00 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Internships / PPI / branded prizes</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/web-forge-loyola-icam-college-of-engineering-and-technology-licet-chennai-1729524" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="ai_product"
+       data-title="web-forge"
+       data-deadline="2026-08-07T18:30:00Z"
+       data-prize-sort="0"
+       data-hay="web-forge loyola icam college of engineering and technology (licet), chennai unstop undergraduate postgraduate engineering students internships / ppi / branded prizes ai / product 8 aug 2026 · 12:00 am ist">
+      <div class="rank">#17</div>
+      <div>
+        <h2 class="title">Web-Forge</h2>
+        <div class="sub">Loyola ICAM College of Engineering and Technology (LICET), Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">8 Aug 2026</span><span class="time">12:00 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Internships / PPI / branded prizes</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1016,8 +827,8 @@
        data-title="samarthya 2026 project competition"
        data-deadline="2026-08-08T08:30:56Z"
        data-prize-sort="90.36144578313252"
-       data-hay="samarthya 2026 project competition smt kashibai navale college of engineering (sknce), pune unstop all inr 7,500 general 08 aug 2026, 02:00 pm ist">
-      <div class="rank">#26</div>
+       data-hay="samarthya 2026 project competition smt kashibai navale college of engineering (sknce), pune unstop all inr 7,500 general 8 aug 2026 · 2:00 pm ist">
+      <div class="rank">#18</div>
       <div>
         <h2 class="title">Samarthya 2026 Project Competition</h2>
         <div class="sub">Smt Kashibai Navale College of Engineering (SKNCE), Pune</div>
@@ -1025,8 +836,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          08 Aug 2026, 02:00 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">8 Aug 2026</span><span class="time">2:00 PM IST</span>
         </div>
         <div class="prize">
           <strong>INR 7,500</strong>
@@ -1042,8 +853,8 @@
        data-title="adobe university hackathon 2026"
        data-deadline="2026-08-08T18:29:00Z"
        data-prize-sort="0.0"
-       data-hay="adobe university hackathon 2026 corporate / india internshala india corporate internships / ppi / hardware general 08 aug 2026, 11:59 pm ist">
-      <div class="rank">#27</div>
+       data-hay="adobe university hackathon 2026 corporate / india internshala india corporate internships / ppi / hardware general 8 aug 2026 · 11:59 pm ist">
+      <div class="rank">#19</div>
       <div>
         <h2 class="title">Adobe University Hackathon 2026</h2>
         <div class="sub">Corporate / India</div>
@@ -1051,8 +862,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          08 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">8 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>Internships / PPI / hardware</strong>
@@ -1068,8 +879,8 @@
        data-title="adobe university hackathon 2026"
        data-deadline="2026-08-08T18:29:31Z"
        data-prize-sort="1325.301204819277"
-       data-hay="adobe university hackathon 2026 adobe unstop engineering students postgraduate undergraduate inr 110,000 general 08 aug 2026, 11:59 pm ist">
-      <div class="rank">#28</div>
+       data-hay="adobe university hackathon 2026 adobe unstop engineering students postgraduate undergraduate inr 110,000 general 8 aug 2026 · 11:59 pm ist">
+      <div class="rank">#20</div>
       <div>
         <h2 class="title">Adobe University Hackathon 2026</h2>
         <div class="sub">Adobe</div>
@@ -1077,8 +888,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          08 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">8 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>INR 110,000</strong>
@@ -1094,8 +905,8 @@
        data-title="2nd nextgen hackathon 2026"
        data-deadline="2026-08-08T18:30:00Z"
        data-prize-sort="1750.0"
-       data-hay="2nd nextgen hackathon 2026 soft computing research society, new delhi, delhi unstop all usd 1,750 general 09 aug 2026, 12:00 am ist">
-      <div class="rank">#29</div>
+       data-hay="2nd nextgen hackathon 2026 soft computing research society, new delhi, delhi unstop all usd 1,750 general 9 aug 2026 · 12:00 am ist">
+      <div class="rank">#21</div>
       <div>
         <h2 class="title">2nd NextGen Hackathon 2026</h2>
         <div class="sub">Soft Computing Research Society, New Delhi, Delhi</div>
@@ -1103,8 +914,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          09 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">9 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>USD 1,750</strong>
@@ -1120,8 +931,8 @@
        data-title="road to devcon"
        data-deadline="2026-08-08T18:30:00Z"
        data-prize-sort="300.0"
-       data-hay="road to devcon  devfolio  usd 300 general 09 aug 2026, 12:00 am ist">
-      <div class="rank">#30</div>
+       data-hay="road to devcon  devfolio  usd 300 general 9 aug 2026 · 12:00 am ist">
+      <div class="rank">#22</div>
       <div>
         <h2 class="title">Road To Devcon</h2>
         <div class="sub">Organizer TBA</div>
@@ -1129,8 +940,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          09 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">9 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>USD 300</strong>
@@ -1146,46 +957,20 @@
        data-title="brainwave 2026"
        data-deadline="2026-08-09T18:29:00Z"
        data-prize-sort="550.0"
-       data-hay="brainwave 2026 act house devpost ar/vr blockchain communication $550 ai / product 09 aug 2026, 11:59 pm ist">
-      <div class="rank">#31</div>
+       data-hay="brainwave 2026 act house devpost ar/vr blockchain communication $550 ai / product 9 aug 2026 · 11:59 pm ist">
+      <div class="rank">#23</div>
       <div>
         <h2 class="title">Brainwave 2026</h2>
         <div class="sub">ACT House</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">10 days left</span><span class="chip chip-theme">AR/VR</span><span class="chip chip-theme-1">Blockchain</span><span class="chip chip-theme-2">Communication</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">4 days left</span><span class="chip chip-theme">AR/VR</span><span class="chip chip-theme-1">Blockchain</span><span class="chip chip-theme-2">Communication</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          09 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">9 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$550</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://gtpn-hackathon-2026.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="gtpn hackathon 2026"
-       data-deadline="2026-08-09T18:29:00Z"
-       data-prize-sort="0"
-       data-hay="gtpn hackathon 2026 gtpn devpost social good $0 ai / product 09 aug 2026, 11:59 pm ist">
-      <div class="rank">#32</div>
-      <div>
-        <h2 class="title">GTPN Hackathon 2026</h2>
-        <div class="sub">GTPN</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">Upcoming</span><span class="chip chip-theme">Social Good</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          09 Aug 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>$0</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1198,17 +983,17 @@
        data-title="includai - the neurodiversity hackathon, in partnership with stanford nnea"
        data-deadline="2026-08-09T18:29:00Z"
        data-prize-sort="3000.0"
-       data-hay="includai - the neurodiversity hackathon, in partnership with stanford nnea includedu, partner w stanford nnea devpost beginner friendly education machine learning/ai $3,000 ai / product 09 aug 2026, 11:59 pm ist">
-      <div class="rank">#33</div>
+       data-hay="includai - the neurodiversity hackathon, in partnership with stanford nnea includedu, partner w stanford nnea devpost beginner friendly education machine learning/ai $3,000 ai / product 9 aug 2026 · 11:59 pm ist">
+      <div class="rank">#24</div>
       <div>
         <h2 class="title">IncludAI - The Neurodiversity Hackathon, in Partnership with Stanford NNEA</h2>
         <div class="sub">IncludEDU, partner w Stanford NNEA</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">Upcoming</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Education</span><span class="chip chip-theme-2">Machine Learning/AI</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">3 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Education</span><span class="chip chip-theme-2">Machine Learning/AI</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          09 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">9 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$3,000</strong>
@@ -1224,8 +1009,8 @@
        data-title="iris hacks iv"
        data-deadline="2026-08-09T18:29:00Z"
        data-prize-sort="400.0"
-       data-hay="iris hacks iv iris hacks devpost machine learning/ai open ended beginner friendly $400 ai / product 09 aug 2026, 11:59 pm ist">
-      <div class="rank">#34</div>
+       data-hay="iris hacks iv iris hacks devpost machine learning/ai open ended beginner friendly $400 ai / product 9 aug 2026 · 11:59 pm ist">
+      <div class="rank">#25</div>
       <div>
         <h2 class="title">Iris Hacks IV</h2>
         <div class="sub">Iris Hacks</div>
@@ -1233,11 +1018,37 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          09 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">9 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$400</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/nexbuildon-hack-2026-nexbuildon-community-1728774" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="nexbuildon hack 2026"
+       data-deadline="2026-08-09T18:29:00Z"
+       data-prize-sort="0.0"
+       data-hay="nexbuildon hack 2026 nexbuildon community unstop undergraduate engineering students winner certificate trophy (if applicable),  sponsor rewards (subject to avail... general 9 aug 2026 · 11:59 pm ist">
+      <div class="rank">#26</div>
+      <div>
+        <h2 class="title">NexBuildOn Hack 2026</h2>
+        <div class="sub">NexBuildOn Community</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">9 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Winner Certificate Trophy (if applicable),  Sponsor Rewards (Subject to Avail...</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1250,8 +1061,8 @@
        data-title="ngn hacks 2026"
        data-deadline="2026-08-09T18:29:00Z"
        data-prize-sort="420.0"
-       data-hay="ngn hacks 2026 next generation hacks devpost beginner friendly education open ended $420 ai / product 09 aug 2026, 11:59 pm ist">
-      <div class="rank">#35</div>
+       data-hay="ngn hacks 2026 next generation hacks devpost beginner friendly education open ended $420 ai / product 9 aug 2026 · 11:59 pm ist">
+      <div class="rank">#27</div>
       <div>
         <h2 class="title">NGN Hacks 2026</h2>
         <div class="sub">Next Generation Hacks</div>
@@ -1259,8 +1070,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          09 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">9 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$420</strong>
@@ -1275,9 +1086,9 @@
        data-focus="ai_product"
        data-title="ourplanet.rocks"
        data-deadline="2026-08-09T18:29:00Z"
-       data-prize-sort="1005.0"
-       data-hay="ourplanet.rocks ourplanet.rocks devpost beginner friendly open ended social good $1,005 ai / product 09 aug 2026, 11:59 pm ist">
-      <div class="rank">#36</div>
+       data-prize-sort="100.0"
+       data-hay="ourplanet.rocks ourplanet.rocks devpost beginner friendly open ended social good $100 ai / product 9 aug 2026 · 11:59 pm ist">
+      <div class="rank">#28</div>
       <div>
         <h2 class="title">OurPlanet.Rocks</h2>
         <div class="sub">OurPlanet.Rocks</div>
@@ -1285,11 +1096,11 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          09 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">9 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
-          <strong>$1,005</strong>
+          <strong>$100</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1302,8 +1113,8 @@
        data-title="caspian ai agent hackathon"
        data-deadline="2026-08-09T18:30:00Z"
        data-prize-sort="240.96385542168676"
-       data-hay="caspian ai agent hackathon caspian unstop undergraduate postgraduate engineering students inr 20,000 ai / product 10 aug 2026, 12:00 am ist">
-      <div class="rank">#37</div>
+       data-hay="caspian ai agent hackathon caspian unstop undergraduate postgraduate engineering students inr 20,000 ai / product 10 aug 2026 · 12:00 am ist">
+      <div class="rank">#29</div>
       <div>
         <h2 class="title">Caspian AI Agent Hackathon</h2>
         <div class="sub">Caspian</div>
@@ -1311,8 +1122,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          10 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">10 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>INR 20,000</strong>
@@ -1328,17 +1139,17 @@
        data-title="build with datahub: the agent hackathon"
        data-deadline="2026-08-10T18:29:00Z"
        data-prize-sort="20500.0"
-       data-hay="build with datahub: the agent hackathon datahub devpost machine learning/ai devops open ended $20,500 ai / product 10 aug 2026, 11:59 pm ist">
-      <div class="rank">#38</div>
+       data-hay="build with datahub: the agent hackathon datahub devpost machine learning/ai devops open ended $20,500 ai / product 10 aug 2026 · 11:59 pm ist">
+      <div class="rank">#30</div>
       <div>
         <h2 class="title">Build with DataHub: The Agent Hackathon</h2>
         <div class="sub">DataHub</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">11 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">DevOps</span><span class="chip chip-theme-2">Open Ended</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">5 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">DevOps</span><span class="chip chip-theme-2">Open Ended</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          10 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">10 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$20,500</strong>
@@ -1354,17 +1165,17 @@
        data-title="csc summer impactathon"
        data-deadline="2026-08-10T18:29:00Z"
        data-prize-sort="80.0"
-       data-hay="csc summer impactathon the webb schools csc devpost beginner friendly open ended social good $80 ai / product 10 aug 2026, 11:59 pm ist">
-      <div class="rank">#39</div>
+       data-hay="csc summer impactathon the webb schools csc devpost beginner friendly open ended social good $80 ai / product 10 aug 2026 · 11:59 pm ist">
+      <div class="rank">#31</div>
       <div>
         <h2 class="title">CSC Summer Impactathon</h2>
         <div class="sub">The Webb Schools CSC</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">11 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Open Ended</span><span class="chip chip-theme-2">Social Good</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">4 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Open Ended</span><span class="chip chip-theme-2">Social Good</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          10 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">10 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$80</strong>
@@ -1380,8 +1191,8 @@
        data-title="all india hackathon"
        data-deadline="2026-08-10T18:30:00Z"
        data-prize-sort="1204.8192771084337"
-       data-hay="all india hackathon axcentra unstop all inr 100,000 general 11 aug 2026, 12:00 am ist">
-      <div class="rank">#40</div>
+       data-hay="all india hackathon axcentra unstop all inr 100,000 general 11 aug 2026 · 12:00 am ist">
+      <div class="rank">#32</div>
       <div>
         <h2 class="title">All India Hackathon</h2>
         <div class="sub">Axcentra</div>
@@ -1389,37 +1200,11 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          11 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">11 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>INR 100,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://unstop.com/hackathons/realworldiq-challenge-2026-bansal-institute-of-research-technology-science-1715032" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="general"
-       data-title="realworldiq challenge 2026"
-       data-deadline="2026-08-11T18:29:00Z"
-       data-prize-sort="66.26506024096386"
-       data-hay="realworldiq challenge 2026 bansal institute of research, technology &amp; science unstop undergraduate engineering students inr 5,500 general 11 aug 2026, 11:59 pm ist">
-      <div class="rank">#41</div>
-      <div>
-        <h2 class="title">RealWorldIQ Challenge 2026</h2>
-        <div class="sub">Bansal Institute of Research, Technology &amp; Science</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          11 Aug 2026, 11:59 PM IST
-        </div>
-        <div class="prize">
-          <strong>INR 5,500</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1432,8 +1217,8 @@
        data-title="trivium 2.0"
        data-deadline="2026-08-11T18:30:00Z"
        data-prize-sort="180.72289156626505"
-       data-hay="trivium 2.0 detox unstop all inr 15,000 general 12 aug 2026, 12:00 am ist">
-      <div class="rank">#42</div>
+       data-hay="trivium 2.0 detox unstop all inr 15,000 general 12 aug 2026 · 12:00 am ist">
+      <div class="rank">#33</div>
       <div>
         <h2 class="title">Trivium 2.0</h2>
         <div class="sub">DETOX</div>
@@ -1441,8 +1226,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          12 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">12 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>INR 15,000</strong>
@@ -1452,26 +1237,26 @@
     </a>
     
 
-    <a class="card" href="https://caspian.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
-       data-focus="ai_product"
-       data-title="caspian buildathon: build agents that can reach anyone"
-       data-deadline="2026-08-12T18:29:00Z"
-       data-prize-sort="1700.0"
-       data-hay="caspian buildathon: build agents that can reach anyone bits pilani devpost beginner friendly machine learning/ai open ended $1,700 ai / product 12 aug 2026, 11:59 pm ist">
-      <div class="rank">#43</div>
+    <a class="card" href="https://unstop.com/hackathons/trivarna-ctf-international-ctf-championship-astitwam-1724784" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="trivarna ctf — international ctf championship"
+       data-deadline="2026-08-12T18:30:00Z"
+       data-prize-sort="0.0"
+       data-hay="trivarna ctf — international ctf championship astitwam unstop undergraduate postgraduate engineering students ppi / internship general 13 aug 2026 · 12:00 am ist">
+      <div class="rank">#34</div>
       <div>
-        <h2 class="title">Caspian Buildathon: Build agents that can reach anyone</h2>
-        <div class="sub">BITS Pilani</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">13 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Open Ended</span></div>
+        <h2 class="title">Trivarna CTF — International CTF Championship</h2>
+        <div class="sub">Astitwam</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          12 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">13 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
-          <strong>$1,700</strong>
+          <strong>PPI / Internship</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1484,8 +1269,8 @@
        data-title="omnikon national hackathon 2026"
        data-deadline="2026-08-13T18:30:00Z"
        data-prize-sort="240.96385542168676"
-       data-hay="omnikon national hackathon 2026 omnikon unstop all inr 20,000 general 14 aug 2026, 12:00 am ist">
-      <div class="rank">#44</div>
+       data-hay="omnikon national hackathon 2026 omnikon unstop all inr 20,000 general 14 aug 2026 · 12:00 am ist">
+      <div class="rank">#35</div>
       <div>
         <h2 class="title">Omnikon National Hackathon 2026</h2>
         <div class="sub">Omnikon</div>
@@ -1493,11 +1278,37 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          14 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">14 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>INR 20,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/prasunethon-20-prasunet-1728532" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="prasunethon 2.0"
+       data-deadline="2026-08-13T18:30:00Z"
+       data-prize-sort="1265.0602409638554"
+       data-hay="prasunethon 2.0 prasunet unstop all inr 105,000 general 14 aug 2026 · 12:00 am ist">
+      <div class="rank">#36</div>
+      <div>
+        <h2 class="title">Prasunethon 2.0</h2>
+        <div class="sub">Prasunet</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">All</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">14 Aug 2026</span><span class="time">12:00 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 105,000</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1510,17 +1321,17 @@
        data-title="arm create: ai optimization challenge"
        data-deadline="2026-08-14T18:29:00Z"
        data-prize-sort="8000.0"
-       data-hay="arm create: ai optimization challenge arm devpost machine learning/ai $8,000 ai / product 14 aug 2026, 11:59 pm ist">
-      <div class="rank">#45</div>
+       data-hay="arm create: ai optimization challenge arm devpost machine learning/ai $8,000 ai / product 14 aug 2026 · 11:59 pm ist">
+      <div class="rank">#37</div>
       <div>
         <h2 class="title">Arm Create: AI Optimization Challenge</h2>
         <div class="sub">arm</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">15 days left</span><span class="chip chip-theme">Machine Learning/AI</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">9 days left</span><span class="chip chip-theme">Machine Learning/AI</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          14 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">14 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$8,000</strong>
@@ -1536,17 +1347,17 @@
        data-title="puzzle masters hackathon 2026"
        data-deadline="2026-08-14T18:30:00Z"
        data-prize-sort="20.481927710843372"
-       data-hay="puzzle masters hackathon 2026 gamnexis unstop undergraduate postgraduate engineering students inr 1,700 general 15 aug 2026, 12:00 am ist">
-      <div class="rank">#46</div>
+       data-hay="puzzle masters hackathon 2026 gamnexis unstop all inr 1,700 general 15 aug 2026 · 12:00 am ist">
+      <div class="rank">#38</div>
       <div>
         <h2 class="title">Puzzle Masters Hackathon 2026</h2>
         <div class="sub">Gamnexis</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">All</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          15 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">15 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>INR 1,700</strong>
@@ -1562,8 +1373,8 @@
        data-title="stampers national hackathon 2026"
        data-deadline="2026-08-14T18:30:00Z"
        data-prize-sort="0.0"
-       data-hay="stampers national hackathon 2026 stampers unstop undergraduate postgraduate engineering students certificate,stampers recognize card,t-shirt,bottle,certificate general 15 aug 2026, 12:00 am ist">
-      <div class="rank">#47</div>
+       data-hay="stampers national hackathon 2026 stampers unstop undergraduate postgraduate engineering students certificate,stampers recognize card,t-shirt,bottle,certificate general 15 aug 2026 · 12:00 am ist">
+      <div class="rank">#39</div>
       <div>
         <h2 class="title">STAMPERS National Hackathon 2026</h2>
         <div class="sub">STAMPERS</div>
@@ -1571,8 +1382,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          15 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">15 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>CERTIFICATE,STAMPERS RECOGNIZE CARD,T-SHIRT,BOTTLE,CERTIFICATE</strong>
@@ -1582,23 +1393,49 @@
     </a>
     
 
+    <a class="card" href="https://unstop.com/hackathons/codered-2026-fifa-world-cup-nitk-surathkal-1727517" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="codered 2026: fifa world cup"
+       data-deadline="2026-08-15T06:30:41Z"
+       data-prize-sort="168.67469879518072"
+       data-hay="codered 2026: fifa world cup national institute of technology karnataka (nitk), surathkal unstop undergraduate engineering students inr 14,000 general 15 aug 2026 · 12:00 pm ist">
+      <div class="rank">#40</div>
+      <div>
+        <h2 class="title">CodeRed 2026: FIFA World Cup</h2>
+        <div class="sub">National Institute of Technology Karnataka (NITK), Surathkal</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">15 Aug 2026</span><span class="time">12:00 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 14,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
     <a class="card" href="https://unstop.com/hackathons/cloud-innovation-challenge-jawaharlal-nehru-technological-university-jntuh-hyderabad-1652247" target="_blank" rel="noopener"
        data-source="Unstop"
        data-focus="ai_product"
-       data-title="“national cloud &amp; ai innovation challenge season 2 by 3svk – 3.2k+ developers”"
+       data-title="“national cloud &amp; ai innovation challenge season 2 by 3svk – 3.4k+ developers”"
        data-deadline="2026-08-15T17:29:00Z"
        data-prize-sort="0.0"
-       data-hay="“national cloud &amp; ai innovation challenge season 2 by 3svk – 3.2k+ developers” jawaharlal nehru technological university (jntuh), hyderabad unstop  &quot;winners receive premium pre-placement interviews (ppis), exclusive startup m... ai / product 15 aug 2026, 10:59 pm ist">
-      <div class="rank">#48</div>
+       data-hay="“national cloud &amp; ai innovation challenge season 2 by 3svk – 3.4k+ developers” jawaharlal nehru technological university (jntuh), hyderabad unstop  &quot;winners receive premium pre-placement interviews (ppis), exclusive startup m... ai / product 15 aug 2026 · 10:59 pm ist">
+      <div class="rank">#41</div>
       <div>
-        <h2 class="title">“National Cloud &amp; AI Innovation Challenge Season 2 by 3SVK – 3.2K+ Developers”</h2>
+        <h2 class="title">“National Cloud &amp; AI Innovation Challenge Season 2 by 3SVK – 3.4K+ Developers”</h2>
         <div class="sub">Jawaharlal Nehru Technological University (JNTUH), Hyderabad</div>
         <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          15 Aug 2026, 10:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">15 Aug 2026</span><span class="time">10:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>&quot;Winners receive premium Pre-Placement Interviews (PPIs), exclusive startup m...</strong>
@@ -1614,17 +1451,17 @@
        data-title="acesat education ai-agent"
        data-deadline="2026-08-15T18:29:00Z"
        data-prize-sort="100.0"
-       data-hay="acesat education ai-agent acesat devpost education machine learning/ai $100 ai / product 15 aug 2026, 11:59 pm ist">
-      <div class="rank">#49</div>
+       data-hay="acesat education ai-agent acesat devpost education machine learning/ai $100 ai / product 15 aug 2026 · 11:59 pm ist">
+      <div class="rank">#42</div>
       <div>
         <h2 class="title">AceSAT Education AI-Agent</h2>
         <div class="sub">AceSAT</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">16 days left</span><span class="chip chip-theme">Education</span><span class="chip chip-theme-1">Machine Learning/AI</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">10 days left</span><span class="chip chip-theme">Education</span><span class="chip chip-theme-1">Machine Learning/AI</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          15 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">15 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$100</strong>
@@ -1640,17 +1477,17 @@
        data-title="gatewaygs &amp; the aei initiative:  ai 4 earth hackathon"
        data-deadline="2026-08-15T18:29:00Z"
        data-prize-sort="25.0"
-       data-hay="gatewaygs &amp; the aei initiative:  ai 4 earth hackathon gatewaygs devpost beginner friendly machine learning/ai social good $25 ai / product 15 aug 2026, 11:59 pm ist">
-      <div class="rank">#50</div>
+       data-hay="gatewaygs &amp; the aei initiative:  ai 4 earth hackathon gatewaygs devpost beginner friendly machine learning/ai social good $25 ai / product 15 aug 2026 · 11:59 pm ist">
+      <div class="rank">#43</div>
       <div>
         <h2 class="title">GatewayGS &amp; The AEI Initiative:  AI 4 Earth Hackathon</h2>
         <div class="sub">GatewayGS</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">16 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Social Good</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">10 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Social Good</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          15 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">15 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$25</strong>
@@ -1666,17 +1503,17 @@
        data-title="ml empowerment build challenge 2.0"
        data-deadline="2026-08-15T18:29:00Z"
        data-prize-sort="1000.0"
-       data-hay="ml empowerment build challenge 2.0 ml empowerment foundation devpost beginner friendly machine learning/ai social good $1,000 ai / product 15 aug 2026, 11:59 pm ist">
-      <div class="rank">#51</div>
+       data-hay="ml empowerment build challenge 2.0 ml empowerment foundation devpost beginner friendly machine learning/ai social good $1,000 ai / product 15 aug 2026 · 11:59 pm ist">
+      <div class="rank">#44</div>
       <div>
         <h2 class="title">ML Empowerment Build Challenge 2.0</h2>
         <div class="sub">ML Empowerment Foundation</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">16 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Social Good</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">9 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Social Good</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          15 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">15 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$1,000</strong>
@@ -1692,8 +1529,8 @@
        data-title="craftverse 2.0"
        data-deadline="2026-08-15T18:29:55Z"
        data-prize-sort="0.0"
-       data-hay="craftverse 2.0 pimpri chinchwad college of engineering &amp; research (pccoe&amp;r), ravet, pimpri-chinchwad, pune unstop undergraduate postgraduate engineering students first runner up will be awarded with 15,000 and certificate general 15 aug 2026, 11:59 pm ist">
-      <div class="rank">#52</div>
+       data-hay="craftverse 2.0 pimpri chinchwad college of engineering &amp; research (pccoe&amp;r), ravet, pimpri-chinchwad, pune unstop undergraduate postgraduate engineering students first runner up will be awarded with 15,000 and certificate general 15 aug 2026 · 11:59 pm ist">
+      <div class="rank">#45</div>
       <div>
         <h2 class="title">CraftVerse 2.0</h2>
         <div class="sub">Pimpri Chinchwad College Of Engineering &amp; Research (PCCOE&amp;R), Ravet, Pimpri-Chinchwad, Pune</div>
@@ -1701,11 +1538,37 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          15 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">15 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>First Runner up will be awarded with 15,000 and certificate</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/simply-updify-innovatex-20-simply-updify-1729747" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="simply updify innovatex 2.0"
+       data-deadline="2026-08-15T19:00:12Z"
+       data-prize-sort="301.2048192771084"
+       data-hay="simply updify innovatex 2.0 simply updify unstop undergraduate postgraduate engineering students inr 25,000 general 16 aug 2026 · 12:30 am ist">
+      <div class="rank">#46</div>
+      <div>
+        <h2 class="title">Simply Updify InnovateX 2.0</h2>
+        <div class="sub">Simply Updify</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">16 Aug 2026</span><span class="time">12:30 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 25,000</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1718,8 +1581,8 @@
        data-title="hackquest 2026"
        data-deadline="2026-08-16T06:30:00Z"
        data-prize-sort="66.26506024096386"
-       data-hay="hackquest 2026 oriental college of technology (oct), bhopal unstop undergraduate engineering students inr 5,500 general 16 aug 2026, 12:00 pm ist">
-      <div class="rank">#53</div>
+       data-hay="hackquest 2026 oriental college of technology (oct), bhopal unstop undergraduate engineering students inr 5,500 general 16 aug 2026 · 12:00 pm ist">
+      <div class="rank">#47</div>
       <div>
         <h2 class="title">HackQuest 2026</h2>
         <div class="sub">Oriental College of Technology (OCT), Bhopal</div>
@@ -1727,11 +1590,37 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          16 Aug 2026, 12:00 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">16 Aug 2026</span><span class="time">12:00 PM IST</span>
         </div>
         <div class="prize">
           <strong>INR 5,500</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://aqxanalyticsthree.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="aqx sports analytics data bowl 3.0"
+       data-deadline="2026-08-16T18:29:00Z"
+       data-prize-sort="50.0"
+       data-hay="aqx sports analytics data bowl 3.0 james logan high school devpost beginner friendly databases gaming $50 ai / product 16 aug 2026 · 11:59 pm ist">
+      <div class="rank">#48</div>
+      <div>
+        <h2 class="title">AQX Sports Analytics Data Bowl 3.0</h2>
+        <div class="sub">James Logan High School</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">10 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Databases</span><span class="chip chip-theme-2">Gaming</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">16 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$50</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1744,20 +1633,46 @@
        data-title="build beyond hackathon"
        data-deadline="2026-08-16T18:29:00Z"
        data-prize-sort="500.0"
-       data-hay="build beyond hackathon buildbeyond devpost beginner friendly low/no code open ended $500 ai / product 16 aug 2026, 11:59 pm ist">
-      <div class="rank">#54</div>
+       data-hay="build beyond hackathon buildbeyond devpost beginner friendly low/no code open ended $500 ai / product 16 aug 2026 · 11:59 pm ist">
+      <div class="rank">#49</div>
       <div>
         <h2 class="title">Build Beyond Hackathon</h2>
         <div class="sub">BuildBeyond</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">17 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Low/No Code</span><span class="chip chip-theme-2">Open Ended</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">10 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Low/No Code</span><span class="chip chip-theme-2">Open Ended</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          16 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">16 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$500</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://caspian.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="caspian buildathon: build agents that can reach anyone"
+       data-deadline="2026-08-16T18:29:00Z"
+       data-prize-sort="14500.0"
+       data-hay="caspian buildathon: build agents that can reach anyone bits pilani devpost beginner friendly machine learning/ai open ended $14,500 ai / product 16 aug 2026 · 11:59 pm ist">
+      <div class="rank">#50</div>
+      <div>
+        <h2 class="title">Caspian Buildathon: Build agents that can reach anyone</h2>
+        <div class="sub">BITS Pilani</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">11 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Open Ended</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">16 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$14,500</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1770,8 +1685,8 @@
        data-title="cs girlies annual hackathon - technology for wellness"
        data-deadline="2026-08-16T18:29:00Z"
        data-prize-sort="5000.0"
-       data-hay="cs girlies annual hackathon - technology for wellness computer science girlies devpost beginner friendly machine learning/ai social good $5,000 ai / product 16 aug 2026, 11:59 pm ist">
-      <div class="rank">#55</div>
+       data-hay="cs girlies annual hackathon - technology for wellness computer science girlies devpost beginner friendly machine learning/ai social good $5,000 ai / product 16 aug 2026 · 11:59 pm ist">
+      <div class="rank">#51</div>
       <div>
         <h2 class="title">CS Girlies Annual Hackathon - Technology For Wellness</h2>
         <div class="sub">Computer Science Girlies</div>
@@ -1779,8 +1694,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          16 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">16 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$5,000</strong>
@@ -1796,8 +1711,8 @@
        data-title="impact forge: summer 2026 hackathon"
        data-deadline="2026-08-16T18:29:00Z"
        data-prize-sort="6600.0"
-       data-hay="impact forge: summer 2026 hackathon impactforge devpost machine learning/ai open ended web $6,600 ai / product 16 aug 2026, 11:59 pm ist">
-      <div class="rank">#56</div>
+       data-hay="impact forge: summer 2026 hackathon impactforge devpost machine learning/ai open ended web $6,600 ai / product 16 aug 2026 · 11:59 pm ist">
+      <div class="rank">#52</div>
       <div>
         <h2 class="title">Impact Forge: Summer 2026 Hackathon</h2>
         <div class="sub">ImpactForge</div>
@@ -1805,8 +1720,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          16 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">16 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$6,600</strong>
@@ -1822,8 +1737,8 @@
        data-title="infinity hacks"
        data-deadline="2026-08-16T18:29:00Z"
        data-prize-sort="0"
-       data-hay="infinity hacks hacker rank devpost beginner friendly low/no code web $0 ai / product 16 aug 2026, 11:59 pm ist">
-      <div class="rank">#57</div>
+       data-hay="infinity hacks hacker rank devpost beginner friendly low/no code web $0 ai / product 16 aug 2026 · 11:59 pm ist">
+      <div class="rank">#53</div>
       <div>
         <h2 class="title">Infinity Hacks</h2>
         <div class="sub">hacker rank</div>
@@ -1831,8 +1746,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          16 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">16 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$0</strong>
@@ -1848,8 +1763,8 @@
        data-title="peddiehacks 2026"
        data-deadline="2026-08-16T18:29:00Z"
        data-prize-sort="800.0"
-       data-hay="peddiehacks 2026 peddie computer science club devpost beginner friendly education social good $800 ai / product 16 aug 2026, 11:59 pm ist">
-      <div class="rank">#58</div>
+       data-hay="peddiehacks 2026 peddie computer science club devpost beginner friendly education social good $800 ai / product 16 aug 2026 · 11:59 pm ist">
+      <div class="rank">#54</div>
       <div>
         <h2 class="title">PeddieHacks 2026</h2>
         <div class="sub">Peddie Computer Science Club</div>
@@ -1857,8 +1772,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          16 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">16 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$800</strong>
@@ -1874,17 +1789,17 @@
        data-title="build with gemini xprize"
        data-deadline="2026-08-17T18:29:00Z"
        data-prize-sort="2000000.0"
-       data-hay="build with gemini xprize xprize devpost machine learning/ai education productivity $2,000,000 ai / product 17 aug 2026, 11:59 pm ist">
-      <div class="rank">#59</div>
+       data-hay="build with gemini xprize xprize devpost machine learning/ai education productivity $2,000,000 ai / product 17 aug 2026 · 11:59 pm ist">
+      <div class="rank">#55</div>
       <div>
         <h2 class="title">Build with Gemini XPRIZE</h2>
         <div class="sub">XPRIZE</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">18 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Education</span><span class="chip chip-theme-2">Productivity</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">12 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Education</span><span class="chip chip-theme-2">Productivity</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          17 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">17 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$2,000,000</strong>
@@ -1899,9 +1814,9 @@
        data-focus="ai_product"
        data-title="oregonhacks"
        data-deadline="2026-08-17T18:29:00Z"
-       data-prize-sort="57860.0"
-       data-hay="oregonhacks oregonhacks devpost beginner friendly open ended social good $57,860 ai / product 17 aug 2026, 11:59 pm ist">
-      <div class="rank">#60</div>
+       data-prize-sort="58580.0"
+       data-hay="oregonhacks oregonhacks devpost beginner friendly open ended social good $58,580 ai / product 17 aug 2026 · 11:59 pm ist">
+      <div class="rank">#56</div>
       <div>
         <h2 class="title">OregonHacks</h2>
         <div class="sub">OregonHacks</div>
@@ -1909,11 +1824,11 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          17 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">17 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
-          <strong>$57,860</strong>
+          <strong>$58,580</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1925,21 +1840,21 @@
        data-focus="ai_product"
        data-title="reverie hacks 2026"
        data-deadline="2026-08-17T18:29:00Z"
-       data-prize-sort="112800.0"
-       data-hay="reverie hacks 2026 reveriehacks devpost beginner friendly machine learning/ai open ended $112,800 ai / product 17 aug 2026, 11:59 pm ist">
-      <div class="rank">#61</div>
+       data-prize-sort="263398.0"
+       data-hay="reverie hacks 2026 reveriehacks devpost beginner friendly machine learning/ai open ended $263,398 ai / product 17 aug 2026 · 11:59 pm ist">
+      <div class="rank">#57</div>
       <div>
         <h2 class="title">Reverie Hacks 2026</h2>
         <div class="sub">ReverieHacks</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">Upcoming</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Open Ended</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">11 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Open Ended</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          17 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">17 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
-          <strong>$112,800</strong>
+          <strong>$263,398</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -1952,17 +1867,17 @@
        data-title="youcam api skin ai &amp; apparel vto hackathon"
        data-deadline="2026-08-17T18:29:00Z"
        data-prize-sort="6000.0"
-       data-hay="youcam api skin ai &amp; apparel vto hackathon perfect corp devpost machine learning/ai ar/vr e-commerce/retail $6,000 ai / product 17 aug 2026, 11:59 pm ist">
-      <div class="rank">#62</div>
+       data-hay="youcam api skin ai &amp; apparel vto hackathon perfect corp devpost machine learning/ai ar/vr e-commerce/retail $6,000 ai / product 17 aug 2026 · 11:59 pm ist">
+      <div class="rank">#58</div>
       <div>
         <h2 class="title">YouCam API Skin AI &amp; Apparel VTO Hackathon</h2>
         <div class="sub">Perfect Corp</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">18 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">AR/VR</span><span class="chip chip-theme-2">E-commerce/Retail</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">12 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">AR/VR</span><span class="chip chip-theme-2">E-commerce/Retail</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          17 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">17 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$6,000</strong>
@@ -1978,17 +1893,17 @@
        data-title="cockroachdb × aws hackathon - build with agentic memory"
        data-deadline="2026-08-18T18:29:00Z"
        data-prize-sort="8750.0"
-       data-hay="cockroachdb × aws hackathon - build with agentic memory cockroach labs devpost machine learning/ai databases devops $8,750 ai / product 18 aug 2026, 11:59 pm ist">
-      <div class="rank">#63</div>
+       data-hay="cockroachdb × aws hackathon - build with agentic memory cockroach labs devpost machine learning/ai databases devops $8,750 ai / product 18 aug 2026 · 11:59 pm ist">
+      <div class="rank">#59</div>
       <div>
         <h2 class="title">CockroachDB × AWS Hackathon - Build with Agentic Memory</h2>
         <div class="sub">Cockroach Labs</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">19 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Databases</span><span class="chip chip-theme-2">DevOps</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">13 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Databases</span><span class="chip chip-theme-2">DevOps</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          18 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">18 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$8,750</strong>
@@ -2004,8 +1919,8 @@
        data-title="codefury 9.0"
        data-deadline="2026-08-18T18:30:00Z"
        data-prize-sort="722.8915662650602"
-       data-hay="codefury 9.0 university visvesvaraya college of engineering (uvce), bangalore unstop undergraduate postgraduate engineering students inr 60,000 general 19 aug 2026, 12:00 am ist">
-      <div class="rank">#64</div>
+       data-hay="codefury 9.0 university visvesvaraya college of engineering (uvce), bangalore unstop undergraduate postgraduate engineering students inr 60,000 general 19 aug 2026 · 12:00 am ist">
+      <div class="rank">#60</div>
       <div>
         <h2 class="title">CodeFury 9.0</h2>
         <div class="sub">University Visvesvaraya College Of Engineering (UVCE), Bangalore</div>
@@ -2013,8 +1928,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          19 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">19 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>INR 60,000</strong>
@@ -2030,8 +1945,8 @@
        data-title="paper buddy eduverse hackathon 2026"
        data-deadline="2026-08-18T18:30:00Z"
        data-prize-sort="1204.8192771084337"
-       data-hay="paper buddy eduverse hackathon 2026 deenbandhu chhotu ram university of science and technology (dcrust), murthal, haryana unstop undergraduate postgraduate engineering students inr 100,000 general 19 aug 2026, 12:00 am ist">
-      <div class="rank">#65</div>
+       data-hay="paper buddy eduverse hackathon 2026 deenbandhu chhotu ram university of science and technology (dcrust), murthal, haryana unstop undergraduate postgraduate engineering students inr 100,000 general 19 aug 2026 · 12:00 am ist">
+      <div class="rank">#61</div>
       <div>
         <h2 class="title">Paper Buddy EduVerse Hackathon 2026</h2>
         <div class="sub">Deenbandhu Chhotu Ram University Of Science And Technology (DCRUST), Murthal, Haryana</div>
@@ -2039,11 +1954,37 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          19 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">19 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>INR 100,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/edge-nova26-srm-institute-of-science-and-technology-kattankulathur-chennai-1730853" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="edge nova&#x27;26"
+       data-deadline="2026-08-20T18:29:00Z"
+       data-prize-sort="481.9277108433735"
+       data-hay="edge nova&#x27;26 srm institute of science and technology (srmist), kattankulathur, chennai unstop undergraduate postgraduate engineering students inr 40,000 general 20 aug 2026 · 11:59 pm ist">
+      <div class="rank">#62</div>
+      <div>
+        <h2 class="title">Edge Nova&#x27;26</h2>
+        <div class="sub">SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">20 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 40,000</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -2056,17 +1997,17 @@
        data-title="quantumhacks"
        data-deadline="2026-08-20T18:29:00Z"
        data-prize-sort="1000.0"
-       data-hay="quantumhacks quantumhacks devpost databases fintech quantum $1,000 ai / product 20 aug 2026, 11:59 pm ist">
-      <div class="rank">#66</div>
+       data-hay="quantumhacks quantumhacks devpost databases fintech quantum $1,000 ai / product 20 aug 2026 · 11:59 pm ist">
+      <div class="rank">#63</div>
       <div>
         <h2 class="title">QuantumHacks</h2>
         <div class="sub">Quantumhacks</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">21 days left</span><span class="chip chip-theme">Databases</span><span class="chip chip-theme-1">Fintech</span><span class="chip chip-theme-2">Quantum</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">15 days left</span><span class="chip chip-theme">Databases</span><span class="chip chip-theme-1">Fintech</span><span class="chip chip-theme-2">Quantum</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          20 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">20 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$1,000</strong>
@@ -2082,8 +2023,8 @@
        data-title="echosphere: agora conversational ai hackathon"
        data-deadline="2026-08-20T18:30:00Z"
        data-prize-sort="36.144578313253014"
-       data-hay="echosphere: agora conversational ai hackathon knotic unstop all inr 3,000 ai / product 21 aug 2026, 12:00 am ist">
-      <div class="rank">#67</div>
+       data-hay="echosphere: agora conversational ai hackathon knotic unstop all inr 3,000 ai / product 21 aug 2026 · 12:00 am ist">
+      <div class="rank">#64</div>
       <div>
         <h2 class="title">EchoSphere: Agora Conversational AI Hackathon</h2>
         <div class="sub">KNOTiC</div>
@@ -2091,37 +2032,11 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          21 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">21 Aug 2026</span><span class="time">12:00 AM IST</span>
         </div>
         <div class="prize">
           <strong>INR 3,000</strong>
-          <span>Open page →</span>
-        </div>
-      </div>
-    </a>
-    
-
-    <a class="card" href="https://unstop.com/hackathons/neuramorphix-hackforge-2026-srm-institute-of-science-and-technology-kattankulathur-chennai-1708229" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="general"
-       data-title="neuramorphix hackforge 2026"
-       data-deadline="2026-08-20T18:30:00Z"
-       data-prize-sort="0.0"
-       data-hay="neuramorphix hackforge 2026 srm institute of science and technology (srmist), kattankulathur, chennai unstop undergraduate engineering students school students prize pool &amp; opportunity of mentorship and networking with industry leaders general 21 aug 2026, 12:00 am ist">
-      <div class="rank">#68</div>
-      <div>
-        <h2 class="title">NeuraMorphix HackForge 2026</h2>
-        <div class="sub">SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span><span class="chip chip-theme-2">School Students</span></div>
-      </div>
-      <div class="side">
-        <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          21 Aug 2026, 12:00 AM IST
-        </div>
-        <div class="prize">
-          <strong>Prize Pool &amp; Opportunity of Mentorship and Networking with Industry Leaders</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -2134,8 +2049,8 @@
        data-title="btt web game jam - summer 2026"
        data-deadline="2026-08-21T18:29:00Z"
        data-prize-sort="100.0"
-       data-hay="btt web game jam - summer 2026 btt devpost beginner friendly gaming web €100 ai / product 21 aug 2026, 11:59 pm ist">
-      <div class="rank">#69</div>
+       data-hay="btt web game jam - summer 2026 btt devpost beginner friendly gaming web €100 ai / product 21 aug 2026 · 11:59 pm ist">
+      <div class="rank">#65</div>
       <div>
         <h2 class="title">BTT Web Game Jam - Summer 2026</h2>
         <div class="sub">BTT</div>
@@ -2143,8 +2058,8 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          21 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">21 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>€100</strong>
@@ -2160,8 +2075,8 @@
        data-title="suvidha ai virtual hackathon"
        data-deadline="2026-08-22T18:29:00Z"
        data-prize-sort="500.0"
-       data-hay="suvidha ai virtual hackathon suvidha international foundation devpost beginner friendly low/no code machine learning/ai $500 ai / product 22 aug 2026, 11:59 pm ist">
-      <div class="rank">#70</div>
+       data-hay="suvidha ai virtual hackathon suvidha international foundation devpost beginner friendly low/no code machine learning/ai $500 ai / product 22 aug 2026 · 11:59 pm ist">
+      <div class="rank">#66</div>
       <div>
         <h2 class="title">Suvidha AI Virtual Hackathon</h2>
         <div class="sub">Suvidha International Foundation</div>
@@ -2169,11 +2084,63 @@
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          22 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">22 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$500</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://nextstep2026.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="nextstep hacks 2026"
+       data-deadline="2026-08-23T18:29:00Z"
+       data-prize-sort="1750.0"
+       data-hay="nextstep hacks 2026 hackalphax devpost beginner friendly machine learning/ai social good $1,750 ai / product 23 aug 2026 · 11:59 pm ist">
+      <div class="rank">#67</div>
+      <div>
+        <h2 class="title">NextStep Hacks 2026</h2>
+        <div class="sub">HackAlphaX</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">Upcoming</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Social Good</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">23 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$1,750</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://dorahacks.io/hackathon/delphi-agent-competition/" target="_blank" rel="noopener"
+       data-source="DoraHacks"
+       data-focus="ai_product"
+       data-title="delphi: agent arena competition"
+       data-deadline="2026-08-23T23:59:00Z"
+       data-prize-sort="10000.0"
+       data-hay="delphi: agent arena competition delphi gensyn evm dorahacks ai agents autonomous trading trading bots $10,000 ai / product 24 aug 2026 · 5:29 am ist">
+      <div class="rank">#68</div>
+      <div>
+        <h2 class="title">Delphi: Agent Arena Competition</h2>
+        <div class="sub">Delphi Gensyn EVM</div>
+        <div class="chips"><span class="chip chip-source">DoraHacks</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-theme">AI Agents</span><span class="chip chip-theme-1">Autonomous Trading</span><span class="chip chip-theme-2">Trading Bots</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">24 Aug 2026</span><span class="time">5:29 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$10,000</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -2186,17 +2153,17 @@
        data-title="impactforge"
        data-deadline="2026-08-24T18:29:00Z"
        data-prize-sort="300.0"
-       data-hay="impactforge impactforge devpost beginner friendly low/no code social good $300 ai / product 24 aug 2026, 11:59 pm ist">
-      <div class="rank">#71</div>
+       data-hay="impactforge impactforge devpost beginner friendly low/no code social good $300 ai / product 24 aug 2026 · 11:59 pm ist">
+      <div class="rank">#69</div>
       <div>
         <h2 class="title">ImpactForge</h2>
         <div class="sub">ImpactForge</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">25 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Low/No Code</span><span class="chip chip-theme-2">Social Good</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">18 days left</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Low/No Code</span><span class="chip chip-theme-2">Social Good</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          24 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">24 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$300</strong>
@@ -2212,17 +2179,17 @@
        data-title="neuralsprint"
        data-deadline="2026-08-24T18:29:00Z"
        data-prize-sort="150.0"
-       data-hay="neuralsprint neuralsprint devpost machine learning/ai social good web $150 ai / product 24 aug 2026, 11:59 pm ist">
-      <div class="rank">#72</div>
+       data-hay="neuralsprint neuralsprint devpost machine learning/ai social good web $150 ai / product 24 aug 2026 · 11:59 pm ist">
+      <div class="rank">#70</div>
       <div>
         <h2 class="title">NeuralSprint</h2>
         <div class="sub">NeuralSprint</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">25 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Social Good</span><span class="chip chip-theme-2">Web</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">18 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Social Good</span><span class="chip chip-theme-2">Web</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          24 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">24 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$150</strong>
@@ -2238,17 +2205,17 @@
        data-title="africa deep tech challenge 2026"
        data-deadline="2026-08-25T18:29:00Z"
        data-prize-sort="16500.0"
-       data-hay="africa deep tech challenge 2026 africa deep tech foundation devpost machine learning/ai productivity $16,500 ai / product 25 aug 2026, 11:59 pm ist">
-      <div class="rank">#73</div>
+       data-hay="africa deep tech challenge 2026 africa deep tech foundation devpost machine learning/ai productivity $16,500 ai / product 25 aug 2026 · 11:59 pm ist">
+      <div class="rank">#71</div>
       <div>
         <h2 class="title">Africa Deep Tech Challenge 2026</h2>
         <div class="sub">Africa Deep Tech Foundation</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">26 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Productivity</span></div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">19 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Productivity</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          25 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">25 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
           <strong>$16,500</strong>
@@ -2258,52 +2225,468 @@
     </a>
     
 
-    <a class="card" href="https://ai-builders-hackathon-2026.devpost.com/" target="_blank" rel="noopener"
-       data-source="Devpost"
+    <a class="card" href="https://internshala.com/competitions/echosphere-2026-win-from-a-3000-prize-pool/" target="_blank" rel="noopener"
+       data-source="Internshala"
        data-focus="ai_product"
-       data-title="ai builders hackathon"
+       data-title="echosphere – agora conversational ai hackathon"
        data-deadline="2026-08-25T18:29:00Z"
-       data-prize-sort="4000.0"
-       data-hay="ai builders hackathon osc devpost machine learning/ai open ended beginner friendly $4,000 ai / product 25 aug 2026, 11:59 pm ist">
-      <div class="rank">#74</div>
+       data-prize-sort="3000.0"
+       data-hay="echosphere – agora conversational ai hackathon knotic for students internshala india $3000 ai / product 25 aug 2026 · 11:59 pm ist">
+      <div class="rank">#72</div>
       <div>
-        <h2 class="title">AI Builders Hackathon</h2>
-        <div class="sub">OSC</div>
-        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">Upcoming</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Open Ended</span><span class="chip chip-theme-2">Beginner Friendly</span></div>
+        <h2 class="title">EchoSphere – Agora Conversational AI Hackathon</h2>
+        <div class="sub">KNOTiC for students</div>
+        <div class="chips"><span class="chip chip-source">Internshala</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-theme">India</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          25 Aug 2026, 11:59 PM IST
+          <span class="label">Deadline</span>
+          <span class="date">25 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
-          <strong>$4,000</strong>
+          <strong>$3000</strong>
           <span>Open page →</span>
         </div>
       </div>
     </a>
     
 
-    <a class="card" href="https://unstop.com/hackathons/orchestrix-newgen-x-ai-club-iitm-iit-madras-1717439" target="_blank" rel="noopener"
-       data-source="Unstop"
-       data-focus="ai_product"
-       data-title="oiequestra : newgen x ai club iitm"
-       data-deadline="2026-08-26T18:30:00Z"
-       data-prize-sort="2409.6385542168673"
-       data-hay="oiequestra : newgen x ai club iitm indian institute of technology (iit), madras unstop all inr 200,000 ai / product 27 aug 2026, 12:00 am ist">
-      <div class="rank">#75</div>
+    <a class="card" href="https://internshala.com/competitions/technova-2026-win-%e2%82%b910-lakh/" target="_blank" rel="noopener"
+       data-source="Internshala"
+       data-focus="general"
+       data-title="technova 2026"
+       data-deadline="2026-08-25T18:29:00Z"
+       data-prize-sort="12048.192771084337"
+       data-hay="technova 2026 internshala internshala india inr 1,000,000 general 25 aug 2026 · 11:59 pm ist">
+      <div class="rank">#73</div>
       <div>
-        <h2 class="title">OIEquestra : Newgen x AI Club IITM</h2>
-        <div class="sub">Indian Institute of Technology (IIT), Madras</div>
-        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-theme">All</span></div>
+        <h2 class="title">TECHNOVA 2026</h2>
+        <div class="sub">Internshala</div>
+        <div class="chips"><span class="chip chip-source">Internshala</span><span class="chip chip-mode">Hybrid</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">India</span></div>
       </div>
       <div class="side">
         <div class="deadline">
-          <span class="label">Deadline (IST)</span>
-          27 Aug 2026, 12:00 AM IST
+          <span class="label">Deadline</span>
+          <span class="date">25 Aug 2026</span><span class="time">11:59 PM IST</span>
         </div>
         <div class="prize">
-          <strong>INR 200,000</strong>
+          <strong>INR 1,000,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/codesprint-2o-one-shot-challenge-oriental-college-of-technology-oct-bhopal-1728495" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="codesprint 2.o : one shot challenge"
+       data-deadline="2026-08-27T18:29:00Z"
+       data-prize-sort="36.144578313253014"
+       data-hay="codesprint 2.o : one shot challenge oriental college of technology (oct), bhopal unstop undergraduate postgraduate engineering students inr 3,000 general 27 aug 2026 · 11:59 pm ist">
+      <div class="rank">#74</div>
+      <div>
+        <h2 class="title">CodeSprint 2.O : One Shot Challenge</h2>
+        <div class="sub">Oriental College of Technology (OCT), Bhopal</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">27 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 3,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://dorahacks.io/hackathon/creativeminds/" target="_blank" rel="noopener"
+       data-source="DoraHacks"
+       data-focus="ai_product"
+       data-title="creative minds jam #1: hong kong"
+       data-deadline="2026-08-28T15:59:00Z"
+       data-prize-sort="10000.0"
+       data-hay="creative minds jam #1: hong kong minds by animoca brands dorahacks ai agents creator economy web3 sandchain minds $10,000 ai / product 28 aug 2026 · 9:29 pm ist">
+      <div class="rank">#75</div>
+      <div>
+        <h2 class="title">Creative Minds Jam #1: Hong Kong</h2>
+        <div class="sub">Minds by Animoca Brands</div>
+        <div class="chips"><span class="chip chip-source">DoraHacks</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-theme">AI Agents</span><span class="chip chip-theme-1">Creator Economy</span><span class="chip chip-theme-2">Web3 SANDchain Minds</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">28 Aug 2026</span><span class="time">9:29 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$10,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/ml-bubble-2026-machine-learning-awareness-skill-building-challenge-army-institute-of-technology-ait-pune-1729558" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="ai_product"
+       data-title="ml bubble 2026 – machine learning awareness &amp; skill building challenge"
+       data-deadline="2026-08-29T18:30:00Z"
+       data-prize-sort="361.4457831325301"
+       data-hay="ml bubble 2026 – machine learning awareness &amp; skill building challenge army institute of technology (ait), pune unstop undergraduate postgraduate engineering students inr 30,000 ai / product 30 aug 2026 · 12:00 am ist">
+      <div class="rank">#76</div>
+      <div>
+        <h2 class="title">ML Bubble 2026 – Machine Learning Awareness &amp; Skill Building Challenge</h2>
+        <div class="sub">Army Institute of Technology (AIT), Pune</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">30 Aug 2026</span><span class="time">12:00 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 30,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://hack-the-limit-1.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="hack the limit"
+       data-deadline="2026-08-30T18:29:00Z"
+       data-prize-sort="350.0"
+       data-hay="hack the limit hackthelimit devpost open ended productivity social good $350 ai / product 30 aug 2026 · 11:59 pm ist">
+      <div class="rank">#77</div>
+      <div>
+        <h2 class="title">Hack The Limit</h2>
+        <div class="sub">HackTheLimit</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">24 days left</span><span class="chip chip-theme">Open Ended</span><span class="chip chip-theme-1">Productivity</span><span class="chip chip-theme-2">Social Good</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">30 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$350</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/morrow-10-makers-need-more-mnm-1727667" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="morrow 1.0"
+       data-deadline="2026-08-30T18:30:00Z"
+       data-prize-sort="0.0"
+       data-hay="morrow 1.0 makers need more (mnm) unstop all linkedin endorsements from official mnm page for everyone who makes it til ro... general 31 aug 2026 · 12:00 am ist">
+      <div class="rank">#78</div>
+      <div>
+        <h2 class="title">Morrow 1.0</h2>
+        <div class="sub">Makers Need More (MnM)</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">All</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">31 Aug 2026</span><span class="time">12:00 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Linkedin endorsements from official MnM page for everyone who makes it til Ro...</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/neuramorphix-hackforge-2026-srm-institute-of-science-and-technology-kattankulathur-chennai-1708229" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="neuramorphix hackforge 2026"
+       data-deadline="2026-08-30T18:30:00Z"
+       data-prize-sort="0.0"
+       data-hay="neuramorphix hackforge 2026 srm institute of science and technology (srmist), kattankulathur, chennai unstop undergraduate engineering students school students prize pool &amp; opportunity of mentorship and networking with industry leaders general 31 aug 2026 · 12:00 am ist">
+      <div class="rank">#79</div>
+      <div>
+        <h2 class="title">NeuraMorphix HackForge 2026</h2>
+        <div class="sub">SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Engineering Students</span><span class="chip chip-theme-2">School Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">31 Aug 2026</span><span class="time">12:00 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>Prize Pool &amp; Opportunity of Mentorship and Networking with Industry Leaders</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://dorahacks.io/hackathon/weex-ai-wars2/" target="_blank" rel="noopener"
+       data-source="DoraHacks"
+       data-focus="ai_product"
+       data-title="weex ai wars ii: rise of intelligence"
+       data-deadline="2026-08-31T15:59:00Z"
+       data-prize-sort="200000.0"
+       data-hay="weex ai wars ii: rise of intelligence management dorahacks al trading algorithmic web3 crypto risk management $200,000 ai / product 31 aug 2026 · 9:29 pm ist">
+      <div class="rank">#80</div>
+      <div>
+        <h2 class="title">WEEX AI Wars II: Rise of Intelligence</h2>
+        <div class="sub">Management</div>
+        <div class="chips"><span class="chip chip-source">DoraHacks</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-theme">Al Trading Algorithmic</span><span class="chip chip-theme-1">Web3 Crypto Risk</span><span class="chip chip-theme-2">Management</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">31 Aug 2026</span><span class="time">9:29 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$200,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://3d-websites-hackathon.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="3d websites hackathon"
+       data-deadline="2026-08-31T18:29:00Z"
+       data-prize-sort="55.0"
+       data-hay="3d websites hackathon high school devpost design web beginner friendly $55 ai / product 31 aug 2026 · 11:59 pm ist">
+      <div class="rank">#81</div>
+      <div>
+        <h2 class="title">3D Websites Hackathon</h2>
+        <div class="sub">high school</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">26 days left</span><span class="chip chip-theme">Design</span><span class="chip chip-theme-1">Web</span><span class="chip chip-theme-2">Beginner Friendly</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">31 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$55</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://allthingsagentichackathon.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="all things agentic hackathon"
+       data-deadline="2026-08-31T18:29:00Z"
+       data-prize-sort="180000.0"
+       data-hay="all things agentic hackathon google devpost enterprise machine learning/ai productivity $180,000 ai / product 31 aug 2026 · 11:59 pm ist">
+      <div class="rank">#82</div>
+      <div>
+        <h2 class="title">All Things Agentic Hackathon</h2>
+        <div class="sub">Google</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">26 days left</span><span class="chip chip-theme">Enterprise</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Productivity</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">31 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$180,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://galuxium-nexus-v2-29411.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="galuxium nexus v2"
+       data-deadline="2026-08-31T18:29:00Z"
+       data-prize-sort="2600.0"
+       data-hay="galuxium nexus v2 galuxium devpost enterprise machine learning/ai productivity $2,600 ai / product 31 aug 2026 · 11:59 pm ist">
+      <div class="rank">#83</div>
+      <div>
+        <h2 class="title">Galuxium Nexus V2</h2>
+        <div class="sub">Galuxium</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">25 days left</span><span class="chip chip-theme">Enterprise</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Productivity</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">31 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$2,600</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://hack-the-habitat-2026.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="hack the habitat"
+       data-deadline="2026-08-31T18:29:00Z"
+       data-prize-sort="1000.0"
+       data-hay="hack the habitat hack the habitat devpost iot machine learning/ai social good $1,000 ai / product 31 aug 2026 · 11:59 pm ist">
+      <div class="rank">#84</div>
+      <div>
+        <h2 class="title">Hack the Habitat</h2>
+        <div class="sub">Hack the Habitat</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">Upcoming</span><span class="chip chip-theme">IoT</span><span class="chip chip-theme-1">Machine Learning/AI</span><span class="chip chip-theme-2">Social Good</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">31 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$1,000</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://hacksocial2026.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="hacksocial 2026"
+       data-deadline="2026-08-31T18:29:00Z"
+       data-prize-sort="3979.0"
+       data-hay="hacksocial 2026 hacksocial devpost machine learning/ai open ended social good $3,979 ai / product 31 aug 2026 · 11:59 pm ist">
+      <div class="rank">#85</div>
+      <div>
+        <h2 class="title">Hacksocial 2026</h2>
+        <div class="sub">Hacksocial</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">26 days left</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Open Ended</span><span class="chip chip-theme-2">Social Good</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">31 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$3,979</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/techno-vbiquity-2o-technical-coding-competition-technocrats-group-of-institutions-bhopal-madhya-pradesh-1728481" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="techno vbiquity 2.o – technical coding competition"
+       data-deadline="2026-08-31T18:29:00Z"
+       data-prize-sort="54.21686746987952"
+       data-hay="techno vbiquity 2.o – technical coding competition technocrats group of institutions, bhopal, madhya pradesh unstop undergraduate postgraduate engineering students inr 4,500 general 31 aug 2026 · 11:59 pm ist">
+      <div class="rank">#86</div>
+      <div>
+        <h2 class="title">Techno Vbiquity 2.O – Technical Coding Competition</h2>
+        <div class="sub">Technocrats Group of Institutions, Bhopal, Madhya Pradesh</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">31 Aug 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>INR 4,500</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://tiktoktechjam2026.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="tiktok techjam 2026"
+       data-deadline="2026-09-01T18:29:00Z"
+       data-prize-sort="34500.0"
+       data-hay="tiktok techjam 2026 tiktok devpost machine learning/ai cybersecurity e-commerce/retail $34,500 ai / product 1 sep 2026 · 11:59 pm ist">
+      <div class="rank">#87</div>
+      <div>
+        <h2 class="title">TikTok TechJam 2026</h2>
+        <div class="sub">TikTok</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">Upcoming</span><span class="chip chip-theme">Machine Learning/AI</span><span class="chip chip-theme-1">Cybersecurity</span><span class="chip chip-theme-2">E-commerce/Retail</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">1 Sep 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$34,500</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://hack-for-humanity-summer-26.devpost.com/" target="_blank" rel="noopener"
+       data-source="Devpost"
+       data-focus="ai_product"
+       data-title="hack for humanity | summer 2026"
+       data-deadline="2026-09-04T18:29:00Z"
+       data-prize-sort="600.0"
+       data-hay="hack for humanity | summer 2026 hack for humanity devpost beginner friendly health machine learning/ai $600 ai / product 4 sep 2026 · 11:59 pm ist">
+      <div class="rank">#88</div>
+      <div>
+        <h2 class="title">Hack for Humanity | Summer 2026</h2>
+        <div class="sub">Hack for Humanity</div>
+        <div class="chips"><span class="chip chip-source">Devpost</span><span class="chip chip-mode">Online</span><span class="chip chip-focus">AI / Product</span><span class="chip chip-time">Upcoming</span><span class="chip chip-theme">Beginner Friendly</span><span class="chip chip-theme-1">Health</span><span class="chip chip-theme-2">Machine Learning/AI</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">4 Sep 2026</span><span class="time">11:59 PM IST</span>
+        </div>
+        <div class="prize">
+          <strong>$600</strong>
+          <span>Open page →</span>
+        </div>
+      </div>
+    </a>
+    
+
+    <a class="card" href="https://unstop.com/hackathons/orvix-hackathon-nimblux-1730437" target="_blank" rel="noopener"
+       data-source="Unstop"
+       data-focus="general"
+       data-title="orvix hackathon"
+       data-deadline="2026-09-04T18:30:00Z"
+       data-prize-sort="0.0"
+       data-hay="orvix hackathon nimblux unstop undergraduate postgraduate engineering students free .xyz domain for each of the top 20 performers general 5 sep 2026 · 12:00 am ist">
+      <div class="rank">#89</div>
+      <div>
+        <h2 class="title">Orvix Hackathon</h2>
+        <div class="sub">NIMBLUX</div>
+        <div class="chips"><span class="chip chip-source">Unstop</span><span class="chip chip-mode">Online</span><span class="chip chip-focus-general">General</span><span class="chip chip-theme">Undergraduate</span><span class="chip chip-theme-1">Postgraduate</span><span class="chip chip-theme-2">Engineering Students</span></div>
+      </div>
+      <div class="side">
+        <div class="deadline">
+          <span class="label">Deadline</span>
+          <span class="date">5 Sep 2026</span><span class="time">12:00 AM IST</span>
+        </div>
+        <div class="prize">
+          <strong>FREE .xyz Domain for each of the Top 20 performers</strong>
           <span>Open page →</span>
         </div>
       </div>
@@ -2321,6 +2704,12 @@
     const list = document.getElementById('list');
     const refreshBtn = document.getElementById('refreshBtn');
     const refreshStatus = document.getElementById('refreshStatus');
+    const lastRefreshed = "6 Aug 2026, 9:07 AM IST";
+
+    function showLastRefreshed() {
+      refreshStatus.className = '';
+      refreshStatus.innerHTML = 'Last refreshed<span class="refreshed-at">' + lastRefreshed + '</span>';
+    }
 
     function apply() {
       const query = q.value.trim().toLowerCase();
@@ -2360,26 +2749,21 @@
         refreshStatus.textContent = `Done — ${data.total_filtered} events. Reloading…`;
         setTimeout(() => window.location.reload(), 600);
       } catch (err) {
-        refreshStatus.textContent = 'Opening refresh…';
+        refreshStatus.className = '';
+        refreshStatus.textContent = 'Opening GitHub Actions…';
         window.open(
           'https://github.com/skx56/Hack-Search/actions/workflows/deploy.yml',
           '_blank',
           'noopener'
         );
+        setTimeout(showLastRefreshed, 1500);
       } finally {
         refreshBtn.disabled = false;
       }
     }
 
     refreshBtn.addEventListener('click', refresh);
-
-    fetch('/api/health').then(r => {
-      if (!r.ok) throw new Error('no');
-      refreshStatus.textContent = 'Click Refresh anytime';
-      refreshStatus.className = 'ok';
-    }).catch(() => {
-      refreshStatus.textContent = 'Updates daily';
-    });
+    showLastRefreshed();
   </script>
 </body>
 </html>
