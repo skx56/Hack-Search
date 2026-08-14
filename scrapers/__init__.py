@@ -6,6 +6,7 @@ from .hack2skill import scrape_hack2skill
 from .dorahacks import scrape_dorahacks
 from .internshala import scrape_internshala
 from .techgig import scrape_techgig
+from .kaggle import scrape_kaggle
 from .hackclub import scrape_hackclub
 from .mlh import scrape_mlh
 from .luma import scrape_luma
@@ -19,6 +20,7 @@ SCRAPERS = [
     ("TechGig", scrape_techgig),
     ("Devfolio", scrape_devfolio),
     ("DoraHacks", scrape_dorahacks),
+    ("Kaggle", scrape_kaggle),
     ("HackerEarth", scrape_hackerearth),
     ("Hack Club", scrape_hackclub),
     ("MLH", scrape_mlh),
