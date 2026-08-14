@@ -1,7 +1,7 @@
 {
-  "scraped_at": "2026-08-14T14:53:27.982832+00:00",
-  "total_raw": 509,
-  "total_filtered": 76,
+  "scraped_at": "2026-08-14T15:32:14.565712+00:00",
+  "total_raw": 526,
+  "total_filtered": 84,
   "filters": {
     "online_only": true,
     "cash_only": true,
@@ -19,6 +19,7 @@
     "Devfolio",
     "DoraHacks",
     "Kaggle",
+    "ML Competitions",
     "HackerEarth",
     "Hack Club",
     "MLH",
@@ -43,7 +44,7 @@
       "themes": [
         "Machine Learning/AI"
       ],
-      "participants": 2463,
+      "participants": 2466,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/715/320/datas/medium_square.png",
@@ -68,7 +69,7 @@
       "themes": [
         "All"
       ],
-      "participants": 4496,
+      "participants": 4514,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a59fa0709cdf_chatgpt_image_jul_17,_2026,_03_16_11_pm__1_.png",
@@ -93,7 +94,7 @@
       "themes": [
         "All"
       ],
-      "participants": 1087,
+      "participants": 1103,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a78dd1667598_image.png",
@@ -119,7 +120,7 @@
         "Undergraduate",
         "Engineering Students"
       ],
-      "participants": 541,
+      "participants": 546,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a6e2f70adccd_codered__1_.png",
@@ -199,11 +200,11 @@
         "Machine Learning/AI",
         "Social Good"
       ],
-      "participants": 1156,
+      "participants": 1158,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/851/313/datas/medium_square.png",
-      "time_left": "about 16 hours left",
+      "time_left": "about 15 hours left",
       "focus": "ai_product"
     },
     {
@@ -254,7 +255,7 @@
         "Arts, Commerce, Sciences & Others",
         "Law"
       ],
-      "participants": 1933,
+      "participants": 1947,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a5fedb79afba_final_logo.jpeg",
@@ -341,7 +342,7 @@
         "Machine Learning/AI",
         "Social Good"
       ],
-      "participants": 662,
+      "participants": 665,
       "status": "upcoming",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/757/683/datas/medium_square.png",
@@ -368,7 +369,7 @@
         "Open Ended",
         "Web"
       ],
-      "participants": 409,
+      "participants": 411,
       "status": "upcoming",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/003/279/datas/medium_square.png",
@@ -422,7 +423,7 @@
         "Education",
         "Social Good"
       ],
-      "participants": 220,
+      "participants": 221,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/813/308/datas/medium_square.png",
@@ -448,7 +449,7 @@
         "Undergraduate",
         "Engineering Students"
       ],
-      "participants": 1625,
+      "participants": 1628,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a7756a79bbfd_quantstorm_logo.jpg",
@@ -475,7 +476,7 @@
         "Design",
         "Productivity"
       ],
-      "participants": 68,
+      "participants": 69,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/091/534/datas/medium_square.png",
@@ -502,10 +503,38 @@
         "Postgraduate",
         "Engineering Students"
       ],
-      "participants": 295,
+      "participants": 296,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a75712f5282c_oip_9.webp",
+      "time_left": null,
+      "focus": "general"
+    },
+    {
+      "id": "mlcontest-zindi-geoai-aquaculture-pond-identification-challenge",
+      "title": "Identify Aquaculture Ponds in Satellite Imagery",
+      "url": "https://zindi.africa/competitions/geoai-aquaculture-pond-identification-challenge",
+      "source": "Zindi",
+      "mode": "online",
+      "prize_amount": 1240.0,
+      "prize_currency": "USD",
+      "prize_text": "$1,240",
+      "has_cash_prize": true,
+      "submission_deadline": "2026-08-16T23:59:00Z",
+      "registration_deadline": "2026-08-16T23:59:00Z",
+      "start_date": null,
+      "end_date": "2026-08-16T23:59:00Z",
+      "organization": "ITU",
+      "themes": [
+        "supervised",
+        "classification",
+        "vision",
+        "satellite"
+      ],
+      "participants": null,
+      "status": "open",
+      "location": "Online",
+      "thumbnail": null,
       "time_left": null,
       "focus": "general"
     },
@@ -581,7 +610,7 @@
         "Education",
         "Productivity"
       ],
-      "participants": 25652,
+      "participants": 25670,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/686/462/datas/medium_square.png",
@@ -720,7 +749,7 @@
         "Engineering Students",
         "Management"
       ],
-      "participants": 450,
+      "participants": 451,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a675abb79ede_uploadedmanual-6889d7cb11aa5_cs_logo.webp",
@@ -775,12 +804,40 @@
       "themes": [
         "All"
       ],
-      "participants": 741,
+      "participants": 744,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a662ae310391_puzzle_hackathon_under_1mb.jpg",
       "time_left": null,
       "focus": "general"
+    },
+    {
+      "id": "mlcontest-grand-challenge-segment-and-plan-pelvic-fracture-repair",
+      "title": "Segment and Plan Pelvic Fracture Repair",
+      "url": "https://pengwin2026.grand-challenge.org",
+      "source": "Grand Challenge",
+      "mode": "online",
+      "prize_amount": 1700.0,
+      "prize_currency": "USD",
+      "prize_text": "$1,700",
+      "has_cash_prize": true,
+      "submission_deadline": "2026-08-19T23:59:00Z",
+      "registration_deadline": "2026-08-19T23:59:00Z",
+      "start_date": null,
+      "end_date": "2026-08-19T23:59:00Z",
+      "organization": "Grand Challenge",
+      "themes": [
+        "medical",
+        "segmentation",
+        "3d",
+        "images"
+      ],
+      "participants": null,
+      "status": "open",
+      "location": "Online",
+      "thumbnail": null,
+      "time_left": null,
+      "focus": "ai_product"
     },
     {
       "id": "unstop-1730853",
@@ -857,7 +914,7 @@
         "Fintech",
         "Quantum"
       ],
-      "participants": 744,
+      "participants": 749,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/030/048/datas/medium_square.png",
@@ -882,7 +939,7 @@
       "themes": [
         "All"
       ],
-      "participants": 2148,
+      "participants": 2152,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6a6e4c40635c9_organisation_image-MTwVaml0UQ2046073739QBTRl1f3uW.png",
@@ -909,7 +966,7 @@
         "Gaming",
         "Web"
       ],
-      "participants": 158,
+      "participants": 159,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/896/595/datas/medium_square.png",
@@ -959,12 +1016,39 @@
       "themes": [
         "All"
       ],
-      "participants": 4000,
+      "participants": 4015,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a74996ff090f_oosc_logo_complete.png",
       "time_left": null,
       "focus": "general"
+    },
+    {
+      "id": "mlcontest-synapse-build-foundation-models-for-brain-mri-analysis",
+      "title": "Build Foundation Models for Brain MRI Analysis",
+      "url": "https://fomo26.github.io",
+      "source": "Synapse",
+      "mode": "online",
+      "prize_amount": 2000.0,
+      "prize_currency": "USD",
+      "prize_text": "$2,000",
+      "has_cash_prize": true,
+      "submission_deadline": "2026-08-21T23:59:00Z",
+      "registration_deadline": "2026-08-21T23:59:00Z",
+      "start_date": null,
+      "end_date": "2026-08-21T23:59:00Z",
+      "organization": "Synapse",
+      "themes": [
+        "medical",
+        "images",
+        "deep learning"
+      ],
+      "participants": null,
+      "status": "open",
+      "location": "Online",
+      "thumbnail": null,
+      "time_left": null,
+      "focus": "ai_product"
     },
     {
       "id": "devpost-30468",
@@ -1013,7 +1097,7 @@
         "Machine Learning/AI",
         "Open Ended"
       ],
-      "participants": 76,
+      "participants": 77,
       "status": "upcoming",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/078/451/datas/medium_square.png",
@@ -1149,7 +1233,7 @@
         "Low/No Code",
         "Social Good"
       ],
-      "participants": 769,
+      "participants": 774,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/789/980/datas/medium_square.png",
@@ -1176,7 +1260,7 @@
         "Social Good",
         "Web"
       ],
-      "participants": 506,
+      "participants": 507,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/789/176/datas/medium_square.png",
@@ -1203,7 +1287,7 @@
         "Machine Learning/AI",
         "Open Ended"
       ],
-      "participants": 1506,
+      "participants": 1511,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/705/305/datas/medium_square.png",
@@ -1336,7 +1420,7 @@
         "Postgraduate",
         "Engineering Students"
       ],
-      "participants": 4528,
+      "participants": 4549,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6a7dbcc29bc30_images__7_.png",
@@ -1366,12 +1450,41 @@
         "Arts, Commerce, Sciences & Others",
         "Law"
       ],
-      "participants": 186,
+      "participants": 187,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6a6ba97409d25_download__2_.jpeg",
       "time_left": null,
       "focus": "general"
+    },
+    {
+      "id": "mlcontest-drivendata-tutoring-outcomes",
+      "title": "Predict Student Learning Outcomes from Tutoring Transcripts",
+      "url": "https://platform.k12-ai-infrastructure.org/competitions/3/tutoring-outcomes",
+      "source": "DrivenData",
+      "mode": "online",
+      "prize_amount": 50000.0,
+      "prize_currency": "USD",
+      "prize_text": "$50,000",
+      "has_cash_prize": true,
+      "submission_deadline": "2026-08-27T23:59:00Z",
+      "registration_deadline": "2026-08-27T23:59:00Z",
+      "start_date": null,
+      "end_date": "2026-08-27T23:59:00Z",
+      "organization": "National Tutoring Observatory",
+      "themes": [
+        "education",
+        "nlp",
+        "supervised",
+        "tabular",
+        "prediction"
+      ],
+      "participants": null,
+      "status": "open",
+      "location": "Online",
+      "thumbnail": null,
+      "time_left": null,
+      "focus": "ai_product"
     },
     {
       "id": "dorahacks-creativeminds",
@@ -1420,7 +1533,7 @@
       "themes": [
         "All"
       ],
-      "participants": 2244,
+      "participants": 2261,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a76f9d6d89b3_chatgpt_image_aug_8_2026_03_03_51_pm.png",
@@ -1474,12 +1587,40 @@
         "Management",
         "Arts, Commerce, Sciences & Others"
       ],
-      "participants": 1938,
+      "participants": 1940,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/6a6f77489236f_",
       "time_left": null,
       "focus": "ai_product"
+    },
+    {
+      "id": "mlcontest-zindi-wishlist-hackathon-2026-marine-vision-challenge",
+      "title": "Identify Reef Fish Species with Computer Vision Models",
+      "url": "https://zindi.africa/competitions/wishlist-hackathon-2026-marine-vision-challenge",
+      "source": "Zindi",
+      "mode": "online",
+      "prize_amount": 1500.0,
+      "prize_currency": "USD",
+      "prize_text": "$1,500",
+      "has_cash_prize": true,
+      "submission_deadline": "2026-08-29T23:59:00Z",
+      "registration_deadline": "2026-08-29T23:59:00Z",
+      "start_date": null,
+      "end_date": "2026-08-29T23:59:00Z",
+      "organization": "Fairytale, bluebot, GovTech, INFOLYTICS",
+      "themes": [
+        "supervised",
+        "classification",
+        "vision",
+        "measurable"
+      ],
+      "participants": null,
+      "status": "open",
+      "location": "Online",
+      "thumbnail": null,
+      "time_left": null,
+      "focus": "general"
     },
     {
       "id": "unstop-1731840",
@@ -1504,7 +1645,7 @@
         "Arts, Commerce, Sciences & Others",
         "Law"
       ],
-      "participants": 787,
+      "participants": 793,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a74734b2e4ea_circuit_board_bold_facebook_ad.png",
@@ -1606,7 +1747,7 @@
       "end_date": "2026-08-31T22:59:00+05:30",
       "organization": "Jawaharlal Nehru Technological University (JNTUH), Hyderabad",
       "themes": [],
-      "participants": 3659,
+      "participants": 3660,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-69f2a80ba2005_amd_cloud_computind-unstop.jpg",
@@ -1633,7 +1774,7 @@
         "Web",
         "Beginner Friendly"
       ],
-      "participants": 1180,
+      "participants": 1181,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/799/053/datas/medium_square.png",
@@ -1660,7 +1801,7 @@
         "Machine Learning/AI",
         "Productivity"
       ],
-      "participants": 2705,
+      "participants": 2722,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/067/604/datas/medium_square.png",
@@ -1826,6 +1967,34 @@
       "focus": "general"
     },
     {
+      "id": "mlcontest-codabench-sapc2-website",
+      "title": "Automated Speech Recognition Under Diverse Speech Patterns",
+      "url": "https://xiuwenz2.github.io/SAPC2-website",
+      "source": "Codabench",
+      "mode": "online",
+      "prize_amount": 10000.0,
+      "prize_currency": "USD",
+      "prize_text": "$10,000",
+      "has_cash_prize": true,
+      "submission_deadline": "2026-08-31T23:59:00Z",
+      "registration_deadline": "2026-08-31T23:59:00Z",
+      "start_date": null,
+      "end_date": "2026-08-31T23:59:00Z",
+      "organization": "AI Accessibility Coalition",
+      "themes": [
+        "speech",
+        "audio",
+        "nlp",
+        "health"
+      ],
+      "participants": null,
+      "status": "open",
+      "location": "Online",
+      "thumbnail": null,
+      "time_left": null,
+      "focus": "ai_product"
+    },
+    {
       "id": "devpost-30686",
       "title": "TikTok TechJam 2026",
       "url": "https://tiktoktechjam2026.devpost.com/",
@@ -1845,7 +2014,7 @@
         "Cybersecurity",
         "E-commerce/Retail"
       ],
-      "participants": 754,
+      "participants": 756,
       "status": "upcoming",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/031/051/datas/medium_square.png",
@@ -1880,6 +2049,34 @@
       "focus": "ai_product"
     },
     {
+      "id": "mlcontest-grand-challenge-segment-lesions-in-whole-body-scans",
+      "title": "Segment Lesions in Whole-Body Scans",
+      "url": "https://autopet-v.grand-challenge.org",
+      "source": "Grand Challenge",
+      "mode": "online",
+      "prize_amount": 6600.0,
+      "prize_currency": "USD",
+      "prize_text": "$6,600",
+      "has_cash_prize": true,
+      "submission_deadline": "2026-09-01T23:59:00Z",
+      "registration_deadline": "2026-09-01T23:59:00Z",
+      "start_date": null,
+      "end_date": "2026-09-01T23:59:00Z",
+      "organization": "Grand Challenge",
+      "themes": [
+        "medical",
+        "segmentation",
+        "images",
+        "deep learning"
+      ],
+      "participants": null,
+      "status": "open",
+      "location": "Online",
+      "thumbnail": null,
+      "time_left": null,
+      "focus": "general"
+    },
+    {
       "id": "devpost-29151",
       "title": "Hack for Humanity | Summer 2026 (+13 non-cash prizes)",
       "url": "https://hack-for-humanity-summer-26.devpost.com/",
@@ -1899,7 +2096,7 @@
         "Health",
         "Machine Learning/AI"
       ],
-      "participants": 831,
+      "participants": 833,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/429/605/datas/medium_square.png",
@@ -1929,7 +2126,7 @@
         "Arts, Commerce, Sciences & Others",
         "Law"
       ],
-      "participants": 251,
+      "participants": 252,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a7179ae2f7d7_chatgpt_image_aug_4,_2026,_10_54_43_am.jpg",
@@ -1954,7 +2151,7 @@
       "themes": [
         "All"
       ],
-      "participants": 1972,
+      "participants": 2022,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a769cb2b7ae5_startupx_hackathon_2026_logo_under_1mb.png",
@@ -2014,6 +2211,34 @@
       "focus": "ai_product"
     },
     {
+      "id": "mlcontest-grand-challenge-detect-rare-early-stage-cancers-in-endoscopy",
+      "title": "Detect Rare Early-Stage Cancers in Endoscopy",
+      "url": "https://rare26.grand-challenge.org",
+      "source": "Grand Challenge",
+      "mode": "online",
+      "prize_amount": 2200.0,
+      "prize_currency": "USD",
+      "prize_text": "$2,200",
+      "has_cash_prize": true,
+      "submission_deadline": "2026-09-07T23:59:00Z",
+      "registration_deadline": "2026-09-07T23:59:00Z",
+      "start_date": null,
+      "end_date": "2026-09-07T23:59:00Z",
+      "organization": "Grand Challenge",
+      "themes": [
+        "medical",
+        "detection",
+        "images",
+        "healthcare"
+      ],
+      "participants": null,
+      "status": "open",
+      "location": "Online",
+      "thumbnail": null,
+      "time_left": null,
+      "focus": "ai_product"
+    },
+    {
       "id": "devpost-30721",
       "title": "Agentic Cinema: The Blockbuster Hackathon",
       "url": "https://agentic-cinema.devpost.com/",
@@ -2033,7 +2258,7 @@
         "Machine Learning/AI",
         "Open Ended"
       ],
-      "participants": 5845,
+      "participants": 5847,
       "status": "open",
       "location": "Online",
       "thumbnail": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/901/608/datas/medium_square.jpg",
@@ -2062,7 +2287,7 @@
         "Management",
         "Arts, Commerce, Sciences & Others"
       ],
-      "participants": 543,
+      "participants": 544,
       "status": "LIVE",
       "location": "Online",
       "thumbnail": "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-6a5efa553e2bb_6a5c90af6aa05_organisation_image-n1extn9wrf449192668mpbmnel9bj.webp",

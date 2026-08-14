@@ -450,7 +450,7 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     <div class="topbar">
       <header>
         <h1>Hack-Search</h1>
-        <p>AI, product, and Web2-focused listings from Devpost, Unstop, Internshala, Hack2Skill, TechGig, Devfolio, DoraHacks, Kaggle, and more. Click any row to open the official page.</p>
+        <p>AI, product, and Web2-focused listings from Devpost, Unstop, Kaggle, Zindi, DrivenData, AIcrowd, Codabench, Grand Challenge, and more. Click any row to open the official page.</p>
       </header>
       <div class="refresh-wrap">
         <button id="refreshBtn" type="button">Refresh list</button>
