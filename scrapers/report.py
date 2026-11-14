@@ -60,7 +60,7 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       min-height: 100vh;
     }}
     .wrap {{
-      max-width: 1100px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 40px 20px 80px;
     }}
@@ -155,10 +155,18 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       border-color: #9a5a20;
     }}
     .controls {{
-      margin: 28px 0 18px;
+      margin: 0 0 18px;
       display: grid;
       grid-template-columns: 1.3fr 0.7fr 0.7fr 0.7fr;
       gap: 12px;
+    }}
+    @media (max-width: 980px) {{
+      .workspace {{ grid-template-columns: 1fr; }}
+      .picked {{
+        position: static;
+        max-height: 320px;
+        order: -1;
+      }}
     }}
     @media (max-width: 900px) {{
       .controls {{ grid-template-columns: 1fr 1fr; }}
@@ -235,6 +243,101 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     }}
     #shortlistStatus.ok {{ color: var(--accent); }}
     #shortlistStatus.error {{ color: var(--danger); }}
+    .workspace {{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 18px;
+      align-items: start;
+    }}
+    .picked {{
+      position: sticky;
+      top: 16px;
+      background: linear-gradient(180deg, #17222c, #141c24);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      max-height: calc(100vh - 32px);
+      display: flex;
+      flex-direction: column;
+      min-height: 180px;
+    }}
+    .picked-head {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }}
+    .picked-head strong {{
+      font-size: 0.95rem;
+    }}
+    .picked-clear {{
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }}
+    .picked-clear:disabled {{
+      opacity: 0.45;
+      cursor: not-allowed;
+    }}
+    .picked-clear:hover:not(:disabled) {{
+      border-color: var(--danger);
+      color: #ffd0d0;
+    }}
+    .picked-list {{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }}
+    .picked-item {{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: start;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 8px 8px 10px;
+    }}
+    .picked-item strong {{
+      display: block;
+      font-size: 0.84rem;
+      line-height: 1.3;
+    }}
+    .picked-item span {{
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }}
+    .picked-remove {{
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 2px 4px;
+    }}
+    .picked-remove:hover {{ color: var(--danger); }}
+    .picked-empty {{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }}
     .list {{ display: flex; flex-direction: column; gap: 12px; }}
     .card {{
       display: grid;
@@ -466,7 +569,7 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     <section class="reminders" id="shortlistPanel" aria-label="Selected hackathon brief">
       <div class="reminders-copy">
         <strong id="shortlistCount">0 hackathons selected</strong>
-        <span>Check the ones you want. Create a PDF brief with prize, timeline, and deadline for every selection.</span>
+        <span>Check hackathons to add them to the selected column. This list clears when you leave or reload the page.</span>
       </div>
       <div class="reminders-actions">
         <button type="button" id="pdfBtn" disabled>Create PDF</button>
@@ -475,27 +578,40 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       <div id="shortlistStatus"></div>
     </section>
 
-    <div class="controls">
-      <input id="q" type="search" placeholder="Search title, org, theme..." />
-      <select id="source">
-        <option value="">All sources</option>
-        {source_options}
-      </select>
-      <select id="focus">
-        <option value="">All focuses</option>
-        <option value="ai_product">AI / Product</option>
-        <option value="general">General</option>
-        <option value="web3">Web3</option>
-      </select>
-      <select id="sort">
-        <option value="deadline" selected>Sort by deadline</option>
-        <option value="prize">Sort by prize</option>
-        <option value="title">Sort by title</option>
-      </select>
-    </div>
+    <div class="workspace">
+      <div>
+        <div class="controls">
+          <input id="q" type="search" placeholder="Search title, org, theme..." />
+          <select id="source">
+            <option value="">All sources</option>
+            {source_options}
+          </select>
+          <select id="focus">
+            <option value="">All focuses</option>
+            <option value="ai_product">AI / Product</option>
+            <option value="general">General</option>
+            <option value="web3">Web3</option>
+          </select>
+          <select id="sort">
+            <option value="deadline" selected>Sort by deadline</option>
+            <option value="prize">Sort by prize</option>
+            <option value="title">Sort by title</option>
+          </select>
+        </div>
 
-    <div class="list" id="list">
-      {rows if rows else '<div class="empty">No hackathons matched. Re-run with --include-no-cash.</div>'}
+        <div class="list" id="list">
+          {rows if rows else '<div class="empty">No hackathons matched. Re-run with --include-no-cash.</div>'}
+        </div>
+      </div>
+
+      <aside class="picked" aria-label="Selected hackathons">
+        <div class="picked-head">
+          <strong>Selected</strong>
+          <button type="button" id="clearBtn" class="picked-clear" disabled>Clear all</button>
+        </div>
+        <p class="picked-empty" id="pickedEmpty">Nothing selected yet. Check a hackathon to add it here.</p>
+        <ul class="picked-list" id="pickedList"></ul>
+      </aside>
     </div>
   </div>
 
@@ -512,22 +628,20 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     const shortlistStatus = document.getElementById('shortlistStatus');
     const pdfBtn = document.getElementById('pdfBtn');
     const notesBtn = document.getElementById('notesBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const pickedList = document.getElementById('pickedList');
+    const pickedEmpty = document.getElementById('pickedEmpty');
     const lastRefreshed = {json.dumps(_fmt_scraped(scraped_at))};
 
-    const STORAGE_KEY = 'hacksearch.shortlist.v1';
+    const selected = new Set();
+    try {{
+      localStorage.removeItem('hacksearch.shortlist.v1');
+      localStorage.removeItem('hacksearch.reminders.v1');
+    }} catch {{}}
 
     function showLastRefreshed() {{
       refreshStatus.className = '';
       refreshStatus.innerHTML = 'Last refreshed<span class="refreshed-at">' + lastRefreshed + '</span>';
-    }}
-
-    function loadShortlist() {{
-      try {{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{{}}'); }}
-      catch {{ return {{}}; }}
-    }}
-
-    function saveShortlist(map) {{
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
     }}
 
     function setShortlistStatus(text, kind) {{
@@ -536,36 +650,64 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     }}
 
     function selectedCards() {{
-      const map = loadShortlist();
       return cards
-        .filter(card => map[card.dataset.id])
+        .filter(card => selected.has(card.dataset.id))
         .sort((a, b) => (a.dataset.deadline || '9999').localeCompare(b.dataset.deadline || '9999'));
     }}
 
+    function renderPicked(list) {{
+      pickedList.replaceChildren();
+      pickedEmpty.hidden = list.length > 0;
+      list.forEach(card => {{
+        const item = document.createElement('li');
+        item.className = 'picked-item';
+        const copy = document.createElement('div');
+        const title = document.createElement('strong');
+        title.textContent = card.dataset.eventTitle || 'Hackathon';
+        const meta = document.createElement('span');
+        meta.textContent = `${{card.dataset.prize || 'Cash prize'}} · ${{card.dataset.deadlineLabel || 'Deadline TBA'}}`;
+        copy.append(title, meta);
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'picked-remove';
+        remove.textContent = 'Remove';
+        remove.addEventListener('click', () => toggleShortlist(card, false));
+        item.append(copy, remove);
+        pickedList.append(item);
+      }});
+    }}
+
     function updateShortlistUI() {{
-      const n = selectedCards().length;
+      const list = selectedCards();
+      const n = list.length;
       shortlistCount.textContent = n === 1 ? '1 hackathon selected' : `${{n}} hackathons selected`;
       pdfBtn.disabled = n === 0;
       notesBtn.disabled = n === 0;
-      const ids = loadShortlist();
+      clearBtn.disabled = n === 0;
       cards.forEach(card => {{
-        const on = Boolean(ids[card.dataset.id]);
+        const on = selected.has(card.dataset.id);
         const box = card.querySelector('.shortlist-toggle');
         if (box) box.checked = on;
         card.classList.toggle('is-reminded', on);
       }});
+      renderPicked(list);
     }}
 
     function toggleShortlist(card, checked) {{
-      const map = loadShortlist();
       const id = card.dataset.id;
       if (!id) return;
-      if (checked) map[id] = {{ id, title: card.dataset.eventTitle || '' }};
-      else delete map[id];
-      saveShortlist(map);
+      if (checked) selected.add(id);
+      else selected.delete(id);
       updateShortlistUI();
       const title = card.dataset.eventTitle || 'Hackathon';
-      setShortlistStatus(checked ? `Added “${{title}}” to your brief.` : `Removed “${{title}}”.`, checked ? 'ok' : '');
+      setShortlistStatus(checked ? `Added “${{title}}”.` : `Removed “${{title}}”.`, checked ? 'ok' : '');
+    }}
+
+    function clearShortlist() {{
+      if (!selected.size) return;
+      selected.clear();
+      updateShortlistUI();
+      setShortlistStatus('Selection cleared.', 'ok');
     }}
 
     function esc(value) {{
@@ -778,6 +920,7 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
 
     pdfBtn.addEventListener('click', createPdf);
     notesBtn.addEventListener('click', copyNotes);
+    clearBtn.addEventListener('click', clearShortlist);
 
     async function refresh() {{
       refreshBtn.disabled = true;
