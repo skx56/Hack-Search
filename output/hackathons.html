@@ -205,13 +205,13 @@
       opacity: 0.55;
       cursor: not-allowed;
     }
-    #remindStatus {
+    #shortlistStatus {
       width: 100%;
       color: var(--muted);
       font-size: 0.82rem;
     }
-    #remindStatus.ok { color: var(--accent); }
-    #remindStatus.error { color: var(--danger); }
+    #shortlistStatus.ok { color: var(--accent); }
+    #shortlistStatus.error { color: var(--danger); }
     .list { display: flex; flex-direction: column; gap: 12px; }
     .card {
       display: grid;
@@ -440,16 +440,16 @@
       <span class="meta-filter">Deadlines in IST · next 30 days only · earliest first</span>
     </div>
 
-    <section class="reminders" id="remindersPanel" aria-label="Hackathon reminders">
+    <section class="reminders" id="shortlistPanel" aria-label="Selected hackathon brief">
       <div class="reminders-copy">
-        <strong id="remindCount">0 reminders selected</strong>
-        <span>Check hackathons below — you’ll get alerts 24h, 12h, and 3h before each deadline.</span>
+        <strong id="shortlistCount">0 hackathons selected</strong>
+        <span>Check the ones you want. Create a PDF brief with prize, timeline, and deadline for every selection.</span>
       </div>
       <div class="reminders-actions">
-        <button type="button" id="enableNotifBtn">Enable browser alerts</button>
-        <button type="button" id="exportIcsBtn" disabled>Add to calendar</button>
+        <button type="button" id="pdfBtn" disabled>Create PDF</button>
+        <button type="button" id="notesBtn" disabled>Copy as notes</button>
       </div>
-      <div id="remindStatus"></div>
+      <div id="shortlistStatus"></div>
     </section>
 
     <div class="controls">
@@ -486,14 +486,23 @@
        data-id="devpost-30218"
        data-event-title="Arm Create: AI Optimization Challenge"
        data-url="https://arm-ai-optimization-challenge.devpost.com/"
+       data-org="arm"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Machine Learning/AI"
+       data-prize="$8,000"
+       data-prize-amount="8000.0"
+       data-prize-currency="USD"
        data-title="arm create: ai optimization challenge"
        data-deadline="2026-08-14T18:29:00Z"
+       data-deadline-label="14 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="8000.0"
        data-hay="arm create: ai optimization challenge arm devpost machine learning/ai $8,000 ai / product 14 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Arm Create: AI Optimization Challenge" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Arm Create: AI Optimization Challenge to shortlist" />
       </label>
       <div class="rank">#1</div>
       <div>
@@ -518,14 +527,23 @@
        data-id="unstop-1715716"
        data-event-title="Omnikon National Hackathon 2026"
        data-url="https://unstop.com/hackathons/omnikon-national-hackathon-2026-omnikon-1715716"
+       data-org="Omnikon"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="All"
+       data-prize="INR 20,000"
+       data-prize-amount="20000.0"
+       data-prize-currency="INR"
        data-title="omnikon national hackathon 2026"
        data-deadline="2026-08-14T18:29:00Z"
+       data-deadline-label="14 Aug 2026 · 11:59 PM IST"
+       data-start-label="25 Jul 2026 · 12:00 AM IST"
        data-prize-sort="240.96385542168676"
        data-hay="omnikon national hackathon 2026 omnikon unstop all inr 20,000 general 14 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Omnikon National Hackathon 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Omnikon National Hackathon 2026 to shortlist" />
       </label>
       <div class="rank">#2</div>
       <div>
@@ -550,14 +568,23 @@
        data-id="unstop-1734263"
        data-event-title="DevCrest Buildathon &#x27;26"
        data-url="https://unstop.com/hackathons/devcrest-buildathon-26-devcrest-1734263"
+       data-org="DevCrest"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="All"
+       data-prize="Mechanical Keyboard + Mouse + MousePad + Laptop Stand"
+       data-prize-amount=""
+       data-prize-currency="INR"
        data-title="devcrest buildathon &#x27;26"
        data-deadline="2026-08-15T01:00:00Z"
+       data-deadline-label="15 Aug 2026 · 6:30 AM IST"
+       data-start-label="10 Aug 2026 · 12:00 PM IST"
        data-prize-sort="0.0"
        data-hay="devcrest buildathon &#x27;26 devcrest unstop all mechanical keyboard + mouse + mousepad + laptop stand general 15 aug 2026 · 6:30 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about DevCrest Buildathon &#x27;26" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add DevCrest Buildathon &#x27;26 to shortlist" />
       </label>
       <div class="rank">#3</div>
       <div>
@@ -582,14 +609,23 @@
        data-id="unstop-1727517"
        data-event-title="CodeRed 2026: FIFA World Cup"
        data-url="https://unstop.com/hackathons/codered-2026-fifa-world-cup-nitk-surathkal-1727517"
+       data-org="National Institute of Technology Karnataka (NITK), Surathkal"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Engineering Students"
+       data-prize="INR 18,000"
+       data-prize-amount="18000.0"
+       data-prize-currency="INR"
        data-title="codered 2026: fifa world cup"
        data-deadline="2026-08-15T06:30:41Z"
+       data-deadline-label="15 Aug 2026 · 12:00 PM IST"
+       data-start-label="29 Jul 2026 · 12:00 AM IST"
        data-prize-sort="216.86746987951807"
        data-hay="codered 2026: fifa world cup national institute of technology karnataka (nitk), surathkal unstop undergraduate engineering students inr 18,000 general 15 aug 2026 · 12:00 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about CodeRed 2026: FIFA World Cup" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add CodeRed 2026: FIFA World Cup to shortlist" />
       </label>
       <div class="rank">#4</div>
       <div>
@@ -614,14 +650,23 @@
        data-id="devpost-30383"
        data-event-title="AceSAT Education AI-Agent"
        data-url="https://acesat-ai-agent.devpost.com/"
+       data-org="AceSAT"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Education, Machine Learning/AI"
+       data-prize="$100"
+       data-prize-amount="100.0"
+       data-prize-currency="USD"
        data-title="acesat education ai-agent"
        data-deadline="2026-08-15T18:29:00Z"
+       data-deadline-label="15 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="100.0"
        data-hay="acesat education ai-agent acesat devpost education machine learning/ai $100 ai / product 15 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about AceSAT Education AI-Agent" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add AceSAT Education AI-Agent to shortlist" />
       </label>
       <div class="rank">#5</div>
       <div>
@@ -646,14 +691,23 @@
        data-id="devpost-30710"
        data-event-title="GatewayGS &amp; The AEI Initiative:  AI 4 Earth Hackathon"
        data-url="https://gatewaygs-ai-4-earth-hackathon.devpost.com/"
+       data-org="GatewayGS"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Machine Learning/AI, Social Good"
+       data-prize="$25"
+       data-prize-amount="25.0"
+       data-prize-currency="USD"
        data-title="gatewaygs &amp; the aei initiative:  ai 4 earth hackathon"
        data-deadline="2026-08-15T18:29:00Z"
+       data-deadline-label="15 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="25.0"
        data-hay="gatewaygs &amp; the aei initiative:  ai 4 earth hackathon gatewaygs devpost beginner friendly machine learning/ai social good $25 ai / product 15 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about GatewayGS &amp; The AEI Initiative:  AI 4 Earth Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add GatewayGS &amp; The AEI Initiative:  AI 4 Earth Hackathon to shortlist" />
       </label>
       <div class="rank">#6</div>
       <div>
@@ -678,14 +732,23 @@
        data-id="devpost-30586"
        data-event-title="ML Empowerment Build Challenge 2.0"
        data-url="https://ml-empowerment-2.devpost.com/"
+       data-org="ML Empowerment Foundation"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Machine Learning/AI, Social Good"
+       data-prize="$73,645"
+       data-prize-amount="73645.0"
+       data-prize-currency="USD"
        data-title="ml empowerment build challenge 2.0"
        data-deadline="2026-08-15T18:29:00Z"
+       data-deadline-label="15 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="73645.0"
        data-hay="ml empowerment build challenge 2.0 ml empowerment foundation devpost beginner friendly machine learning/ai social good $73,645 ai / product 15 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about ML Empowerment Build Challenge 2.0" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add ML Empowerment Build Challenge 2.0 to shortlist" />
       </label>
       <div class="rank">#7</div>
       <div>
@@ -710,14 +773,23 @@
        data-id="internshala-9677"
        data-event-title="National Hackathon 2026 : SIDTM Pune"
        data-url="https://internshala.com/competitions/sidtm-national-hackathon-2026-win-%e2%82%b9100000/"
+       data-org="Internshala"
        data-source="Internshala"
+       data-mode-label="Hybrid"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="India"
+       data-prize="INR 100,000"
+       data-prize-amount="100000.0"
+       data-prize-currency="INR"
        data-title="national hackathon 2026 : sidtm pune"
        data-deadline="2026-08-15T18:29:00Z"
+       data-deadline-label="15 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="1204.8192771084337"
        data-hay="national hackathon 2026 : sidtm pune internshala internshala india inr 100,000 general 15 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about National Hackathon 2026 : SIDTM Pune" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add National Hackathon 2026 : SIDTM Pune to shortlist" />
       </label>
       <div class="rank">#8</div>
       <div>
@@ -742,14 +814,23 @@
        data-id="unstop-1719658"
        data-event-title="CraftVerse 2.0"
        data-url="https://unstop.com/hackathons/craftverse-20-pimpri-chinchwad-college-of-engineering-research-pccoer-ravet-pimpri-chinchwad-pune-1719658"
+       data-org="Pimpri Chinchwad College Of Engineering &amp; Research (PCCOE&amp;R), Ravet, Pimpri-Chinchwad, Pune"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="First Runner up will be awarded with 15,000 and certificate"
+       data-prize-amount=""
+       data-prize-currency="INR"
        data-title="craftverse 2.0"
        data-deadline="2026-08-15T18:29:55Z"
+       data-deadline-label="15 Aug 2026 · 11:59 PM IST"
+       data-start-label="20 Jul 2026 · 3:00 PM IST"
        data-prize-sort="0.0"
        data-hay="craftverse 2.0 pimpri chinchwad college of engineering &amp; research (pccoe&amp;r), ravet, pimpri-chinchwad, pune unstop undergraduate postgraduate engineering students first runner up will be awarded with 15,000 and certificate general 15 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about CraftVerse 2.0" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add CraftVerse 2.0 to shortlist" />
       </label>
       <div class="rank">#9</div>
       <div>
@@ -774,14 +855,23 @@
        data-id="unstop-1729747"
        data-event-title="Simply Updify InnovateX 2.0"
        data-url="https://unstop.com/hackathons/simply-updify-innovatex-20-simply-updify-1729747"
+       data-org="Simply Updify"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 25,000"
+       data-prize-amount="25000.0"
+       data-prize-currency="INR"
        data-title="simply updify innovatex 2.0"
        data-deadline="2026-08-15T19:00:12Z"
+       data-deadline-label="16 Aug 2026 · 12:30 AM IST"
+       data-start-label="3 Aug 2026 · 12:30 AM IST"
        data-prize-sort="301.2048192771084"
        data-hay="simply updify innovatex 2.0 simply updify unstop undergraduate postgraduate engineering students inr 25,000 general 16 aug 2026 · 12:30 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Simply Updify InnovateX 2.0" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Simply Updify InnovateX 2.0 to shortlist" />
       </label>
       <div class="rank">#10</div>
       <div>
@@ -806,14 +896,23 @@
        data-id="unstop-1726439"
        data-event-title="Caspian AI Agent Hackathon"
        data-url="https://unstop.com/hackathons/caspian-ai-agent-hackathon-caspian-1726439"
+       data-org="Caspian"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 20,000"
+       data-prize-amount="20000.0"
+       data-prize-currency="INR"
        data-title="caspian ai agent hackathon"
        data-deadline="2026-08-16T18:29:00Z"
+       data-deadline-label="16 Aug 2026 · 11:59 PM IST"
+       data-start-label="27 Jul 2026 · 12:00 AM IST"
        data-prize-sort="240.96385542168676"
        data-hay="caspian ai agent hackathon caspian unstop undergraduate postgraduate engineering students inr 20,000 ai / product 16 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Caspian AI Agent Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Caspian AI Agent Hackathon to shortlist" />
       </label>
       <div class="rank">#11</div>
       <div>
@@ -838,14 +937,23 @@
        data-id="devpost-30396"
        data-event-title="CS Girlies Annual Hackathon - Technology For Wellness"
        data-url="https://cs-girlies-wellness-hackathon.devpost.com/"
+       data-org="Computer Science Girlies"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Machine Learning/AI, Social Good"
+       data-prize="$5,000"
+       data-prize-amount="5000.0"
+       data-prize-currency="USD"
        data-title="cs girlies annual hackathon - technology for wellness"
        data-deadline="2026-08-16T18:29:00Z"
+       data-deadline-label="16 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="5000.0"
        data-hay="cs girlies annual hackathon - technology for wellness computer science girlies devpost beginner friendly machine learning/ai social good $5,000 ai / product 16 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about CS Girlies Annual Hackathon - Technology For Wellness" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add CS Girlies Annual Hackathon - Technology For Wellness to shortlist" />
       </label>
       <div class="rank">#12</div>
       <div>
@@ -870,14 +978,23 @@
        data-id="devpost-30791"
        data-event-title="Impact Forge: Summer 2026 Hackathon"
        data-url="https://impactforge26.devpost.com/"
+       data-org="ImpactForge"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Machine Learning/AI, Open Ended, Web"
+       data-prize="$6,600"
+       data-prize-amount="6600.0"
+       data-prize-currency="USD"
        data-title="impact forge: summer 2026 hackathon"
        data-deadline="2026-08-16T18:29:00Z"
+       data-deadline-label="16 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="6600.0"
        data-hay="impact forge: summer 2026 hackathon impactforge devpost machine learning/ai open ended web $6,600 ai / product 16 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Impact Forge: Summer 2026 Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Impact Forge: Summer 2026 Hackathon to shortlist" />
       </label>
       <div class="rank">#13</div>
       <div>
@@ -902,14 +1019,23 @@
        data-id="devpost-30664"
        data-event-title="Infinity Hacks"
        data-url="https://infinity-hacks.devpost.com/"
+       data-org="hacker rank"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Low/No Code, Web"
+       data-prize="$0"
+       data-prize-amount=""
+       data-prize-currency="USD"
        data-title="infinity hacks"
        data-deadline="2026-08-16T18:29:00Z"
+       data-deadline-label="16 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="0"
        data-hay="infinity hacks hacker rank devpost beginner friendly low/no code web $0 ai / product 16 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Infinity Hacks" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Infinity Hacks to shortlist" />
       </label>
       <div class="rank">#14</div>
       <div>
@@ -934,14 +1060,23 @@
        data-id="devpost-29414"
        data-event-title="PeddieHacks 2026"
        data-url="https://peddiehacks-2026.devpost.com/"
+       data-org="Peddie Computer Science Club"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Education, Social Good"
+       data-prize="$800"
+       data-prize-amount="800.0"
+       data-prize-currency="USD"
        data-title="peddiehacks 2026"
        data-deadline="2026-08-16T18:29:00Z"
+       data-deadline-label="16 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="800.0"
        data-hay="peddiehacks 2026 peddie computer science club devpost beginner friendly education social good $800 ai / product 16 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about PeddieHacks 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add PeddieHacks 2026 to shortlist" />
       </label>
       <div class="rank">#15</div>
       <div>
@@ -966,14 +1101,23 @@
        data-id="unstop-1733840"
        data-event-title="QuantStorm"
        data-url="https://unstop.com/hackathons/quantstorm-iit-guwahati-1733840"
+       data-org="Indian Institute of Technology (IIT), Guwahati"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Engineering Students"
+       data-prize="INR 250,000"
+       data-prize-amount="250000.0"
+       data-prize-currency="INR"
        data-title="quantstorm"
        data-deadline="2026-08-16T18:29:00Z"
+       data-deadline-label="16 Aug 2026 · 11:59 PM IST"
+       data-start-label="10 Aug 2026 · 12:00 AM IST"
        data-prize-sort="3012.0481927710844"
        data-hay="quantstorm indian institute of technology (iit), guwahati unstop undergraduate engineering students inr 250,000 general 16 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about QuantStorm" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add QuantStorm to shortlist" />
       </label>
       <div class="rank">#16</div>
       <div>
@@ -998,14 +1142,23 @@
        data-id="devpost-31010"
        data-event-title="Social Media Automation Hackathon"
        data-url="https://social-media-automation-hacks.devpost.com/"
+       data-org="n/a"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Design, Productivity"
+       data-prize="$4,750"
+       data-prize-amount="4750.0"
+       data-prize-currency="USD"
        data-title="social media automation hackathon"
        data-deadline="2026-08-16T18:29:00Z"
+       data-deadline-label="16 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="4750.0"
        data-hay="social media automation hackathon n/a devpost beginner friendly design productivity $4,750 ai / product 16 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Social Media Automation Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Social Media Automation Hackathon to shortlist" />
       </label>
       <div class="rank">#17</div>
       <div>
@@ -1030,14 +1183,23 @@
        data-id="unstop-1733064"
        data-event-title="TEJAS India Hackathon 2026"
        data-url="https://unstop.com/hackathons/tejas-india-hackathon-2026-government-engineering-collegegec-jamui-1733064"
+       data-org="Government Engineering College(GEC), Jamui"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 22,000"
+       data-prize-amount="22000.0"
+       data-prize-currency="INR"
        data-title="tejas india hackathon 2026"
        data-deadline="2026-08-16T18:29:38Z"
+       data-deadline-label="16 Aug 2026 · 11:59 PM IST"
+       data-start-label="7 Aug 2026 · 12:00 AM IST"
        data-prize-sort="265.06024096385545"
        data-hay="tejas india hackathon 2026 government engineering college(gec), jamui unstop undergraduate postgraduate engineering students inr 22,000 general 16 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about TEJAS India Hackathon 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add TEJAS India Hackathon 2026 to shortlist" />
       </label>
       <div class="rank">#18</div>
       <div>
@@ -1062,14 +1224,23 @@
        data-id="mlcontest-zindi-geoai-aquaculture-pond-identification-challenge"
        data-event-title="Identify Aquaculture Ponds in Satellite Imagery"
        data-url="https://zindi.africa/competitions/geoai-aquaculture-pond-identification-challenge"
+       data-org="ITU"
        data-source="Zindi"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="supervised, classification, vision"
+       data-prize="$1,240"
+       data-prize-amount="1240.0"
+       data-prize-currency="USD"
        data-title="identify aquaculture ponds in satellite imagery"
        data-deadline="2026-08-16T23:59:00Z"
+       data-deadline-label="17 Aug 2026 · 5:29 AM IST"
+       data-start-label=""
        data-prize-sort="1240.0"
        data-hay="identify aquaculture ponds in satellite imagery itu zindi supervised classification vision $1,240 general 17 aug 2026 · 5:29 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Identify Aquaculture Ponds in Satellite Imagery" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Identify Aquaculture Ponds in Satellite Imagery to shortlist" />
       </label>
       <div class="rank">#19</div>
       <div>
@@ -1094,14 +1265,23 @@
        data-id="unstop-1736096"
        data-event-title="Internal Smart India Hackathon 2026"
        data-url="https://unstop.com/hackathons/internal-smart-india-hackathon-2026-bharat-ratna-baba-saheb-bhim-rao-ambedkar-rajkiya-engineering-college-pra-1736096"
+       data-org="Bharat Ratna baba saheb bhim rao ambedkar rajkiya engineering college pratapgarh"
        data-source="Unstop"
+       data-mode-label="Hybrid"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Engineering Students"
+       data-prize="Memento, Medal and Appreciation Certificate for all team members."
+       data-prize-amount=""
+       data-prize-currency="INR"
        data-title="internal smart india hackathon 2026"
        data-deadline="2026-08-17T06:30:00Z"
+       data-deadline-label="17 Aug 2026 · 12:00 PM IST"
+       data-start-label="12 Aug 2026 · 12:00 AM IST"
        data-prize-sort="0.0"
        data-hay="internal smart india hackathon 2026 bharat ratna baba saheb bhim rao ambedkar rajkiya engineering college pratapgarh unstop undergraduate engineering students memento, medal and appreciation certificate for all team members. general 17 aug 2026 · 12:00 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Internal Smart India Hackathon 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Internal Smart India Hackathon 2026 to shortlist" />
       </label>
       <div class="rank">#20</div>
       <div>
@@ -1126,14 +1306,23 @@
        data-id="devpost-30979"
        data-event-title="Brainwave 2026 – Midnight Track"
        data-url="https://brainwave-2026-midnight-track.devpost.com/"
+       data-org="ACTS EDC"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Blockchain, Fintech"
+       data-prize="$220"
+       data-prize-amount="220.0"
+       data-prize-currency="USD"
        data-title="brainwave 2026 – midnight track"
        data-deadline="2026-08-17T18:29:00Z"
+       data-deadline-label="17 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="220.0"
        data-hay="brainwave 2026 – midnight track acts edc devpost blockchain fintech $220 ai / product 17 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Brainwave 2026 – Midnight Track" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Brainwave 2026 – Midnight Track to shortlist" />
       </label>
       <div class="rank">#21</div>
       <div>
@@ -1158,14 +1347,23 @@
        data-id="devpost-29541"
        data-event-title="Build with Gemini XPRIZE"
        data-url="https://xprize.devpost.com/"
+       data-org="XPRIZE"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Machine Learning/AI, Education, Productivity"
+       data-prize="$2,000,000"
+       data-prize-amount="2000000.0"
+       data-prize-currency="USD"
        data-title="build with gemini xprize"
        data-deadline="2026-08-17T18:29:00Z"
+       data-deadline-label="17 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="2000000.0"
        data-hay="build with gemini xprize xprize devpost machine learning/ai education productivity $2,000,000 ai / product 17 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Build with Gemini XPRIZE" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Build with Gemini XPRIZE to shortlist" />
       </label>
       <div class="rank">#22</div>
       <div>
@@ -1190,14 +1388,23 @@
        data-id="devpost-30595"
        data-event-title="OregonHacks"
        data-url="https://oregonhacks.devpost.com/"
+       data-org="OregonHacks"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Open Ended, Social Good"
+       data-prize="$63,580"
+       data-prize-amount="63580.0"
+       data-prize-currency="USD"
        data-title="oregonhacks"
        data-deadline="2026-08-17T18:29:00Z"
+       data-deadline-label="17 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="63580.0"
        data-hay="oregonhacks oregonhacks devpost beginner friendly open ended social good $63,580 ai / product 17 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about OregonHacks" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add OregonHacks to shortlist" />
       </label>
       <div class="rank">#23</div>
       <div>
@@ -1222,14 +1429,23 @@
        data-id="devpost-30518"
        data-event-title="YouCam API Skin AI &amp; Apparel VTO Hackathon"
        data-url="https://youcam-api.devpost.com/"
+       data-org="Perfect Corp"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Machine Learning/AI, AR/VR, E-commerce/Retail"
+       data-prize="$6,000"
+       data-prize-amount="6000.0"
+       data-prize-currency="USD"
        data-title="youcam api skin ai &amp; apparel vto hackathon"
        data-deadline="2026-08-17T18:29:00Z"
+       data-deadline-label="17 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="6000.0"
        data-hay="youcam api skin ai &amp; apparel vto hackathon perfect corp devpost machine learning/ai ar/vr e-commerce/retail $6,000 ai / product 17 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about YouCam API Skin AI &amp; Apparel VTO Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add YouCam API Skin AI &amp; Apparel VTO Hackathon to shortlist" />
       </label>
       <div class="rank">#24</div>
       <div>
@@ -1254,14 +1470,23 @@
        data-id="unstop-1733381"
        data-event-title="Evil Corp CTF V2"
        data-url="https://unstop.com/hackathons/evil-corp-ctf-v2-nexploit-1733381"
+       data-org="Nexploit"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 1,700"
+       data-prize-amount="1700.0"
+       data-prize-currency="INR"
        data-title="evil corp ctf v2"
        data-deadline="2026-08-18T13:00:17Z"
+       data-deadline-label="18 Aug 2026 · 6:30 PM IST"
+       data-start-label="7 Aug 2026 · 6:30 PM IST"
        data-prize-sort="20.481927710843372"
        data-hay="evil corp ctf v2 nexploit unstop undergraduate postgraduate engineering students inr 1,700 general 18 aug 2026 · 6:30 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Evil Corp CTF V2" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Evil Corp CTF V2 to shortlist" />
       </label>
       <div class="rank">#25</div>
       <div>
@@ -1286,14 +1511,23 @@
        data-id="devpost-29613"
        data-event-title="CockroachDB × AWS Hackathon - Build with Agentic Memory"
        data-url="https://cockroachdb-ai.devpost.com/"
+       data-org="Cockroach Labs"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Machine Learning/AI, Databases, DevOps"
+       data-prize="$8,750"
+       data-prize-amount="8750.0"
+       data-prize-currency="USD"
        data-title="cockroachdb × aws hackathon - build with agentic memory"
        data-deadline="2026-08-18T18:29:00Z"
+       data-deadline-label="18 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="8750.0"
        data-hay="cockroachdb × aws hackathon - build with agentic memory cockroach labs devpost machine learning/ai databases devops $8,750 ai / product 18 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about CockroachDB × AWS Hackathon - Build with Agentic Memory" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add CockroachDB × AWS Hackathon - Build with Agentic Memory to shortlist" />
       </label>
       <div class="rank">#26</div>
       <div>
@@ -1318,14 +1552,23 @@
        data-id="unstop-1726707"
        data-event-title="CodeFury 9.0"
        data-url="https://unstop.com/hackathons/codefury-90-university-visvesvaraya-college-of-engineering-uvce-bangalore-1726707"
+       data-org="University Visvesvaraya College Of Engineering (UVCE), Bangalore"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 60,000"
+       data-prize-amount="60000.0"
+       data-prize-currency="INR"
        data-title="codefury 9.0"
        data-deadline="2026-08-18T18:30:00Z"
+       data-deadline-label="19 Aug 2026 · 12:00 AM IST"
+       data-start-label="27 Jul 2026 · 12:00 AM IST"
        data-prize-sort="722.8915662650602"
        data-hay="codefury 9.0 university visvesvaraya college of engineering (uvce), bangalore unstop undergraduate postgraduate engineering students inr 60,000 general 19 aug 2026 · 12:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about CodeFury 9.0" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add CodeFury 9.0 to shortlist" />
       </label>
       <div class="rank">#27</div>
       <div>
@@ -1350,14 +1593,23 @@
        data-id="unstop-1726534"
        data-event-title="Paper Buddy EduVerse Hackathon 2026"
        data-url="https://unstop.com/hackathons/paper-buddy-eduverse-hackathon-2026-deenbandhu-chhotu-ram-university-of-science-and-technology-dcrust-murthal-1726534"
+       data-org="Deenbandhu Chhotu Ram University Of Science And Technology (DCRUST), Murthal, Haryana"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 100,000"
+       data-prize-amount="100000.0"
+       data-prize-currency="INR"
        data-title="paper buddy eduverse hackathon 2026"
        data-deadline="2026-08-18T18:30:00Z"
+       data-deadline-label="19 Aug 2026 · 12:00 AM IST"
+       data-start-label="27 Jul 2026 · 6:15 PM IST"
        data-prize-sort="1204.8192771084337"
        data-hay="paper buddy eduverse hackathon 2026 deenbandhu chhotu ram university of science and technology (dcrust), murthal, haryana unstop undergraduate postgraduate engineering students inr 100,000 general 19 aug 2026 · 12:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Paper Buddy EduVerse Hackathon 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Paper Buddy EduVerse Hackathon 2026 to shortlist" />
       </label>
       <div class="rank">#28</div>
       <div>
@@ -1382,14 +1634,23 @@
        data-id="unstop-1726256"
        data-event-title="Puzzle Masters Hackathon 2026"
        data-url="https://unstop.com/hackathons/puzzle-masters-hackathon-2026-gamnexis-1726256"
+       data-org="Gamnexis"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="All"
+       data-prize="INR 1,700"
+       data-prize-amount="1700.0"
+       data-prize-currency="INR"
        data-title="puzzle masters hackathon 2026"
        data-deadline="2026-08-18T18:30:00Z"
+       data-deadline-label="19 Aug 2026 · 12:00 AM IST"
+       data-start-label="26 Jul 2026 · 12:00 AM IST"
        data-prize-sort="20.481927710843372"
        data-hay="puzzle masters hackathon 2026 gamnexis unstop all inr 1,700 general 19 aug 2026 · 12:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Puzzle Masters Hackathon 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Puzzle Masters Hackathon 2026 to shortlist" />
       </label>
       <div class="rank">#29</div>
       <div>
@@ -1414,14 +1675,23 @@
        data-id="mlcontest-grand-challenge-segment-and-plan-pelvic-fracture-repair"
        data-event-title="Segment and Plan Pelvic Fracture Repair"
        data-url="https://pengwin2026.grand-challenge.org"
+       data-org="Grand Challenge"
        data-source="Grand Challenge"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="medical, segmentation, 3d"
+       data-prize="$1,700"
+       data-prize-amount="1700.0"
+       data-prize-currency="USD"
        data-title="segment and plan pelvic fracture repair"
        data-deadline="2026-08-19T23:59:00Z"
+       data-deadline-label="20 Aug 2026 · 5:29 AM IST"
+       data-start-label=""
        data-prize-sort="1700.0"
        data-hay="segment and plan pelvic fracture repair grand challenge grand challenge medical segmentation 3d $1,700 ai / product 20 aug 2026 · 5:29 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Segment and Plan Pelvic Fracture Repair" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Segment and Plan Pelvic Fracture Repair to shortlist" />
       </label>
       <div class="rank">#30</div>
       <div>
@@ -1446,14 +1716,23 @@
        data-id="unstop-1730853"
        data-event-title="Edge Nova&#x27;26"
        data-url="https://unstop.com/hackathons/edge-nova26-srm-institute-of-science-and-technology-kattankulathur-chennai-1730853"
+       data-org="SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 40,000"
+       data-prize-amount="40000.0"
+       data-prize-currency="INR"
        data-title="edge nova&#x27;26"
        data-deadline="2026-08-20T18:29:00Z"
+       data-deadline-label="20 Aug 2026 · 11:59 PM IST"
+       data-start-label="5 Aug 2026 · 12:00 AM IST"
        data-prize-sort="481.9277108433735"
        data-hay="edge nova&#x27;26 srm institute of science and technology (srmist), kattankulathur, chennai unstop undergraduate postgraduate engineering students inr 40,000 general 20 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Edge Nova&#x27;26" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Edge Nova&#x27;26 to shortlist" />
       </label>
       <div class="rank">#31</div>
       <div>
@@ -1478,14 +1757,23 @@
        data-id="internshala-9625"
        data-event-title="Hack Hydra 2026"
        data-url="https://internshala.com/competitions/hack-hydra-2026-hydradb-10000-prize-pool/"
+       data-org="HydraDB"
        data-source="Internshala"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="India"
+       data-prize="$10000"
+       data-prize-amount="10000.0"
+       data-prize-currency="USD"
        data-title="hack hydra 2026"
        data-deadline="2026-08-20T18:29:00Z"
+       data-deadline-label="20 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="10000.0"
        data-hay="hack hydra 2026 hydradb internshala india $10000 general 20 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Hack Hydra 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Hack Hydra 2026 to shortlist" />
       </label>
       <div class="rank">#32</div>
       <div>
@@ -1510,14 +1798,23 @@
        data-id="devpost-30458"
        data-event-title="QuantumHacks"
        data-url="https://quantumhacks.devpost.com/"
+       data-org="Quantumhacks"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Databases, Fintech, Quantum"
+       data-prize="$1,000"
+       data-prize-amount="1000.0"
+       data-prize-currency="USD"
        data-title="quantumhacks"
        data-deadline="2026-08-20T18:29:00Z"
+       data-deadline-label="20 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="1000.0"
        data-hay="quantumhacks quantumhacks devpost databases fintech quantum $1,000 ai / product 20 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about QuantumHacks" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add QuantumHacks to shortlist" />
       </label>
       <div class="rank">#33</div>
       <div>
@@ -1542,14 +1839,23 @@
        data-id="unstop-1723695"
        data-event-title="EchoSphere: Agora Conversational AI Hackathon"
        data-url="https://unstop.com/hackathons/echosphere-agora-conversational-ai-hackathon-knotic-1723695"
+       data-org="KNOTiC"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="All"
+       data-prize="USD 3,000"
+       data-prize-amount="3000.0"
+       data-prize-currency="USD"
        data-title="echosphere: agora conversational ai hackathon"
        data-deadline="2026-08-20T18:30:00Z"
+       data-deadline-label="21 Aug 2026 · 12:00 AM IST"
+       data-start-label="22 Jul 2026 · 12:00 AM IST"
        data-prize-sort="3000.0"
        data-hay="echosphere: agora conversational ai hackathon knotic unstop all usd 3,000 ai / product 21 aug 2026 · 12:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about EchoSphere: Agora Conversational AI Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add EchoSphere: Agora Conversational AI Hackathon to shortlist" />
       </label>
       <div class="rank">#34</div>
       <div>
@@ -1574,14 +1880,23 @@
        data-id="devpost-29251"
        data-event-title="BTT Web Game Jam - Summer 2026"
        data-url="https://btt-web-game-jam.devpost.com/"
+       data-org="BTT"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Gaming, Web"
+       data-prize="€100"
+       data-prize-amount="100.0"
+       data-prize-currency="EUR"
        data-title="btt web game jam - summer 2026"
        data-deadline="2026-08-21T18:29:00Z"
+       data-deadline-label="21 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="100.0"
        data-hay="btt web game jam - summer 2026 btt devpost beginner friendly gaming web €100 ai / product 21 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about BTT Web Game Jam - Summer 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add BTT Web Game Jam - Summer 2026 to shortlist" />
       </label>
       <div class="rank">#35</div>
       <div>
@@ -1606,14 +1921,23 @@
        data-id="internshala-9593"
        data-event-title="HackSpora 2.0 : KAHE"
        data-url="https://internshala.com/competitions/hackspora-2-0-2026-win-%e2%82%b9100000/"
+       data-org="the Department of Artificial Intelligence and Data"
        data-source="Internshala"
+       data-mode-label="Hybrid"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="India"
+       data-prize="INR 100,000"
+       data-prize-amount="100000.0"
+       data-prize-currency="INR"
        data-title="hackspora 2.0 : kahe"
        data-deadline="2026-08-21T18:29:00Z"
+       data-deadline-label="21 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="1204.8192771084337"
        data-hay="hackspora 2.0 : kahe the department of artificial intelligence and data internshala india inr 100,000 general 21 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about HackSpora 2.0 : KAHE" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add HackSpora 2.0 : KAHE to shortlist" />
       </label>
       <div class="rank">#36</div>
       <div>
@@ -1638,14 +1962,23 @@
        data-id="unstop-1730805"
        data-event-title="OOSC 4.0 Hackathon"
        data-url="https://unstop.com/hackathons/oosc-4o-hackathon-indian-institute-of-information-technology-iiit-allahabad-1730805"
+       data-org="Indian Institute of Information Technology (IIIT), Allahabad"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="All"
+       data-prize="INR 40,000"
+       data-prize-amount="40000.0"
+       data-prize-currency="INR"
        data-title="oosc 4.0 hackathon"
        data-deadline="2026-08-21T18:29:24Z"
+       data-deadline-label="21 Aug 2026 · 11:59 PM IST"
+       data-start-label="6 Aug 2026 · 12:00 AM IST"
        data-prize-sort="481.9277108433735"
        data-hay="oosc 4.0 hackathon indian institute of information technology (iiit), allahabad unstop all inr 40,000 general 21 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about OOSC 4.0 Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add OOSC 4.0 Hackathon to shortlist" />
       </label>
       <div class="rank">#37</div>
       <div>
@@ -1670,14 +2003,23 @@
        data-id="mlcontest-synapse-build-foundation-models-for-brain-mri-analysis"
        data-event-title="Build Foundation Models for Brain MRI Analysis"
        data-url="https://fomo26.github.io"
+       data-org="Synapse"
        data-source="Synapse"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="medical, images, deep learning"
+       data-prize="$2,000"
+       data-prize-amount="2000.0"
+       data-prize-currency="USD"
        data-title="build foundation models for brain mri analysis"
        data-deadline="2026-08-21T23:59:00Z"
+       data-deadline-label="22 Aug 2026 · 5:29 AM IST"
+       data-start-label=""
        data-prize-sort="2000.0"
        data-hay="build foundation models for brain mri analysis synapse synapse medical images deep learning $2,000 ai / product 22 aug 2026 · 5:29 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Build Foundation Models for Brain MRI Analysis" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Build Foundation Models for Brain MRI Analysis to shortlist" />
       </label>
       <div class="rank">#38</div>
       <div>
@@ -1702,14 +2044,23 @@
        data-id="devpost-30468"
        data-event-title="Build Beyond Hackathon"
        data-url="https://build-beyond-hackathon.devpost.com/"
+       data-org="BuildBeyond"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Low/No Code, Open Ended"
+       data-prize="$500"
+       data-prize-amount="500.0"
+       data-prize-currency="USD"
        data-title="build beyond hackathon"
        data-deadline="2026-08-22T18:29:00Z"
+       data-deadline-label="22 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="500.0"
        data-hay="build beyond hackathon buildbeyond devpost beginner friendly low/no code open ended $500 ai / product 22 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Build Beyond Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Build Beyond Hackathon to shortlist" />
       </label>
       <div class="rank">#39</div>
       <div>
@@ -1734,14 +2085,23 @@
        data-id="devpost-30972"
        data-event-title="Proof of Possible 2026"
        data-url="https://proof-of-possible-2026.devpost.com/"
+       data-org="Proof of Possible"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Machine Learning/AI, Open Ended"
+       data-prize="$9,000"
+       data-prize-amount="9000.0"
+       data-prize-currency="USD"
        data-title="proof of possible 2026"
        data-deadline="2026-08-22T18:29:00Z"
+       data-deadline-label="22 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="9000.0"
        data-hay="proof of possible 2026 proof of possible devpost beginner friendly machine learning/ai open ended $9,000 ai / product 22 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Proof of Possible 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Proof of Possible 2026 to shortlist" />
       </label>
       <div class="rank">#40</div>
       <div>
@@ -1766,14 +2126,23 @@
        data-id="devpost-30718"
        data-event-title="Suvidha AI Virtual Hackathon"
        data-url="https://suvidha-ai-virtual-hackathon.devpost.com/"
+       data-org="Suvidha International Foundation"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Low/No Code, Machine Learning/AI"
+       data-prize="$500"
+       data-prize-amount="500.0"
+       data-prize-currency="USD"
        data-title="suvidha ai virtual hackathon"
        data-deadline="2026-08-22T18:29:00Z"
+       data-deadline-label="22 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="500.0"
        data-hay="suvidha ai virtual hackathon suvidha international foundation devpost beginner friendly low/no code machine learning/ai $500 ai / product 22 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Suvidha AI Virtual Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Suvidha AI Virtual Hackathon to shortlist" />
       </label>
       <div class="rank">#41</div>
       <div>
@@ -1798,14 +2167,23 @@
        data-id="devpost-30878"
        data-event-title="NextStep Hacks 2026"
        data-url="https://nextstep2026.devpost.com/"
+       data-org="HackAlphaX"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Machine Learning/AI, Social Good"
+       data-prize="$1,750"
+       data-prize-amount="1750.0"
+       data-prize-currency="USD"
        data-title="nextstep hacks 2026"
        data-deadline="2026-08-23T18:29:00Z"
+       data-deadline-label="23 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="1750.0"
        data-hay="nextstep hacks 2026 hackalphax devpost beginner friendly machine learning/ai social good $1,750 ai / product 23 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about NextStep Hacks 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add NextStep Hacks 2026 to shortlist" />
       </label>
       <div class="rank">#42</div>
       <div>
@@ -1830,14 +2208,23 @@
        data-id="internshala-9329"
        data-event-title="OOSC 4.0 Hackathon"
        data-url="https://internshala.com/competitions/oosc-4-0-hackathon-2026/"
+       data-org="Internshala"
        data-source="Internshala"
+       data-mode-label="Hybrid"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="India"
+       data-prize="INR 35,000"
+       data-prize-amount="35000.0"
+       data-prize-currency="INR"
        data-title="oosc 4.0 hackathon"
        data-deadline="2026-08-23T18:29:00Z"
+       data-deadline-label="23 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="421.68674698795184"
        data-hay="oosc 4.0 hackathon internshala internshala india inr 35,000 general 23 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about OOSC 4.0 Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add OOSC 4.0 Hackathon to shortlist" />
       </label>
       <div class="rank">#43</div>
       <div>
@@ -1862,14 +2249,23 @@
        data-id="dorahacks-delphi-agent-competition"
        data-event-title="Delphi: Agent Arena Competition"
        data-url="https://dorahacks.io/hackathon/delphi-agent-competition/"
+       data-org="Delphi Gensyn EVM"
        data-source="DoraHacks"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="AI Agents, Autonomous Trading, Trading Bots"
+       data-prize="$10,000"
+       data-prize-amount="10000.0"
+       data-prize-currency="USD"
        data-title="delphi: agent arena competition"
        data-deadline="2026-08-23T23:59:00Z"
+       data-deadline-label="24 Aug 2026 · 5:29 AM IST"
+       data-start-label="10 Aug 2026 · 9:30 PM IST"
        data-prize-sort="10000.0"
        data-hay="delphi: agent arena competition delphi gensyn evm dorahacks ai agents autonomous trading trading bots $10,000 ai / product 24 aug 2026 · 5:29 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Delphi: Agent Arena Competition" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Delphi: Agent Arena Competition to shortlist" />
       </label>
       <div class="rank">#44</div>
       <div>
@@ -1894,14 +2290,23 @@
        data-id="devpost-30482"
        data-event-title="ImpactForge"
        data-url="https://impactforge.devpost.com/"
+       data-org="ImpactForge"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Low/No Code, Social Good"
+       data-prize="$300"
+       data-prize-amount="300.0"
+       data-prize-currency="USD"
        data-title="impactforge"
        data-deadline="2026-08-24T18:29:00Z"
+       data-deadline-label="24 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="300.0"
        data-hay="impactforge impactforge devpost beginner friendly low/no code social good $300 ai / product 24 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about ImpactForge" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add ImpactForge to shortlist" />
       </label>
       <div class="rank">#45</div>
       <div>
@@ -1926,14 +2331,23 @@
        data-id="devpost-30481"
        data-event-title="NeuralSprint"
        data-url="https://neuralsprint.devpost.com/"
+       data-org="NeuralSprint"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Machine Learning/AI, Social Good, Web"
+       data-prize="$150"
+       data-prize-amount="150.0"
+       data-prize-currency="USD"
        data-title="neuralsprint"
        data-deadline="2026-08-24T18:29:00Z"
+       data-deadline-label="24 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="150.0"
        data-hay="neuralsprint neuralsprint devpost machine learning/ai social good web $150 ai / product 24 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about NeuralSprint" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add NeuralSprint to shortlist" />
       </label>
       <div class="rank">#46</div>
       <div>
@@ -1958,14 +2372,23 @@
        data-id="devpost-30198"
        data-event-title="Reverie Hacks 2026"
        data-url="https://reverie-hacks-2026.devpost.com/"
+       data-org="ReverieHacks"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Machine Learning/AI, Open Ended"
+       data-prize="$979,950"
+       data-prize-amount="979950.0"
+       data-prize-currency="USD"
        data-title="reverie hacks 2026"
        data-deadline="2026-08-24T18:29:00Z"
+       data-deadline-label="24 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="979950.0"
        data-hay="reverie hacks 2026 reveriehacks devpost beginner friendly machine learning/ai open ended $979,950 ai / product 24 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Reverie Hacks 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Reverie Hacks 2026 to shortlist" />
       </label>
       <div class="rank">#47</div>
       <div>
@@ -1990,14 +2413,23 @@
        data-id="unstop-1733529"
        data-event-title="Webverse Hackathon"
        data-url="https://unstop.com/hackathons/webverse-hackathon-modern-education-societys-college-of-engineering-mes-pune-1733529"
+       data-org="Modern Education Society&#x27;s College of Engineering - (MES), Pune"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 15,000"
+       data-prize-amount="15000.0"
+       data-prize-currency="INR"
        data-title="webverse hackathon"
        data-deadline="2026-08-24T18:30:00Z"
+       data-deadline-label="25 Aug 2026 · 12:00 AM IST"
+       data-start-label="8 Aug 2026 · 12:00 AM IST"
        data-prize-sort="180.72289156626505"
        data-hay="webverse hackathon modern education society&#x27;s college of engineering - (mes), pune unstop undergraduate postgraduate engineering students inr 15,000 ai / product 25 aug 2026 · 12:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Webverse Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Webverse Hackathon to shortlist" />
       </label>
       <div class="rank">#48</div>
       <div>
@@ -2022,14 +2454,23 @@
        data-id="devpost-30091"
        data-event-title="Africa Deep Tech Challenge 2026"
        data-url="https://adtc-2026.devpost.com/"
+       data-org="Africa Deep Tech Foundation"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Machine Learning/AI, Productivity"
+       data-prize="$16,500"
+       data-prize-amount="16500.0"
+       data-prize-currency="USD"
        data-title="africa deep tech challenge 2026"
        data-deadline="2026-08-25T18:29:00Z"
+       data-deadline-label="25 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="16500.0"
        data-hay="africa deep tech challenge 2026 africa deep tech foundation devpost machine learning/ai productivity $16,500 ai / product 25 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Africa Deep Tech Challenge 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Africa Deep Tech Challenge 2026 to shortlist" />
       </label>
       <div class="rank">#49</div>
       <div>
@@ -2054,14 +2495,23 @@
        data-id="internshala-9215"
        data-event-title="EchoSphere – Agora Conversational AI Hackathon"
        data-url="https://internshala.com/competitions/echosphere-2026-win-from-a-3000-prize-pool/"
+       data-org="KNOTiC for students"
        data-source="Internshala"
+       data-mode-label="Hybrid"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="India"
+       data-prize="$3000"
+       data-prize-amount="3000.0"
+       data-prize-currency="USD"
        data-title="echosphere – agora conversational ai hackathon"
        data-deadline="2026-08-25T18:29:00Z"
+       data-deadline-label="25 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="3000.0"
        data-hay="echosphere – agora conversational ai hackathon knotic for students internshala india $3000 ai / product 25 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about EchoSphere – Agora Conversational AI Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add EchoSphere – Agora Conversational AI Hackathon to shortlist" />
       </label>
       <div class="rank">#50</div>
       <div>
@@ -2086,14 +2536,23 @@
        data-id="internshala-9232"
        data-event-title="TECHNOVA 2026"
        data-url="https://internshala.com/competitions/technova-2026-win-%e2%82%b910-lakh/"
+       data-org="Internshala"
        data-source="Internshala"
+       data-mode-label="Hybrid"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="India"
+       data-prize="INR 1,000,000"
+       data-prize-amount="1000000.0"
+       data-prize-currency="INR"
        data-title="technova 2026"
        data-deadline="2026-08-25T18:29:00Z"
+       data-deadline-label="25 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="12048.192771084337"
        data-hay="technova 2026 internshala internshala india inr 1,000,000 general 25 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about TECHNOVA 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add TECHNOVA 2026 to shortlist" />
       </label>
       <div class="rank">#51</div>
       <div>
@@ -2118,14 +2577,23 @@
        data-id="unstop-1731208"
        data-event-title="Precision Care Challenge 2026"
        data-url="https://unstop.com/hackathons/crp-precision-care-challenge-2026-ge-healthcare-1731208"
+       data-org="GE HealthCare"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 650,000"
+       data-prize-amount="650000.0"
+       data-prize-currency="INR"
        data-title="precision care challenge 2026"
        data-deadline="2026-08-26T18:29:39Z"
+       data-deadline-label="26 Aug 2026 · 11:59 PM IST"
+       data-start-label="5 Aug 2026 · 10:30 AM IST"
        data-prize-sort="7831.325301204819"
        data-hay="precision care challenge 2026 ge healthcare unstop undergraduate postgraduate engineering students inr 650,000 general 26 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Precision Care Challenge 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Precision Care Challenge 2026 to shortlist" />
       </label>
       <div class="rank">#52</div>
       <div>
@@ -2150,14 +2618,23 @@
        data-id="unstop-1728495"
        data-event-title="CodeSprint 2.O : One Shot Challenge"
        data-url="https://unstop.com/hackathons/codesprint-2o-one-shot-challenge-oriental-college-of-technology-oct-bhopal-1728495"
+       data-org="Oriental College of Technology (OCT), Bhopal"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 3,000"
+       data-prize-amount="3000.0"
+       data-prize-currency="INR"
        data-title="codesprint 2.o : one shot challenge"
        data-deadline="2026-08-27T18:29:00Z"
+       data-deadline-label="27 Aug 2026 · 11:59 PM IST"
+       data-start-label="31 Jul 2026 · 1:00 AM IST"
        data-prize-sort="36.144578313253014"
        data-hay="codesprint 2.o : one shot challenge oriental college of technology (oct), bhopal unstop undergraduate postgraduate engineering students inr 3,000 general 27 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about CodeSprint 2.O : One Shot Challenge" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add CodeSprint 2.O : One Shot Challenge to shortlist" />
       </label>
       <div class="rank">#53</div>
       <div>
@@ -2182,14 +2659,23 @@
        data-id="mlcontest-drivendata-tutoring-outcomes"
        data-event-title="Predict Student Learning Outcomes from Tutoring Transcripts"
        data-url="https://platform.k12-ai-infrastructure.org/competitions/3/tutoring-outcomes"
+       data-org="National Tutoring Observatory"
        data-source="DrivenData"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="education, nlp, supervised"
+       data-prize="$50,000"
+       data-prize-amount="50000.0"
+       data-prize-currency="USD"
        data-title="predict student learning outcomes from tutoring transcripts"
        data-deadline="2026-08-27T23:59:00Z"
+       data-deadline-label="28 Aug 2026 · 5:29 AM IST"
+       data-start-label=""
        data-prize-sort="50000.0"
        data-hay="predict student learning outcomes from tutoring transcripts national tutoring observatory drivendata education nlp supervised $50,000 ai / product 28 aug 2026 · 5:29 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Predict Student Learning Outcomes from Tutoring Transcripts" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Predict Student Learning Outcomes from Tutoring Transcripts to shortlist" />
       </label>
       <div class="rank">#54</div>
       <div>
@@ -2214,14 +2700,23 @@
        data-id="dorahacks-creativeminds"
        data-event-title="Creative Minds Jam #1: Hong Kong"
        data-url="https://dorahacks.io/hackathon/creativeminds/"
+       data-org="Minds by Animoca Brands"
        data-source="DoraHacks"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="AI Agents, Creator Economy, Web3 SANDchain Minds"
+       data-prize="$10,000"
+       data-prize-amount="10000.0"
+       data-prize-currency="USD"
        data-title="creative minds jam #1: hong kong"
        data-deadline="2026-08-28T15:59:00Z"
+       data-deadline-label="28 Aug 2026 · 9:29 PM IST"
+       data-start-label="27 Jul 2026 · 9:31 PM IST"
        data-prize-sort="10000.0"
        data-hay="creative minds jam #1: hong kong minds by animoca brands dorahacks ai agents creator economy web3 sandchain minds $10,000 ai / product 28 aug 2026 · 9:29 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Creative Minds Jam #1: Hong Kong" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Creative Minds Jam #1: Hong Kong to shortlist" />
       </label>
       <div class="rank">#55</div>
       <div>
@@ -2246,14 +2741,23 @@
        data-id="unstop-1733673"
        data-event-title="Zero Dependency | 72-Hour Hackathon"
        data-url="https://unstop.com/hackathons/zero-dependency-72-hour-hackathon-hackathon-raptors-1733673"
+       data-org="Hackathon Raptors"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="All"
+       data-prize="INR 220,000"
+       data-prize-amount="220000.0"
+       data-prize-currency="INR"
        data-title="zero dependency | 72-hour hackathon"
        data-deadline="2026-08-28T17:30:00Z"
+       data-deadline-label="28 Aug 2026 · 11:00 PM IST"
+       data-start-label="8 Aug 2026 · 12:00 AM IST"
        data-prize-sort="2650.602409638554"
        data-hay="zero dependency | 72-hour hackathon hackathon raptors unstop all inr 220,000 general 28 aug 2026 · 11:00 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Zero Dependency | 72-Hour Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Zero Dependency | 72-Hour Hackathon to shortlist" />
       </label>
       <div class="rank">#56</div>
       <div>
@@ -2278,14 +2782,23 @@
        data-id="internshala-9597"
        data-event-title="Signal Shift : SIMATS Engineering"
        data-url="https://internshala.com/competitions/signal-shift-2026-hackathon-by-simats-engineering-win-%e2%82%b920000/"
+       data-org="Internshala"
        data-source="Internshala"
+       data-mode-label="Hybrid"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="India"
+       data-prize="INR 20,000"
+       data-prize-amount="20000.0"
+       data-prize-currency="INR"
        data-title="signal shift : simats engineering"
        data-deadline="2026-08-28T18:29:00Z"
+       data-deadline-label="28 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="240.96385542168676"
        data-hay="signal shift : simats engineering internshala internshala india inr 20,000 general 28 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Signal Shift : SIMATS Engineering" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Signal Shift : SIMATS Engineering to shortlist" />
       </label>
       <div class="rank">#57</div>
       <div>
@@ -2310,14 +2823,23 @@
        data-id="unstop-1729558"
        data-event-title="ML Bubble 2026 – Machine Learning Awareness &amp; Skill Building Challenge"
        data-url="https://unstop.com/hackathons/ml-bubble-2026-machine-learning-awareness-skill-building-challenge-army-institute-of-technology-ait-pune-1729558"
+       data-org="Army Institute of Technology (AIT), Pune"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 30,000"
+       data-prize-amount="30000.0"
+       data-prize-currency="INR"
        data-title="ml bubble 2026 – machine learning awareness &amp; skill building challenge"
        data-deadline="2026-08-29T18:30:00Z"
+       data-deadline-label="30 Aug 2026 · 12:00 AM IST"
+       data-start-label="2 Aug 2026 · 12:00 AM IST"
        data-prize-sort="361.4457831325301"
        data-hay="ml bubble 2026 – machine learning awareness &amp; skill building challenge army institute of technology (ait), pune unstop undergraduate postgraduate engineering students inr 30,000 ai / product 30 aug 2026 · 12:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about ML Bubble 2026 – Machine Learning Awareness &amp; Skill Building Challenge" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add ML Bubble 2026 – Machine Learning Awareness &amp; Skill Building Challenge to shortlist" />
       </label>
       <div class="rank">#58</div>
       <div>
@@ -2342,14 +2864,23 @@
        data-id="mlcontest-zindi-wishlist-hackathon-2026-marine-vision-challenge"
        data-event-title="Identify Reef Fish Species with Computer Vision Models"
        data-url="https://zindi.africa/competitions/wishlist-hackathon-2026-marine-vision-challenge"
+       data-org="Fairytale, bluebot, GovTech, INFOLYTICS"
        data-source="Zindi"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="supervised, classification, vision"
+       data-prize="$1,500"
+       data-prize-amount="1500.0"
+       data-prize-currency="USD"
        data-title="identify reef fish species with computer vision models"
        data-deadline="2026-08-29T23:59:00Z"
+       data-deadline-label="30 Aug 2026 · 5:29 AM IST"
+       data-start-label=""
        data-prize-sort="1500.0"
        data-hay="identify reef fish species with computer vision models fairytale, bluebot, govtech, infolytics zindi supervised classification vision $1,500 general 30 aug 2026 · 5:29 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Identify Reef Fish Species with Computer Vision Models" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Identify Reef Fish Species with Computer Vision Models to shortlist" />
       </label>
       <div class="rank">#59</div>
       <div>
@@ -2374,14 +2905,23 @@
        data-id="unstop-1731840"
        data-event-title="NextGen Hackathon"
        data-url="https://unstop.com/hackathons/nextgen-hackathon-rhinon-tech-pvt-lmt-1731840"
+       data-org="Rhinon Tech Pvt Lmt"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 285,000"
+       data-prize-amount="285000.0"
+       data-prize-currency="INR"
        data-title="nextgen hackathon"
        data-deadline="2026-08-30T05:30:00Z"
+       data-deadline-label="30 Aug 2026 · 11:00 AM IST"
+       data-start-label="6 Aug 2026 · 5:20 PM IST"
        data-prize-sort="3433.734939759036"
        data-hay="nextgen hackathon rhinon tech pvt lmt unstop undergraduate postgraduate engineering students inr 285,000 general 30 aug 2026 · 11:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about NextGen Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add NextGen Hackathon to shortlist" />
       </label>
       <div class="rank">#60</div>
       <div>
@@ -2406,14 +2946,23 @@
        data-id="devpost-30472"
        data-event-title="Hack The Limit"
        data-url="https://hack-the-limit-1.devpost.com/"
+       data-org="HackTheLimit"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Open Ended, Productivity, Social Good"
+       data-prize="$350"
+       data-prize-amount="350.0"
+       data-prize-currency="USD"
        data-title="hack the limit"
        data-deadline="2026-08-30T18:29:00Z"
+       data-deadline-label="30 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="350.0"
        data-hay="hack the limit hackthelimit devpost open ended productivity social good $350 ai / product 30 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Hack The Limit" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Hack The Limit to shortlist" />
       </label>
       <div class="rank">#61</div>
       <div>
@@ -2438,14 +2987,23 @@
        data-id="unstop-1727667"
        data-event-title="Morrow 1.0"
        data-url="https://unstop.com/hackathons/morrow-10-makers-need-more-mnm-1727667"
+       data-org="Makers Need More (MnM)"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="All"
+       data-prize="Linkedin endorsements from official MnM page for everyone who makes it til Ro..."
+       data-prize-amount=""
+       data-prize-currency="INR"
        data-title="morrow 1.0"
        data-deadline="2026-08-30T18:30:00Z"
+       data-deadline-label="31 Aug 2026 · 12:00 AM IST"
+       data-start-label="29 Jul 2026 · 12:00 AM IST"
        data-prize-sort="0.0"
        data-hay="morrow 1.0 makers need more (mnm) unstop all linkedin endorsements from official mnm page for everyone who makes it til ro... general 31 aug 2026 · 12:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Morrow 1.0" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Morrow 1.0 to shortlist" />
       </label>
       <div class="rank">#62</div>
       <div>
@@ -2470,14 +3028,23 @@
        data-id="dorahacks-weex-ai-wars2"
        data-event-title="WEEX AI Wars II: Rise of Intelligence"
        data-url="https://dorahacks.io/hackathon/weex-ai-wars2/"
+       data-org="Management"
        data-source="DoraHacks"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Al Trading Algorithmic, Web3 Crypto Risk, Management"
+       data-prize="$200,000"
+       data-prize-amount="200000.0"
+       data-prize-currency="USD"
        data-title="weex ai wars ii: rise of intelligence"
        data-deadline="2026-08-31T15:59:00Z"
+       data-deadline-label="31 Aug 2026 · 9:29 PM IST"
+       data-start-label="31 Aug 2026 · 9:28 PM IST"
        data-prize-sort="200000.0"
        data-hay="weex ai wars ii: rise of intelligence management dorahacks al trading algorithmic web3 crypto risk management $200,000 ai / product 31 aug 2026 · 9:29 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about WEEX AI Wars II: Rise of Intelligence" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add WEEX AI Wars II: Rise of Intelligence to shortlist" />
       </label>
       <div class="rank">#63</div>
       <div>
@@ -2502,14 +3069,23 @@
        data-id="unstop-1652247"
        data-event-title="“National Cloud &amp; AI Innovation Challenge Season 2 by 3SVK – 3.4K+ Developers”"
        data-url="https://unstop.com/hackathons/cloud-innovation-challenge-jawaharlal-nehru-technological-university-jntuh-hyderabad-1652247"
+       data-org="Jawaharlal Nehru Technological University (JNTUH), Hyderabad"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes=""
+       data-prize="&quot;Winners receive premium Pre-Placement Interviews (PPIs), exclusive startup m..."
+       data-prize-amount=""
+       data-prize-currency="INR"
        data-title="“national cloud &amp; ai innovation challenge season 2 by 3svk – 3.4k+ developers”"
        data-deadline="2026-08-31T17:29:00Z"
+       data-deadline-label="31 Aug 2026 · 10:59 PM IST"
+       data-start-label="4 Mar 2026 · 12:00 AM IST"
        data-prize-sort="0.0"
        data-hay="“national cloud &amp; ai innovation challenge season 2 by 3svk – 3.4k+ developers” jawaharlal nehru technological university (jntuh), hyderabad unstop  &quot;winners receive premium pre-placement interviews (ppis), exclusive startup m... ai / product 31 aug 2026 · 10:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about “National Cloud &amp; AI Innovation Challenge Season 2 by 3SVK – 3.4K+ Developers”" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add “National Cloud &amp; AI Innovation Challenge Season 2 by 3SVK – 3.4K+ Developers” to shortlist" />
       </label>
       <div class="rank">#64</div>
       <div>
@@ -2534,14 +3110,23 @@
        data-id="devpost-30501"
        data-event-title="3D Websites Hackathon"
        data-url="https://3d-websites-hackathon.devpost.com/"
+       data-org="high school"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Design, Web, Beginner Friendly"
+       data-prize="$55"
+       data-prize-amount="55.0"
+       data-prize-currency="USD"
        data-title="3d websites hackathon"
        data-deadline="2026-08-31T18:29:00Z"
+       data-deadline-label="31 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="55.0"
        data-hay="3d websites hackathon high school devpost design web beginner friendly $55 ai / product 31 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about 3D Websites Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add 3D Websites Hackathon to shortlist" />
       </label>
       <div class="rank">#65</div>
       <div>
@@ -2566,14 +3151,23 @@
        data-id="devpost-30845"
        data-event-title="All Things Agentic Hackathon"
        data-url="https://allthingsagentichackathon.devpost.com/"
+       data-org="Google"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Enterprise, Machine Learning/AI, Productivity"
+       data-prize="$180,000"
+       data-prize-amount="180000.0"
+       data-prize-currency="USD"
        data-title="all things agentic hackathon"
        data-deadline="2026-08-31T18:29:00Z"
+       data-deadline-label="31 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="180000.0"
        data-hay="all things agentic hackathon google devpost enterprise machine learning/ai productivity $180,000 ai / product 31 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about All Things Agentic Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add All Things Agentic Hackathon to shortlist" />
       </label>
       <div class="rank">#66</div>
       <div>
@@ -2598,14 +3192,23 @@
        data-id="devpost-29411"
        data-event-title="Galuxium Nexus V2"
        data-url="https://galuxium-nexus-v2-29411.devpost.com/"
+       data-org="Galuxium"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Enterprise, Machine Learning/AI, Productivity"
+       data-prize="$2,600"
+       data-prize-amount="2600.0"
+       data-prize-currency="USD"
        data-title="galuxium nexus v2"
        data-deadline="2026-08-31T18:29:00Z"
+       data-deadline-label="31 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="2600.0"
        data-hay="galuxium nexus v2 galuxium devpost enterprise machine learning/ai productivity $2,600 ai / product 31 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Galuxium Nexus V2" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Galuxium Nexus V2 to shortlist" />
       </label>
       <div class="rank">#67</div>
       <div>
@@ -2630,14 +3233,23 @@
        data-id="devpost-30903"
        data-event-title="Hack the Habitat"
        data-url="https://hack-the-habitat-2026.devpost.com/"
+       data-org="Hack the Habitat"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="IoT, Machine Learning/AI, Social Good"
+       data-prize="$1,000"
+       data-prize-amount="1000.0"
+       data-prize-currency="USD"
        data-title="hack the habitat"
        data-deadline="2026-08-31T18:29:00Z"
+       data-deadline-label="31 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="1000.0"
        data-hay="hack the habitat hack the habitat devpost iot machine learning/ai social good $1,000 ai / product 31 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Hack the Habitat" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Hack the Habitat to shortlist" />
       </label>
       <div class="rank">#68</div>
       <div>
@@ -2662,14 +3274,23 @@
        data-id="devpost-30724"
        data-event-title="Hacksocial 2026"
        data-url="https://hacksocial2026.devpost.com/"
+       data-org="Hacksocial"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Machine Learning/AI, Open Ended, Social Good"
+       data-prize="$3,979"
+       data-prize-amount="3979.0"
+       data-prize-currency="USD"
        data-title="hacksocial 2026"
        data-deadline="2026-08-31T18:29:00Z"
+       data-deadline-label="31 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="3979.0"
        data-hay="hacksocial 2026 hacksocial devpost machine learning/ai open ended social good $3,979 ai / product 31 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Hacksocial 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Hacksocial 2026 to shortlist" />
       </label>
       <div class="rank">#69</div>
       <div>
@@ -2694,14 +3315,23 @@
        data-id="internshala-9605"
        data-event-title="STRK20 Private Sprint 2026"
        data-url="https://internshala.com/competitions/strk20-private-sprint-2026-win-5000-usd/"
+       data-org="Internshala"
        data-source="Internshala"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="India"
+       data-prize="$5000"
+       data-prize-amount="5000.0"
+       data-prize-currency="USD"
        data-title="strk20 private sprint 2026"
        data-deadline="2026-08-31T18:29:00Z"
+       data-deadline-label="31 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="5000.0"
        data-hay="strk20 private sprint 2026 internshala internshala india $5000 general 31 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about STRK20 Private Sprint 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add STRK20 Private Sprint 2026 to shortlist" />
       </label>
       <div class="rank">#70</div>
       <div>
@@ -2726,14 +3356,23 @@
        data-id="unstop-1728481"
        data-event-title="Techno Vbiquity 2.O – Technical Coding Competition"
        data-url="https://unstop.com/hackathons/techno-vbiquity-2o-technical-coding-competition-technocrats-group-of-institutions-bhopal-madhya-pradesh-1728481"
+       data-org="Technocrats Group of Institutions, Bhopal, Madhya Pradesh"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 4,500"
+       data-prize-amount="4500.0"
+       data-prize-currency="INR"
        data-title="techno vbiquity 2.o – technical coding competition"
        data-deadline="2026-08-31T18:29:00Z"
+       data-deadline-label="31 Aug 2026 · 11:59 PM IST"
+       data-start-label="30 Jul 2026 · 12:00 AM IST"
        data-prize-sort="54.21686746987952"
        data-hay="techno vbiquity 2.o – technical coding competition technocrats group of institutions, bhopal, madhya pradesh unstop undergraduate postgraduate engineering students inr 4,500 general 31 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Techno Vbiquity 2.O – Technical Coding Competition" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Techno Vbiquity 2.O – Technical Coding Competition to shortlist" />
       </label>
       <div class="rank">#71</div>
       <div>
@@ -2758,14 +3397,23 @@
        data-id="internshala-9585"
        data-event-title="UnvibeCode Engineering Challenge 2026"
        data-url="https://internshala.com/competitions/unvibecode-engineering-challenge-2026-win-%e2%82%b911000/"
+       data-org="Alphashots.ai"
        data-source="Internshala"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="India"
+       data-prize="INR 5,000"
+       data-prize-amount="5000.0"
+       data-prize-currency="INR"
        data-title="unvibecode engineering challenge 2026"
        data-deadline="2026-08-31T18:29:00Z"
+       data-deadline-label="31 Aug 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="60.24096385542169"
        data-hay="unvibecode engineering challenge 2026 alphashots.ai internshala india inr 5,000 general 31 aug 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about UnvibeCode Engineering Challenge 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add UnvibeCode Engineering Challenge 2026 to shortlist" />
       </label>
       <div class="rank">#72</div>
       <div>
@@ -2790,14 +3438,23 @@
        data-id="mlcontest-codabench-sapc2-website"
        data-event-title="Automated Speech Recognition Under Diverse Speech Patterns"
        data-url="https://xiuwenz2.github.io/SAPC2-website"
+       data-org="AI Accessibility Coalition"
        data-source="Codabench"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="speech, audio, nlp"
+       data-prize="$10,000"
+       data-prize-amount="10000.0"
+       data-prize-currency="USD"
        data-title="automated speech recognition under diverse speech patterns"
        data-deadline="2026-08-31T23:59:00Z"
+       data-deadline-label="1 Sep 2026 · 5:29 AM IST"
+       data-start-label=""
        data-prize-sort="10000.0"
        data-hay="automated speech recognition under diverse speech patterns ai accessibility coalition codabench speech audio nlp $10,000 ai / product 1 sep 2026 · 5:29 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Automated Speech Recognition Under Diverse Speech Patterns" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Automated Speech Recognition Under Diverse Speech Patterns to shortlist" />
       </label>
       <div class="rank">#73</div>
       <div>
@@ -2822,14 +3479,23 @@
        data-id="devpost-30686"
        data-event-title="TikTok TechJam 2026"
        data-url="https://tiktoktechjam2026.devpost.com/"
+       data-org="TikTok"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Machine Learning/AI, Cybersecurity, E-commerce/Retail"
+       data-prize="$34,500"
+       data-prize-amount="34500.0"
+       data-prize-currency="USD"
        data-title="tiktok techjam 2026"
        data-deadline="2026-09-01T18:29:00Z"
+       data-deadline-label="1 Sep 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="34500.0"
        data-hay="tiktok techjam 2026 tiktok devpost machine learning/ai cybersecurity e-commerce/retail $34,500 ai / product 1 sep 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about TikTok TechJam 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add TikTok TechJam 2026 to shortlist" />
       </label>
       <div class="rank">#74</div>
       <div>
@@ -2854,14 +3520,23 @@
        data-id="kaggle-ai-agent-security-multi-step-tool-attacks"
        data-event-title="Find Multi-step AI Agent Attack Paths"
        data-url="https://www.kaggle.com/competitions/ai-agent-security-multi-step-tool-attacks"
+       data-org="OpenAI"
        data-source="Kaggle"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="security, llm, measurable"
+       data-prize="$50,000"
+       data-prize-amount="50000.0"
+       data-prize-currency="USD"
        data-title="find multi-step ai agent attack paths"
        data-deadline="2026-09-01T23:59:00Z"
+       data-deadline-label="2 Sep 2026 · 5:29 AM IST"
+       data-start-label=""
        data-prize-sort="50000.0"
        data-hay="find multi-step ai agent attack paths openai kaggle security llm measurable $50,000 ai / product 2 sep 2026 · 5:29 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Find Multi-step AI Agent Attack Paths" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Find Multi-step AI Agent Attack Paths to shortlist" />
       </label>
       <div class="rank">#75</div>
       <div>
@@ -2886,14 +3561,23 @@
        data-id="mlcontest-grand-challenge-segment-lesions-in-whole-body-scans"
        data-event-title="Segment Lesions in Whole-Body Scans"
        data-url="https://autopet-v.grand-challenge.org"
+       data-org="Grand Challenge"
        data-source="Grand Challenge"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="medical, segmentation, images"
+       data-prize="$6,600"
+       data-prize-amount="6600.0"
+       data-prize-currency="USD"
        data-title="segment lesions in whole-body scans"
        data-deadline="2026-09-01T23:59:00Z"
+       data-deadline-label="2 Sep 2026 · 5:29 AM IST"
+       data-start-label=""
        data-prize-sort="6600.0"
        data-hay="segment lesions in whole-body scans grand challenge grand challenge medical segmentation images $6,600 general 2 sep 2026 · 5:29 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Segment Lesions in Whole-Body Scans" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Segment Lesions in Whole-Body Scans to shortlist" />
       </label>
       <div class="rank">#76</div>
       <div>
@@ -2918,14 +3602,23 @@
        data-id="devpost-29151"
        data-event-title="Hack for Humanity | Summer 2026 (+13 non-cash prizes)"
        data-url="https://hack-for-humanity-summer-26.devpost.com/"
+       data-org="Hack for Humanity"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Beginner Friendly, Health, Machine Learning/AI"
+       data-prize="$100"
+       data-prize-amount="100.0"
+       data-prize-currency="USD"
        data-title="hack for humanity | summer 2026 (+13 non-cash prizes)"
        data-deadline="2026-09-04T18:29:00Z"
+       data-deadline-label="4 Sep 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="100.0"
        data-hay="hack for humanity | summer 2026 (+13 non-cash prizes) hack for humanity devpost beginner friendly health machine learning/ai $100 ai / product 4 sep 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Hack for Humanity | Summer 2026 (+13 non-cash prizes)" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Hack for Humanity | Summer 2026 (+13 non-cash prizes) to shortlist" />
       </label>
       <div class="rank">#77</div>
       <div>
@@ -2950,14 +3643,23 @@
        data-id="unstop-1730437"
        data-event-title="Orvix Hackathon"
        data-url="https://unstop.com/hackathons/orvix-hackathon-nimblux-1730437"
+       data-org="NIMBLUX"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="• Certificate of Participation • 300 MeDo AI Credits (via the official MeDo r..."
+       data-prize-amount=""
+       data-prize-currency="INR"
        data-title="orvix hackathon"
        data-deadline="2026-09-04T18:30:00Z"
+       data-deadline-label="5 Sep 2026 · 12:00 AM IST"
+       data-start-label="4 Aug 2026 · 12:00 AM IST"
        data-prize-sort="0.0"
        data-hay="orvix hackathon nimblux unstop undergraduate postgraduate engineering students • certificate of participation • 300 medo ai credits (via the official medo r... general 5 sep 2026 · 12:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Orvix Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Orvix Hackathon to shortlist" />
       </label>
       <div class="rank">#78</div>
       <div>
@@ -2982,14 +3684,23 @@
        data-id="unstop-1733546"
        data-event-title="StartupX Hackathon 2026"
        data-url="https://unstop.com/hackathons/startupx-hackathon-2026-gamnexis-1733546"
+       data-org="Gamnexis"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="All"
+       data-prize="INR 10,000"
+       data-prize-amount="10000.0"
+       data-prize-currency="INR"
        data-title="startupx hackathon 2026"
        data-deadline="2026-09-04T18:30:00Z"
+       data-deadline-label="5 Sep 2026 · 12:00 AM IST"
+       data-start-label="10 Aug 2026 · 12:00 AM IST"
        data-prize-sort="120.48192771084338"
        data-hay="startupx hackathon 2026 gamnexis unstop all inr 10,000 general 5 sep 2026 · 12:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about StartupX Hackathon 2026" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add StartupX Hackathon 2026 to shortlist" />
       </label>
       <div class="rank">#79</div>
       <div>
@@ -3014,14 +3725,23 @@
        data-id="internshala-9725"
        data-event-title="InfiniX’26 : National Level 32-Hour Hackathon"
        data-url="https://internshala.com/competitions/infinix26-2026-win-%e2%82%b915000-2/"
+       data-org="Internshala"
        data-source="Internshala"
+       data-mode-label="Hybrid"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="India"
+       data-prize="INR 15,000"
+       data-prize-amount="15000.0"
+       data-prize-currency="INR"
        data-title="infinix’26 : national level 32-hour hackathon"
        data-deadline="2026-09-05T18:29:00Z"
+       data-deadline-label="5 Sep 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="180.72289156626505"
        data-hay="infinix’26 : national level 32-hour hackathon internshala internshala india inr 15,000 general 5 sep 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about InfiniX’26 : National Level 32-Hour Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add InfiniX’26 : National Level 32-Hour Hackathon to shortlist" />
       </label>
       <div class="rank">#80</div>
       <div>
@@ -3046,14 +3766,23 @@
        data-id="devpost-29884"
        data-event-title="VoltHacks"
        data-url="https://volthacks.devpost.com/"
+       data-org="Dialogate"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="IoT, Machine Learning/AI, Beginner Friendly"
+       data-prize="$32,785"
+       data-prize-amount="32785.0"
+       data-prize-currency="USD"
        data-title="volthacks"
        data-deadline="2026-09-05T18:29:00Z"
+       data-deadline-label="5 Sep 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="32785.0"
        data-hay="volthacks dialogate devpost iot machine learning/ai beginner friendly $32,785 ai / product 5 sep 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about VoltHacks" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add VoltHacks to shortlist" />
       </label>
       <div class="rank">#81</div>
       <div>
@@ -3078,14 +3807,23 @@
        data-id="mlcontest-grand-challenge-detect-rare-early-stage-cancers-in-endoscopy"
        data-event-title="Detect Rare Early-Stage Cancers in Endoscopy"
        data-url="https://rare26.grand-challenge.org"
+       data-org="Grand Challenge"
        data-source="Grand Challenge"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="medical, detection, images"
+       data-prize="$2,200"
+       data-prize-amount="2200.0"
+       data-prize-currency="USD"
        data-title="detect rare early-stage cancers in endoscopy"
        data-deadline="2026-09-07T23:59:00Z"
+       data-deadline-label="8 Sep 2026 · 5:29 AM IST"
+       data-start-label=""
        data-prize-sort="2200.0"
        data-hay="detect rare early-stage cancers in endoscopy grand challenge grand challenge medical detection images $2,200 ai / product 8 sep 2026 · 5:29 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Detect Rare Early-Stage Cancers in Endoscopy" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Detect Rare Early-Stage Cancers in Endoscopy to shortlist" />
       </label>
       <div class="rank">#82</div>
       <div>
@@ -3110,14 +3848,23 @@
        data-id="devpost-30721"
        data-event-title="Agentic Cinema: The Blockbuster Hackathon"
        data-url="https://agentic-cinema.devpost.com/"
+       data-org="Google"
        data-source="Devpost"
+       data-mode-label="Online"
        data-focus="ai_product"
+       data-focus-label="AI / Product"
+       data-themes="Databases, Machine Learning/AI, Open Ended"
+       data-prize="$75,000"
+       data-prize-amount="75000.0"
+       data-prize-currency="USD"
        data-title="agentic cinema: the blockbuster hackathon"
        data-deadline="2026-09-09T18:29:00Z"
+       data-deadline-label="9 Sep 2026 · 11:59 PM IST"
+       data-start-label=""
        data-prize-sort="75000.0"
        data-hay="agentic cinema: the blockbuster hackathon google devpost databases machine learning/ai open ended $75,000 ai / product 9 sep 2026 · 11:59 pm ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about Agentic Cinema: The Blockbuster Hackathon" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add Agentic Cinema: The Blockbuster Hackathon to shortlist" />
       </label>
       <div class="rank">#83</div>
       <div>
@@ -3142,14 +3889,23 @@
        data-id="unstop-1719528"
        data-event-title="P.A.C.E - Where Logic Meets Expression."
        data-url="https://unstop.com/hackathons/pace-where-logic-meets-expression-technocrats-institute-of-technology-excellence-bhopal-1719528"
+       data-org="Technocrats Institute of Technology (Excellence), Bhopal"
        data-source="Unstop"
+       data-mode-label="Online"
        data-focus="general"
+       data-focus-label="General"
+       data-themes="Undergraduate, Postgraduate, Engineering Students"
+       data-prize="INR 10,000"
+       data-prize-amount="10000.0"
+       data-prize-currency="INR"
        data-title="p.a.c.e - where logic meets expression."
        data-deadline="2026-09-09T18:30:00Z"
+       data-deadline-label="10 Sep 2026 · 12:00 AM IST"
+       data-start-label="16 Jul 2026 · 12:00 AM IST"
        data-prize-sort="120.48192771084338"
        data-hay="p.a.c.e - where logic meets expression. technocrats institute of technology (excellence), bhopal unstop undergraduate postgraduate engineering students inr 10,000 general 10 sep 2026 · 12:00 am ist">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about P.A.C.E - Where Logic Meets Expression." />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add P.A.C.E - Where Logic Meets Expression. to shortlist" />
       </label>
       <div class="rank">#84</div>
       <div>
@@ -3181,270 +3937,239 @@
     const list = document.getElementById('list');
     const refreshBtn = document.getElementById('refreshBtn');
     const refreshStatus = document.getElementById('refreshStatus');
-    const remindCount = document.getElementById('remindCount');
-    const remindStatus = document.getElementById('remindStatus');
-    const enableNotifBtn = document.getElementById('enableNotifBtn');
-    const exportIcsBtn = document.getElementById('exportIcsBtn');
+    const shortlistCount = document.getElementById('shortlistCount');
+    const shortlistStatus = document.getElementById('shortlistStatus');
+    const pdfBtn = document.getElementById('pdfBtn');
+    const notesBtn = document.getElementById('notesBtn');
     const lastRefreshed = "14 Aug 2026, 9:02 PM IST";
 
-    const STORAGE_KEY = 'hacksearch.reminders.v1';
-    const FIRED_KEY = 'hacksearch.reminders.fired.v1';
-    const OFFSETS = [
-      { key: '24h', ms: 24 * 60 * 60 * 1000, label: '24 hours' },
-      { key: '12h', ms: 12 * 60 * 60 * 1000, label: '12 hours' },
-      { key: '3h', ms: 3 * 60 * 60 * 1000, label: '3 hours' },
-    ];
-    const timers = new Map();
+    const STORAGE_KEY = 'hacksearch.shortlist.v1';
 
     function showLastRefreshed() {
       refreshStatus.className = '';
       refreshStatus.innerHTML = 'Last refreshed<span class="refreshed-at">' + lastRefreshed + '</span>';
     }
 
-    function loadReminders() {
+    function loadShortlist() {
       try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
       catch { return {}; }
     }
 
-    function saveReminders(map) {
+    function saveShortlist(map) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
     }
 
-    function loadFired() {
-      try { return JSON.parse(localStorage.getItem(FIRED_KEY) || '{}'); }
-      catch { return {}; }
+    function setShortlistStatus(text, kind) {
+      shortlistStatus.textContent = text || '';
+      shortlistStatus.className = kind || '';
     }
 
-    function saveFired(map) {
-      localStorage.setItem(FIRED_KEY, JSON.stringify(map));
+    function selectedCards() {
+      const map = loadShortlist();
+      return cards
+        .filter(card => map[card.dataset.id])
+        .sort((a, b) => (a.dataset.deadline || '9999').localeCompare(b.dataset.deadline || '9999'));
     }
 
-    function setRemindStatus(text, kind) {
-      remindStatus.textContent = text || '';
-      remindStatus.className = kind || '';
-    }
-
-    function cardPayload(card) {
-      return {
-        id: card.dataset.id,
-        title: card.dataset.eventTitle || card.querySelector('.title')?.textContent?.trim() || 'Hackathon',
-        url: card.dataset.url || '',
-        deadline: card.dataset.deadline || '',
-      };
-    }
-
-    function updateRemindUI() {
-      const map = loadReminders();
-      const n = Object.keys(map).length;
-      remindCount.textContent = n === 1 ? '1 reminder selected' : `${n} reminders selected`;
-      exportIcsBtn.disabled = n === 0;
+    function updateShortlistUI() {
+      const n = selectedCards().length;
+      shortlistCount.textContent = n === 1 ? '1 hackathon selected' : `${n} hackathons selected`;
+      pdfBtn.disabled = n === 0;
+      notesBtn.disabled = n === 0;
+      const ids = loadShortlist();
       cards.forEach(card => {
-        const on = Boolean(map[card.dataset.id]);
-        const box = card.querySelector('.remind-toggle');
+        const on = Boolean(ids[card.dataset.id]);
+        const box = card.querySelector('.shortlist-toggle');
         if (box) box.checked = on;
         card.classList.toggle('is-reminded', on);
       });
-      if ('Notification' in window && Notification.permission === 'granted') {
-        enableNotifBtn.textContent = 'Browser alerts on';
-        enableNotifBtn.disabled = true;
-      }
     }
 
-    function clearTimers() {
-      timers.forEach(id => clearTimeout(id));
-      timers.clear();
+    function toggleShortlist(card, checked) {
+      const map = loadShortlist();
+      const id = card.dataset.id;
+      if (!id) return;
+      if (checked) map[id] = { id, title: card.dataset.eventTitle || '' };
+      else delete map[id];
+      saveShortlist(map);
+      updateShortlistUI();
+      const title = card.dataset.eventTitle || 'Hackathon';
+      setShortlistStatus(checked ? `Added “${title}” to your brief.` : `Removed “${title}”.`, checked ? 'ok' : '');
     }
 
-    function fireReminder(item, offset) {
-      const fired = loadFired();
-      const key = `${item.id}:${offset.key}`;
-      if (fired[key]) return;
-      fired[key] = Date.now();
-      saveFired(fired);
-
-      const title = `${offset.label} left · ${item.title}`;
-      const body = `Deadline approaching. Open the hackathon page to submit.`;
-      if ('Notification' in window && Notification.permission === 'granted') {
-        try {
-          const n = new Notification(title, {
-            body,
-            tag: key,
-            renotify: true,
-            data: { url: item.url },
-          });
-          n.onclick = () => {
-            window.focus();
-            if (item.url) window.open(item.url, '_blank', 'noopener');
-            n.close();
-          };
-        } catch {
-          setRemindStatus(`${title} — ${body}`, 'ok');
-        }
-      } else {
-        setRemindStatus(`${title} — enable browser alerts to get desktop notifications.`, 'ok');
-      }
+    function esc(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
     }
 
-    function scheduleItem(item) {
-      const deadline = Date.parse(item.deadline);
-      if (!Number.isFinite(deadline)) return;
-      const now = Date.now();
-      if (deadline <= now) return;
+    function timeLeft(iso) {
+      const t = Date.parse(iso);
+      if (!Number.isFinite(t) || String(iso || '').startsWith('9999')) return 'Deadline TBA';
+      const ms = t - Date.now();
+      if (ms <= 0) return 'Deadline passed';
+      const hours = Math.round(ms / 36e5);
+      if (hours < 48) return `${hours} hour${hours === 1 ? '' : 's'} left`;
+      const days = Math.round(hours / 24);
+      return `${days} day${days === 1 ? '' : 's'} left`;
+    }
 
-      OFFSETS.forEach(offset => {
-        const when = deadline - offset.ms;
-        const key = `${item.id}:${offset.key}`;
-        if (timers.has(key)) {
-          clearTimeout(timers.get(key));
-          timers.delete(key);
-        }
-        const fired = loadFired();
-        if (fired[key]) return;
+    function money(amount, currency) {
+      const n = Number(amount);
+      if (!Number.isFinite(n) || n <= 0) return '';
+      const formatted = n.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+      if ((currency || '').toUpperCase() === 'INR') return `INR ${formatted}`;
+      if ((currency || '').toUpperCase() === 'USD') return `$${formatted}`;
+      if ((currency || '').toUpperCase() === 'EUR') return `€${formatted}`;
+      return `${currency || ''} ${formatted}`.trim();
+    }
 
-        // Already in the reminder window (late check / page just opened)
-        if (when <= now && now < deadline) {
-          fireReminder(item, offset);
-          return;
-        }
-        if (when <= now) return;
-
-        const wait = when - now;
-        // setTimeout is unreliable beyond ~24 days; poller covers those
-        if (wait > 24 * 60 * 60 * 1000) return;
-        const tid = setTimeout(() => fireReminder(item, offset), wait);
-        timers.set(key, tid);
+    function prizeTotals(list) {
+      const totals = {};
+      list.forEach(card => {
+        const amount = Number(card.dataset.prizeAmount);
+        const currency = (card.dataset.prizeCurrency || '').toUpperCase();
+        if (!Number.isFinite(amount) || amount <= 0 || !currency) return;
+        totals[currency] = (totals[currency] || 0) + amount;
       });
+      const parts = Object.entries(totals).map(([currency, amount]) => money(amount, currency));
+      return parts.length ? parts.join(' · ') : 'Mixed or unpriced rewards';
     }
 
-    function rescheduleAll() {
-      clearTimers();
-      const map = loadReminders();
-      Object.values(map).forEach(scheduleItem);
+    function briefRows(list) {
+      return list.map((card, index) => ({
+        index: index + 1,
+        title: card.dataset.eventTitle || 'Hackathon',
+        org: card.dataset.org || 'Organizer TBA',
+        source: card.dataset.source || '',
+        mode: card.dataset.modeLabel || 'Online',
+        focus: card.dataset.focusLabel || '',
+        prize: card.dataset.prize || 'Cash prize',
+        deadline: card.dataset.deadlineLabel || 'Deadline TBA',
+        starts: card.dataset.startLabel || '',
+        left: timeLeft(card.dataset.deadline),
+        themes: card.dataset.themes || '',
+        url: card.dataset.url || '',
+      }));
     }
 
-    async function enableNotifications() {
-      if (!('Notification' in window)) {
-        setRemindStatus('This browser does not support notifications. Use Add to calendar instead.', 'error');
-        return false;
-      }
-      let perm = Notification.permission;
-      if (perm === 'default') perm = await Notification.requestPermission();
-      if (perm !== 'granted') {
-        setRemindStatus('Notification permission blocked. You can still use Add to calendar.', 'error');
-        return false;
-      }
-      updateRemindUI();
-      rescheduleAll();
-      setRemindStatus('Browser alerts enabled for checked hackathons (24h / 12h / 3h). Keep this tab available when possible.', 'ok');
-      return true;
+    function notesText(rows, total) {
+      const header = [
+        'Hack-Search shortlist',
+        `Created ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST`,
+        `${rows.length} hackathon${rows.length === 1 ? '' : 's'}`,
+        `Total listed cash: ${total}`,
+        '',
+      ];
+      const body = rows.map(row => [
+        `${row.index}. ${row.title}`,
+        `Organizer: ${row.org}`,
+        `Source: ${row.source} · ${row.mode}${row.focus ? ' · ' + row.focus : ''}`,
+        `Cash prize: ${row.prize}`,
+        `Timeline: ${row.starts ? 'Starts ' + row.starts + ' · ' : ''}Deadline ${row.deadline} · ${row.left}`,
+        row.themes ? `Themes: ${row.themes}` : '',
+        row.url ? `Link: ${row.url}` : '',
+        '',
+      ].filter(Boolean).join('\n'));
+      return header.concat(body).join('\n');
     }
 
-    function toggleReminder(card, checked) {
-      const map = loadReminders();
-      const payload = cardPayload(card);
-      if (!payload.id || !payload.deadline || payload.deadline.startsWith('9999')) {
-        setRemindStatus('This hackathon has no usable deadline for reminders.', 'error');
-        card.querySelector('.remind-toggle').checked = false;
+    function pdfHtml(rows, total) {
+      const created = new Date().toLocaleString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+      });
+      const blocks = rows.map(row => `
+        <article>
+          <p class="kicker">${row.index < 10 ? '0' + row.index : row.index} · ${esc(row.source)} · ${esc(row.mode)}</p>
+          <h2>${esc(row.title)}</h2>
+          <p class="org">${esc(row.org)}${row.focus ? ' · ' + esc(row.focus) : ''}</p>
+          <table>
+            <tr><th>Cash prize</th><td>${esc(row.prize)}</td></tr>
+            <tr><th>Starts</th><td>${esc(row.starts || 'Not listed')}</td></tr>
+            <tr><th>Deadline</th><td>${esc(row.deadline)}</td></tr>
+            <tr><th>Time left</th><td>${esc(row.left)}</td></tr>
+            <tr><th>Themes</th><td>${esc(row.themes || '—')}</td></tr>
+            <tr><th>Link</th><td>${row.url ? `<a href="${esc(row.url)}">${esc(row.url)}</a>` : '—'}</td></tr>
+          </table>
+        </article>
+      `).join('');
+      return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Hack-Search shortlist</title>
+  <style>
+    @page { margin: 18mm; }
+    body { margin: 0; color: #17202a; font: 14px/1.45 "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif; }
+    header { border-bottom: 2px solid #17202a; padding-bottom: 12px; margin-bottom: 18px; }
+    h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -0.03em; }
+    .meta { margin: 0; color: #52616e; }
+    .totals { margin-top: 10px; font-weight: 700; }
+    article { break-inside: avoid; border-top: 1px solid #d5dde4; padding: 14px 0 8px; }
+    h2 { font-size: 18px; margin: 2px 0 2px; }
+    .kicker, .org { margin: 0; color: #52616e; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .org { text-transform: none; letter-spacing: 0; font-size: 13px; margin-bottom: 8px; }
+    table { width: 100%; border-collapse: collapse; }
+    th { width: 110px; text-align: left; color: #52616e; font-weight: 600; vertical-align: top; padding: 2px 12px 2px 0; }
+    td { padding: 2px 0; }
+    a { color: #17202a; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hack-Search shortlist</h1>
+    <p class="meta">${rows.length} selected hackathon${rows.length === 1 ? '' : 's'} · written ${esc(created)} IST</p>
+    <p class="totals">Total listed cash: ${esc(total)}</p>
+  </header>
+  ${blocks}
+</body>
+</html>`;
+    }
+
+    function currentBrief() {
+      const list = selectedCards();
+      return { rows: briefRows(list), total: prizeTotals(list) };
+    }
+
+    function createPdf() {
+      const brief = currentBrief();
+      if (!brief.rows.length) return;
+      const popup = window.open('', '_blank');
+      if (!popup) {
+        setShortlistStatus('Allow pop-ups for this site, then create the PDF again.', 'error');
         return;
       }
-      if (checked) {
-        map[payload.id] = payload;
-        saveReminders(map);
-        updateRemindUI();
-        scheduleItem(payload);
-        if ('Notification' in window && Notification.permission !== 'granted') {
-          setRemindStatus('Saved. Click “Enable browser alerts” (or Add to calendar) so you actually get the 24h / 12h / 3h reminders.', 'ok');
-        } else {
-          setRemindStatus(`Reminders set for “${payload.title}” — 24h, 12h, and 3h before deadline.`, 'ok');
-        }
-      } else {
-        delete map[payload.id];
-        saveReminders(map);
-        const fired = loadFired();
-        OFFSETS.forEach(o => { delete fired[`${payload.id}:${o.key}`]; });
-        saveFired(fired);
-        updateRemindUI();
-        rescheduleAll();
-        setRemindStatus(`Removed reminders for “${payload.title}”.`, '');
+      popup.document.open();
+      popup.document.write(pdfHtml(brief.rows, brief.total));
+      popup.document.close();
+      popup.focus();
+      setTimeout(() => popup.print(), 250);
+      setShortlistStatus('Print dialog opened. Choose Save as PDF.', 'ok');
+    }
+
+    async function copyNotes() {
+      const brief = currentBrief();
+      if (!brief.rows.length) return;
+      const text = notesText(brief.rows, brief.total);
+      try {
+        await navigator.clipboard.writeText(text);
+        setShortlistStatus('Copied. Paste it into Notes or any document.', 'ok');
+      } catch {
+        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'hack-search-shortlist.txt';
+        a.click();
+        URL.revokeObjectURL(a.href);
+        setShortlistStatus('Clipboard was blocked, so a notes file was downloaded instead.', 'ok');
       }
-    }
-
-    function icsEscape(text) {
-      return String(text || '')
-        .replace(/\\/g, '\\\\')
-        .replace(/;/g, '\\;')
-        .replace(/,/g, '\\,')
-        .replace(/\n/g, '\\n');
-    }
-
-    function toIcsUtc(iso) {
-      const d = new Date(iso);
-      const p = n => String(n).padStart(2, '0');
-      return (
-        d.getUTCFullYear() +
-        p(d.getUTCMonth() + 1) +
-        p(d.getUTCDate()) +
-        'T' +
-        p(d.getUTCHours()) +
-        p(d.getUTCMinutes()) +
-        p(d.getUTCSeconds()) +
-        'Z'
-      );
-    }
-
-    function exportCalendar() {
-      const map = loadReminders();
-      const items = Object.values(map);
-      if (!items.length) return;
-      const stamp = toIcsUtc(new Date().toISOString());
-      const events = items.map((item, idx) => {
-        const end = toIcsUtc(item.deadline);
-        const startDate = new Date(Date.parse(item.deadline) - 60 * 60 * 1000);
-        const start = toIcsUtc(startDate.toISOString());
-        const uid = `${item.id || idx}@hack-search`;
-        return [
-          'BEGIN:VEVENT',
-          `UID:${uid}`,
-          `DTSTAMP:${stamp}`,
-          `DTSTART:${start}`,
-          `DTEND:${end}`,
-          `SUMMARY:${icsEscape(item.title + ' deadline')}`,
-          `DESCRIPTION:${icsEscape('Hack-Search reminder. Submit before the deadline. ' + (item.url || ''))}`,
-          item.url ? `URL:${item.url}` : '',
-          'BEGIN:VALARM',
-          'TRIGGER:-PT24H',
-          'ACTION:DISPLAY',
-          `DESCRIPTION:${icsEscape('24 hours left: ' + item.title)}`,
-          'END:VALARM',
-          'BEGIN:VALARM',
-          'TRIGGER:-PT12H',
-          'ACTION:DISPLAY',
-          `DESCRIPTION:${icsEscape('12 hours left: ' + item.title)}`,
-          'END:VALARM',
-          'BEGIN:VALARM',
-          'TRIGGER:-PT3H',
-          'ACTION:DISPLAY',
-          `DESCRIPTION:${icsEscape('3 hours left: ' + item.title)}`,
-          'END:VALARM',
-          'END:VEVENT',
-        ].filter(Boolean).join('\r\n');
-      });
-      const ics = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Hack-Search//Reminders//EN',
-        'CALSCALE:GREGORIAN',
-        'METHOD:PUBLISH',
-        ...events,
-        'END:VCALENDAR',
-      ].join('\r\n');
-      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'hack-search-reminders.ics';
-      a.click();
-      URL.revokeObjectURL(a.href);
-      setRemindStatus('Calendar file downloaded — import it into Google/Apple/Outlook for reliable 24h / 12h / 3h alerts.', 'ok');
     }
 
     function apply() {
@@ -3474,19 +4199,14 @@
     sort.addEventListener('change', apply);
 
     cards.forEach(card => {
-      const box = card.querySelector('.remind-toggle');
+      const box = card.querySelector('.shortlist-toggle');
       if (!box) return;
       box.addEventListener('click', e => e.stopPropagation());
-      box.addEventListener('change', async () => {
-        if (box.checked && 'Notification' in window && Notification.permission === 'default') {
-          await enableNotifications();
-        }
-        toggleReminder(card, box.checked);
-      });
+      box.addEventListener('change', () => toggleShortlist(card, box.checked));
     });
 
-    enableNotifBtn.addEventListener('click', enableNotifications);
-    exportIcsBtn.addEventListener('click', exportCalendar);
+    pdfBtn.addEventListener('click', createPdf);
+    notesBtn.addEventListener('click', copyNotes);
 
     async function refresh() {
       refreshBtn.disabled = true;
@@ -3515,9 +4235,7 @@
 
     refreshBtn.addEventListener('click', refresh);
     showLastRefreshed();
-    updateRemindUI();
-    rescheduleAll();
-    setInterval(rescheduleAll, 60 * 1000);
+    updateShortlistUI();
   </script>
 </body>
 </html>

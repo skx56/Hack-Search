@@ -228,13 +228,13 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       opacity: 0.55;
       cursor: not-allowed;
     }}
-    #remindStatus {{
+    #shortlistStatus {{
       width: 100%;
       color: var(--muted);
       font-size: 0.82rem;
     }}
-    #remindStatus.ok {{ color: var(--accent); }}
-    #remindStatus.error {{ color: var(--danger); }}
+    #shortlistStatus.ok {{ color: var(--accent); }}
+    #shortlistStatus.error {{ color: var(--danger); }}
     .list {{ display: flex; flex-direction: column; gap: 12px; }}
     .card {{
       display: grid;
@@ -463,16 +463,16 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
       <span class="meta-filter">Deadlines in IST · next 30 days only · earliest first</span>
     </div>
 
-    <section class="reminders" id="remindersPanel" aria-label="Hackathon reminders">
+    <section class="reminders" id="shortlistPanel" aria-label="Selected hackathon brief">
       <div class="reminders-copy">
-        <strong id="remindCount">0 reminders selected</strong>
-        <span>Check hackathons below — you’ll get alerts 24h, 12h, and 3h before each deadline.</span>
+        <strong id="shortlistCount">0 hackathons selected</strong>
+        <span>Check the ones you want. Create a PDF brief with prize, timeline, and deadline for every selection.</span>
       </div>
       <div class="reminders-actions">
-        <button type="button" id="enableNotifBtn">Enable browser alerts</button>
-        <button type="button" id="exportIcsBtn" disabled>Add to calendar</button>
+        <button type="button" id="pdfBtn" disabled>Create PDF</button>
+        <button type="button" id="notesBtn" disabled>Copy as notes</button>
       </div>
-      <div id="remindStatus"></div>
+      <div id="shortlistStatus"></div>
     </section>
 
     <div class="controls">
@@ -508,270 +508,239 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     const list = document.getElementById('list');
     const refreshBtn = document.getElementById('refreshBtn');
     const refreshStatus = document.getElementById('refreshStatus');
-    const remindCount = document.getElementById('remindCount');
-    const remindStatus = document.getElementById('remindStatus');
-    const enableNotifBtn = document.getElementById('enableNotifBtn');
-    const exportIcsBtn = document.getElementById('exportIcsBtn');
+    const shortlistCount = document.getElementById('shortlistCount');
+    const shortlistStatus = document.getElementById('shortlistStatus');
+    const pdfBtn = document.getElementById('pdfBtn');
+    const notesBtn = document.getElementById('notesBtn');
     const lastRefreshed = {json.dumps(_fmt_scraped(scraped_at))};
 
-    const STORAGE_KEY = 'hacksearch.reminders.v1';
-    const FIRED_KEY = 'hacksearch.reminders.fired.v1';
-    const OFFSETS = [
-      {{ key: '24h', ms: 24 * 60 * 60 * 1000, label: '24 hours' }},
-      {{ key: '12h', ms: 12 * 60 * 60 * 1000, label: '12 hours' }},
-      {{ key: '3h', ms: 3 * 60 * 60 * 1000, label: '3 hours' }},
-    ];
-    const timers = new Map();
+    const STORAGE_KEY = 'hacksearch.shortlist.v1';
 
     function showLastRefreshed() {{
       refreshStatus.className = '';
       refreshStatus.innerHTML = 'Last refreshed<span class="refreshed-at">' + lastRefreshed + '</span>';
     }}
 
-    function loadReminders() {{
+    function loadShortlist() {{
       try {{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{{}}'); }}
       catch {{ return {{}}; }}
     }}
 
-    function saveReminders(map) {{
+    function saveShortlist(map) {{
       localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
     }}
 
-    function loadFired() {{
-      try {{ return JSON.parse(localStorage.getItem(FIRED_KEY) || '{{}}'); }}
-      catch {{ return {{}}; }}
+    function setShortlistStatus(text, kind) {{
+      shortlistStatus.textContent = text || '';
+      shortlistStatus.className = kind || '';
     }}
 
-    function saveFired(map) {{
-      localStorage.setItem(FIRED_KEY, JSON.stringify(map));
+    function selectedCards() {{
+      const map = loadShortlist();
+      return cards
+        .filter(card => map[card.dataset.id])
+        .sort((a, b) => (a.dataset.deadline || '9999').localeCompare(b.dataset.deadline || '9999'));
     }}
 
-    function setRemindStatus(text, kind) {{
-      remindStatus.textContent = text || '';
-      remindStatus.className = kind || '';
-    }}
-
-    function cardPayload(card) {{
-      return {{
-        id: card.dataset.id,
-        title: card.dataset.eventTitle || card.querySelector('.title')?.textContent?.trim() || 'Hackathon',
-        url: card.dataset.url || '',
-        deadline: card.dataset.deadline || '',
-      }};
-    }}
-
-    function updateRemindUI() {{
-      const map = loadReminders();
-      const n = Object.keys(map).length;
-      remindCount.textContent = n === 1 ? '1 reminder selected' : `${{n}} reminders selected`;
-      exportIcsBtn.disabled = n === 0;
+    function updateShortlistUI() {{
+      const n = selectedCards().length;
+      shortlistCount.textContent = n === 1 ? '1 hackathon selected' : `${{n}} hackathons selected`;
+      pdfBtn.disabled = n === 0;
+      notesBtn.disabled = n === 0;
+      const ids = loadShortlist();
       cards.forEach(card => {{
-        const on = Boolean(map[card.dataset.id]);
-        const box = card.querySelector('.remind-toggle');
+        const on = Boolean(ids[card.dataset.id]);
+        const box = card.querySelector('.shortlist-toggle');
         if (box) box.checked = on;
         card.classList.toggle('is-reminded', on);
       }});
-      if ('Notification' in window && Notification.permission === 'granted') {{
-        enableNotifBtn.textContent = 'Browser alerts on';
-        enableNotifBtn.disabled = true;
-      }}
     }}
 
-    function clearTimers() {{
-      timers.forEach(id => clearTimeout(id));
-      timers.clear();
+    function toggleShortlist(card, checked) {{
+      const map = loadShortlist();
+      const id = card.dataset.id;
+      if (!id) return;
+      if (checked) map[id] = {{ id, title: card.dataset.eventTitle || '' }};
+      else delete map[id];
+      saveShortlist(map);
+      updateShortlistUI();
+      const title = card.dataset.eventTitle || 'Hackathon';
+      setShortlistStatus(checked ? `Added “${{title}}” to your brief.` : `Removed “${{title}}”.`, checked ? 'ok' : '');
     }}
 
-    function fireReminder(item, offset) {{
-      const fired = loadFired();
-      const key = `${{item.id}}:${{offset.key}}`;
-      if (fired[key]) return;
-      fired[key] = Date.now();
-      saveFired(fired);
-
-      const title = `${{offset.label}} left · ${{item.title}}`;
-      const body = `Deadline approaching. Open the hackathon page to submit.`;
-      if ('Notification' in window && Notification.permission === 'granted') {{
-        try {{
-          const n = new Notification(title, {{
-            body,
-            tag: key,
-            renotify: true,
-            data: {{ url: item.url }},
-          }});
-          n.onclick = () => {{
-            window.focus();
-            if (item.url) window.open(item.url, '_blank', 'noopener');
-            n.close();
-          }};
-        }} catch {{
-          setRemindStatus(`${{title}} — ${{body}}`, 'ok');
-        }}
-      }} else {{
-        setRemindStatus(`${{title}} — enable browser alerts to get desktop notifications.`, 'ok');
-      }}
+    function esc(value) {{
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
     }}
 
-    function scheduleItem(item) {{
-      const deadline = Date.parse(item.deadline);
-      if (!Number.isFinite(deadline)) return;
-      const now = Date.now();
-      if (deadline <= now) return;
+    function timeLeft(iso) {{
+      const t = Date.parse(iso);
+      if (!Number.isFinite(t) || String(iso || '').startsWith('9999')) return 'Deadline TBA';
+      const ms = t - Date.now();
+      if (ms <= 0) return 'Deadline passed';
+      const hours = Math.round(ms / 36e5);
+      if (hours < 48) return `${{hours}} hour${{hours === 1 ? '' : 's'}} left`;
+      const days = Math.round(hours / 24);
+      return `${{days}} day${{days === 1 ? '' : 's'}} left`;
+    }}
 
-      OFFSETS.forEach(offset => {{
-        const when = deadline - offset.ms;
-        const key = `${{item.id}}:${{offset.key}}`;
-        if (timers.has(key)) {{
-          clearTimeout(timers.get(key));
-          timers.delete(key);
-        }}
-        const fired = loadFired();
-        if (fired[key]) return;
+    function money(amount, currency) {{
+      const n = Number(amount);
+      if (!Number.isFinite(n) || n <= 0) return '';
+      const formatted = n.toLocaleString('en-IN', {{ maximumFractionDigits: 0 }});
+      if ((currency || '').toUpperCase() === 'INR') return `INR ${{formatted}}`;
+      if ((currency || '').toUpperCase() === 'USD') return `$${{formatted}}`;
+      if ((currency || '').toUpperCase() === 'EUR') return `€${{formatted}}`;
+      return `${{currency || ''}} ${{formatted}}`.trim();
+    }}
 
-        // Already in the reminder window (late check / page just opened)
-        if (when <= now && now < deadline) {{
-          fireReminder(item, offset);
-          return;
-        }}
-        if (when <= now) return;
-
-        const wait = when - now;
-        // setTimeout is unreliable beyond ~24 days; poller covers those
-        if (wait > 24 * 60 * 60 * 1000) return;
-        const tid = setTimeout(() => fireReminder(item, offset), wait);
-        timers.set(key, tid);
+    function prizeTotals(list) {{
+      const totals = {{}};
+      list.forEach(card => {{
+        const amount = Number(card.dataset.prizeAmount);
+        const currency = (card.dataset.prizeCurrency || '').toUpperCase();
+        if (!Number.isFinite(amount) || amount <= 0 || !currency) return;
+        totals[currency] = (totals[currency] || 0) + amount;
       }});
+      const parts = Object.entries(totals).map(([currency, amount]) => money(amount, currency));
+      return parts.length ? parts.join(' · ') : 'Mixed or unpriced rewards';
     }}
 
-    function rescheduleAll() {{
-      clearTimers();
-      const map = loadReminders();
-      Object.values(map).forEach(scheduleItem);
+    function briefRows(list) {{
+      return list.map((card, index) => ({{
+        index: index + 1,
+        title: card.dataset.eventTitle || 'Hackathon',
+        org: card.dataset.org || 'Organizer TBA',
+        source: card.dataset.source || '',
+        mode: card.dataset.modeLabel || 'Online',
+        focus: card.dataset.focusLabel || '',
+        prize: card.dataset.prize || 'Cash prize',
+        deadline: card.dataset.deadlineLabel || 'Deadline TBA',
+        starts: card.dataset.startLabel || '',
+        left: timeLeft(card.dataset.deadline),
+        themes: card.dataset.themes || '',
+        url: card.dataset.url || '',
+      }}));
     }}
 
-    async function enableNotifications() {{
-      if (!('Notification' in window)) {{
-        setRemindStatus('This browser does not support notifications. Use Add to calendar instead.', 'error');
-        return false;
-      }}
-      let perm = Notification.permission;
-      if (perm === 'default') perm = await Notification.requestPermission();
-      if (perm !== 'granted') {{
-        setRemindStatus('Notification permission blocked. You can still use Add to calendar.', 'error');
-        return false;
-      }}
-      updateRemindUI();
-      rescheduleAll();
-      setRemindStatus('Browser alerts enabled for checked hackathons (24h / 12h / 3h). Keep this tab available when possible.', 'ok');
-      return true;
+    function notesText(rows, total) {{
+      const header = [
+        'Hack-Search shortlist',
+        `Created ${{new Date().toLocaleString('en-IN', {{ timeZone: 'Asia/Kolkata' }})}} IST`,
+        `${{rows.length}} hackathon${{rows.length === 1 ? '' : 's'}}`,
+        `Total listed cash: ${{total}}`,
+        '',
+      ];
+      const body = rows.map(row => [
+        `${{row.index}}. ${{row.title}}`,
+        `Organizer: ${{row.org}}`,
+        `Source: ${{row.source}} · ${{row.mode}}${{row.focus ? ' · ' + row.focus : ''}}`,
+        `Cash prize: ${{row.prize}}`,
+        `Timeline: ${{row.starts ? 'Starts ' + row.starts + ' · ' : ''}}Deadline ${{row.deadline}} · ${{row.left}}`,
+        row.themes ? `Themes: ${{row.themes}}` : '',
+        row.url ? `Link: ${{row.url}}` : '',
+        '',
+      ].filter(Boolean).join('\\n'));
+      return header.concat(body).join('\\n');
     }}
 
-    function toggleReminder(card, checked) {{
-      const map = loadReminders();
-      const payload = cardPayload(card);
-      if (!payload.id || !payload.deadline || payload.deadline.startsWith('9999')) {{
-        setRemindStatus('This hackathon has no usable deadline for reminders.', 'error');
-        card.querySelector('.remind-toggle').checked = false;
+    function pdfHtml(rows, total) {{
+      const created = new Date().toLocaleString('en-IN', {{
+        timeZone: 'Asia/Kolkata',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+      }});
+      const blocks = rows.map(row => `
+        <article>
+          <p class="kicker">${{row.index < 10 ? '0' + row.index : row.index}} · ${{esc(row.source)}} · ${{esc(row.mode)}}</p>
+          <h2>${{esc(row.title)}}</h2>
+          <p class="org">${{esc(row.org)}}${{row.focus ? ' · ' + esc(row.focus) : ''}}</p>
+          <table>
+            <tr><th>Cash prize</th><td>${{esc(row.prize)}}</td></tr>
+            <tr><th>Starts</th><td>${{esc(row.starts || 'Not listed')}}</td></tr>
+            <tr><th>Deadline</th><td>${{esc(row.deadline)}}</td></tr>
+            <tr><th>Time left</th><td>${{esc(row.left)}}</td></tr>
+            <tr><th>Themes</th><td>${{esc(row.themes || '—')}}</td></tr>
+            <tr><th>Link</th><td>${{row.url ? `<a href="${{esc(row.url)}}">${{esc(row.url)}}</a>` : '—'}}</td></tr>
+          </table>
+        </article>
+      `).join('');
+      return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Hack-Search shortlist</title>
+  <style>
+    @page {{ margin: 18mm; }}
+    body {{ margin: 0; color: #17202a; font: 14px/1.45 "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif; }}
+    header {{ border-bottom: 2px solid #17202a; padding-bottom: 12px; margin-bottom: 18px; }}
+    h1 {{ font-size: 28px; margin: 0 0 4px; letter-spacing: -0.03em; }}
+    .meta {{ margin: 0; color: #52616e; }}
+    .totals {{ margin-top: 10px; font-weight: 700; }}
+    article {{ break-inside: avoid; border-top: 1px solid #d5dde4; padding: 14px 0 8px; }}
+    h2 {{ font-size: 18px; margin: 2px 0 2px; }}
+    .kicker, .org {{ margin: 0; color: #52616e; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }}
+    .org {{ text-transform: none; letter-spacing: 0; font-size: 13px; margin-bottom: 8px; }}
+    table {{ width: 100%; border-collapse: collapse; }}
+    th {{ width: 110px; text-align: left; color: #52616e; font-weight: 600; vertical-align: top; padding: 2px 12px 2px 0; }}
+    td {{ padding: 2px 0; }}
+    a {{ color: #17202a; }}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hack-Search shortlist</h1>
+    <p class="meta">${{rows.length}} selected hackathon${{rows.length === 1 ? '' : 's'}} · written ${{esc(created)}} IST</p>
+    <p class="totals">Total listed cash: ${{esc(total)}}</p>
+  </header>
+  ${{blocks}}
+</body>
+</html>`;
+    }}
+
+    function currentBrief() {{
+      const list = selectedCards();
+      return {{ rows: briefRows(list), total: prizeTotals(list) }};
+    }}
+
+    function createPdf() {{
+      const brief = currentBrief();
+      if (!brief.rows.length) return;
+      const popup = window.open('', '_blank');
+      if (!popup) {{
+        setShortlistStatus('Allow pop-ups for this site, then create the PDF again.', 'error');
         return;
       }}
-      if (checked) {{
-        map[payload.id] = payload;
-        saveReminders(map);
-        updateRemindUI();
-        scheduleItem(payload);
-        if ('Notification' in window && Notification.permission !== 'granted') {{
-          setRemindStatus('Saved. Click “Enable browser alerts” (or Add to calendar) so you actually get the 24h / 12h / 3h reminders.', 'ok');
-        }} else {{
-          setRemindStatus(`Reminders set for “${{payload.title}}” — 24h, 12h, and 3h before deadline.`, 'ok');
-        }}
-      }} else {{
-        delete map[payload.id];
-        saveReminders(map);
-        const fired = loadFired();
-        OFFSETS.forEach(o => {{ delete fired[`${{payload.id}}:${{o.key}}`]; }});
-        saveFired(fired);
-        updateRemindUI();
-        rescheduleAll();
-        setRemindStatus(`Removed reminders for “${{payload.title}}”.`, '');
+      popup.document.open();
+      popup.document.write(pdfHtml(brief.rows, brief.total));
+      popup.document.close();
+      popup.focus();
+      setTimeout(() => popup.print(), 250);
+      setShortlistStatus('Print dialog opened. Choose Save as PDF.', 'ok');
+    }}
+
+    async function copyNotes() {{
+      const brief = currentBrief();
+      if (!brief.rows.length) return;
+      const text = notesText(brief.rows, brief.total);
+      try {{
+        await navigator.clipboard.writeText(text);
+        setShortlistStatus('Copied. Paste it into Notes or any document.', 'ok');
+      }} catch {{
+        const blob = new Blob([text], {{ type: 'text/plain;charset=utf-8' }});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'hack-search-shortlist.txt';
+        a.click();
+        URL.revokeObjectURL(a.href);
+        setShortlistStatus('Clipboard was blocked, so a notes file was downloaded instead.', 'ok');
       }}
-    }}
-
-    function icsEscape(text) {{
-      return String(text || '')
-        .replace(/\\\\/g, '\\\\\\\\')
-        .replace(/;/g, '\\\\;')
-        .replace(/,/g, '\\\\,')
-        .replace(/\\n/g, '\\\\n');
-    }}
-
-    function toIcsUtc(iso) {{
-      const d = new Date(iso);
-      const p = n => String(n).padStart(2, '0');
-      return (
-        d.getUTCFullYear() +
-        p(d.getUTCMonth() + 1) +
-        p(d.getUTCDate()) +
-        'T' +
-        p(d.getUTCHours()) +
-        p(d.getUTCMinutes()) +
-        p(d.getUTCSeconds()) +
-        'Z'
-      );
-    }}
-
-    function exportCalendar() {{
-      const map = loadReminders();
-      const items = Object.values(map);
-      if (!items.length) return;
-      const stamp = toIcsUtc(new Date().toISOString());
-      const events = items.map((item, idx) => {{
-        const end = toIcsUtc(item.deadline);
-        const startDate = new Date(Date.parse(item.deadline) - 60 * 60 * 1000);
-        const start = toIcsUtc(startDate.toISOString());
-        const uid = `${{item.id || idx}}@hack-search`;
-        return [
-          'BEGIN:VEVENT',
-          `UID:${{uid}}`,
-          `DTSTAMP:${{stamp}}`,
-          `DTSTART:${{start}}`,
-          `DTEND:${{end}}`,
-          `SUMMARY:${{icsEscape(item.title + ' deadline')}}`,
-          `DESCRIPTION:${{icsEscape('Hack-Search reminder. Submit before the deadline. ' + (item.url || ''))}}`,
-          item.url ? `URL:${{item.url}}` : '',
-          'BEGIN:VALARM',
-          'TRIGGER:-PT24H',
-          'ACTION:DISPLAY',
-          `DESCRIPTION:${{icsEscape('24 hours left: ' + item.title)}}`,
-          'END:VALARM',
-          'BEGIN:VALARM',
-          'TRIGGER:-PT12H',
-          'ACTION:DISPLAY',
-          `DESCRIPTION:${{icsEscape('12 hours left: ' + item.title)}}`,
-          'END:VALARM',
-          'BEGIN:VALARM',
-          'TRIGGER:-PT3H',
-          'ACTION:DISPLAY',
-          `DESCRIPTION:${{icsEscape('3 hours left: ' + item.title)}}`,
-          'END:VALARM',
-          'END:VEVENT',
-        ].filter(Boolean).join('\\r\\n');
-      }});
-      const ics = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Hack-Search//Reminders//EN',
-        'CALSCALE:GREGORIAN',
-        'METHOD:PUBLISH',
-        ...events,
-        'END:VCALENDAR',
-      ].join('\\r\\n');
-      const blob = new Blob([ics], {{ type: 'text/calendar;charset=utf-8' }});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'hack-search-reminders.ics';
-      a.click();
-      URL.revokeObjectURL(a.href);
-      setRemindStatus('Calendar file downloaded — import it into Google/Apple/Outlook for reliable 24h / 12h / 3h alerts.', 'ok');
     }}
 
     function apply() {{
@@ -801,19 +770,14 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
     sort.addEventListener('change', apply);
 
     cards.forEach(card => {{
-      const box = card.querySelector('.remind-toggle');
+      const box = card.querySelector('.shortlist-toggle');
       if (!box) return;
       box.addEventListener('click', e => e.stopPropagation());
-      box.addEventListener('change', async () => {{
-        if (box.checked && 'Notification' in window && Notification.permission === 'default') {{
-          await enableNotifications();
-        }}
-        toggleReminder(card, box.checked);
-      }});
+      box.addEventListener('change', () => toggleShortlist(card, box.checked));
     }});
 
-    enableNotifBtn.addEventListener('click', enableNotifications);
-    exportIcsBtn.addEventListener('click', exportCalendar);
+    pdfBtn.addEventListener('click', createPdf);
+    notesBtn.addEventListener('click', copyNotes);
 
     async function refresh() {{
       refreshBtn.disabled = true;
@@ -842,9 +806,7 @@ def write_html_report(items: list[Hackathon], path: Path, *, scraped_at: str) ->
 
     refreshBtn.addEventListener('click', refresh);
     showLastRefreshed();
-    updateRemindUI();
-    rescheduleAll();
-    setInterval(rescheduleAll, 60 * 1000);
+    updateShortlistUI();
   </script>
 </body>
 </html>
@@ -898,20 +860,33 @@ def _row(h: Hackathon, index: int) -> str:
     event_id = html.escape(h.id or f"event-{index}")
     event_title = html.escape(h.title)
     event_url = html.escape(h.url)
+    start_dt = parse_deadline(h.start_date)
+    start_label = format_deadline_ist(start_dt) if start_dt else ""
+    mode_label = "Hybrid" if h.mode == "hybrid" else "Online"
+    themes_text = ", ".join(themes_list)
 
     return f"""
     <article class="card"
        data-id="{event_id}"
        data-event-title="{event_title}"
        data-url="{event_url}"
+       data-org="{html.escape(org)}"
        data-source="{html.escape(h.source)}"
+       data-mode-label="{mode_label}"
        data-focus="{html.escape(focus)}"
+       data-focus-label="{html.escape(focus_label)}"
+       data-themes="{html.escape(themes_text)}"
+       data-prize="{html.escape(prize)}"
+       data-prize-amount="{h.prize_amount or ''}"
+       data-prize-currency="{html.escape((h.prize_currency or '').upper())}"
        data-title="{html.escape(h.title.lower())}"
        data-deadline="{html.escape(deadline_sort)}"
+       data-deadline-label="{html.escape(deadline_label)}"
+       data-start-label="{html.escape(start_label)}"
        data-prize-sort="{prize_sort}"
        data-hay="{hay}">
-      <label class="pick" title="Remind me 24h / 12h / 3h before deadline">
-        <input type="checkbox" class="remind-toggle" aria-label="Remind me about {event_title}" />
+      <label class="pick" title="Add to your written shortlist">
+        <input type="checkbox" class="shortlist-toggle" aria-label="Add {event_title} to shortlist" />
       </label>
       <div class="rank">#{index}</div>
       <div>
